@@ -1,0 +1,39 @@
+a {
+    color: hsl(0, 0%, 0%);
+    font-size: large;
+}
+
+.sub-menu {
+    opacity: 1;
+    display: none;
+    background-color: #f8f9fa;
+    width: 170px;
+    padding: 10px;
+    z-index: 2;
+    position: relative;
+    left: 5px;
+    top: 15px;
+}
+
+.sub-menu-item {
+    margin: 5px;
+    width: 110px;
+    text-align: left;
+    list-style: none;
+    position: relative;
+}
+
+.scene:hover .sub-menu {
+    display: block;
+    transition: .2s ease;
+    animation: sub-menu-animation 0.2s ease-in;
+}
+
+@keyframes sub-menu-animation {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}

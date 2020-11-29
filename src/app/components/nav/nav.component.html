@@ -5,9 +5,9 @@
     <div class="collapse navbar-collapse justify-content-center m-auto" id="mainmenu">
 
         <ul class="navbar-nav">
-            <li class="nav-item ">
+            <li class="nav-item " *ngFor="let link of navLinks ">
                 <a>
-                    <app-nav-display-item></app-nav-display-item>
+                    <app-nav-display-item [link]="link"></app-nav-display-item>
                 </a>
             </li>
 

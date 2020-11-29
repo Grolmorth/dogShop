@@ -1,3 +1,4 @@
+import { NavServiceService } from './../../services/nav-service.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,9 +8,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NavComponent implements OnInit {
 
-  constructor() { }
-
+  constructor(private navServ: NavServiceService) { }
+  navLinks: any;
   ngOnInit(): void {
+    console.log(this.navServ.navlink)
+    this.navLinks = this.navServ.navlink;
   }
 
 }

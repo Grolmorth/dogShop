@@ -1,1 +1,12 @@
-<p>nav-display-item works!</p>
+<ul class="scene">
+    <a class="cube " [routerLink]=[link[1]] routerLinkActive='active'>
+        <div class="wall front">{{link[0]}}</div>
+
+
+    </a>
+    <div class="sub-menu" *ngIf="link[2]">
+        <ul class="sub-menu-item" *ngFor="let link of link[2]">
+            <li><a [routerLink]=[link[1]]>{{link[0]}}</a></li>
+        </ul>
+    </div>
+</ul>
