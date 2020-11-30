@@ -1,32 +1,52 @@
-a {
-    color: hsl(0, 0%, 0%);
-    font-size: large;
+@import "../../../_variables.scss";
+.sub-menu-item {
+    display: none;
+    padding: 3px;
+    width: $size-of-nav-item;
+    position: relative;
+    list-style: none;
+    background-color: #f8f9fa;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 
 .sub-menu {
-    opacity: 1;
-    display: none;
-    background-color: #f8f9fa;
-    width: 170px;
-    padding: 10px;
-    z-index: 2;
-    position: relative;
-    left: 5px;
-    top: 15px;
+    margin-top: 12px;
+    position: absolute;
+    padding: 0;
 }
 
-.sub-menu-item {
-    margin: 5px;
-    width: 110px;
-    text-align: left;
-    list-style: none;
+.menu-link {
+    width: $size-of-nav-item;
     position: relative;
+    height: 40px;
+    padding: 0px;
 }
 
-.scene:hover .sub-menu {
-    display: block;
-    transition: .2s ease;
-    animation: sub-menu-animation 0.2s ease-in;
+.menu-link:hover {
+    .sub-menu-item {
+        display: block;
+        transition: .3s ease;
+        animation: sub-menu-animation .5s ease-in;
+    }
+    .menu-item {
+        color: #6c757d;
+    }
+}
+
+.sub-menu-item:hover {
+    background: rgb(0, 123, 255);
+    background: linear-gradient(105deg, rgba(0, 123, 255, 0.404) 0%, rgba(0, 123, 255, 1) 15%, rgba(0, 123, 255, 1) 50%, rgba(0, 123, 255, 1) 85%, rgba(0, 123, 255, 0.404) 100%);
+    color: #f8f9fa;
+}
+
+a {
+    text-decoration: none;
+    color: #343a40
+}
+
+.menu-item {
+    font-size: 20px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 
 @keyframes sub-menu-animation {

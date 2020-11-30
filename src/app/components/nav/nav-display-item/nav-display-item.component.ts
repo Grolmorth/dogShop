@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 
+
 @Component({
   selector: 'app-nav-display-item',
   templateUrl: './nav-display-item.component.html',
@@ -11,5 +12,6 @@ export class NavDisplayItemComponent implements OnInit {
   @Input() link: any;
   ngOnInit(): void {
   }
+
 
 }

@@ -11,7 +11,7 @@ export class NavComponent implements OnInit {
   constructor(private navServ: NavServiceService) { }
   navLinks: any;
   ngOnInit(): void {
-    console.log(this.navServ.navlink)
+
     this.navLinks = this.navServ.navlink;
   }
 
