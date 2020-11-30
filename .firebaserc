@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "dogshop-7ef9d": {
+      "hosting": {
+        "dogShop": [
+          "dogshop-7ef9d"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "dogshop-7ef9d"
+  }
+}

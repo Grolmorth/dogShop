@@ -13,6 +13,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatTabsModule} from '@angular/material/tabs';
 import { NavDisplayItemComponent } from './components/nav/nav-display-item/nav-display-item.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { DisplayComponent } from './components/content/display/display.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,9 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     LoginComponent,
     FooterComponent,
 
-    NavDisplayItemComponent
+    NavDisplayItemComponent,
+
+    DisplayComponent
   ],
   imports: [
     BrowserModule,
