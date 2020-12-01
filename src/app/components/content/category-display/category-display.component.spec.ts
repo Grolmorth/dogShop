@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { KarmaSuchaComponent } from './karma-sucha.component';
+import { CategoryDisplayComponent } from './category-display.component';
 
-describe('KarmaSuchaComponent', () => {
-  let component: KarmaSuchaComponent;
-  let fixture: ComponentFixture<KarmaSuchaComponent>;
+describe('CategoryDisplayComponent', () => {
+  let component: CategoryDisplayComponent;
+  let fixture: ComponentFixture<CategoryDisplayComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ KarmaSuchaComponent ]
+      declarations: [ CategoryDisplayComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(KarmaSuchaComponent);
+    fixture = TestBed.createComponent(CategoryDisplayComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

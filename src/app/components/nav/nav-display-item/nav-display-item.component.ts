@@ -10,8 +10,12 @@ export class NavDisplayItemComponent implements OnInit {
 
   constructor() { }
   @Input() link: any;
-  ngOnInit(): void {
-  }
+
+
+
+
+ngOnInit(): void {
+}
 
 
 }

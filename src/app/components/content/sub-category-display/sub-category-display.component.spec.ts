@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { DisplayComponent } from './display.component';
+import { SubCategoryDisplayComponent } from './sub-category-display.component';
 
-describe('DisplayComponent', () => {
-  let component: DisplayComponent;
-  let fixture: ComponentFixture<DisplayComponent>;
+describe('SubCategoryDisplayComponent', () => {
+  let component: SubCategoryDisplayComponent;
+  let fixture: ComponentFixture<SubCategoryDisplayComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ DisplayComponent ]
+      declarations: [ SubCategoryDisplayComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(DisplayComponent);
+    fixture = TestBed.createComponent(SubCategoryDisplayComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

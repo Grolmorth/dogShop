@@ -1,10 +1,10 @@
 <ul class="menu-link text-center ">
-    <a class="" [routerLink]=[link[1]] routerLinkActive='active'>
+    <a class="" [routerLink]="['c', link[1]]" routerLinkActive='active'>
         <div class="menu-item pt-2">{{link[0]}}</div>
     </a>
     <div class="sub-menu " *ngIf="link[2]">
         <ul class="p-0" *ngFor="let subLink of link[2]">
-            <a [routerLink]="[link[1]]+'/'+[subLink[1]]">
+            <a [routerLink]="['c',link[1],subLink[1]]">
                 <li class="sub-menu-item ">{{subLink[0]}}</li>
             </a>
         </ul>
