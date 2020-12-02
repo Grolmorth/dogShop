@@ -1,0 +1,29 @@
+<mat-card class="m-3">
+    <form [formGroup]="formTemplate" class="form-group" (ngSubmit)="onSubmit(formTemplate.value)">
+        <div>
+            <mat-form-field>
+                <mat-label>Nazwa</mat-label>
+                <input matInput required formControlName="name" placeholder="nazwa" class="form-control">
+            </mat-form-field>
+        </div>
+        <div>
+            <mat-form-field>
+                <mat-label>Opis</mat-label>
+                <textarea matInput required formControlName="info" placeholder="opis" class="form-control"></textarea>
+            </mat-form-field>
+        </div>
+        <div>
+            <mat-label class="m-3">Kategoria</mat-label>
+            <mat-select formControlName="category" required placeholder="Wybierz kategorie" class="form-control select">
+                <mat-option *ngFor="let category of categoryList" [value]="category">{{category}}</mat-option>
+            </mat-select>
+        </div>
+        <div>
+            <mat-label class="m-3">Pod-kategoria</mat-label>
+            <mat-select formControlName="subCategory" required placeholder="Wybierz pod-kategorie" class="form-control">
+                <mat-option *ngFor="let category of subCategoryList" [value]="category">{{category}}</mat-option>
+            </mat-select>
+        </div>
+        <button class="m-3 " mat-stroked-button type="submit()" [disabled]="formTemplate.invalid">Dodaj</button>
+    </form>
+</mat-card>

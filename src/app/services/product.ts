@@ -1,5 +1,7 @@
 export interface Product {
   name: string;
+  category: string;
+  subCategory: string;
   info: string;
   alteration: [Alteration];
 }

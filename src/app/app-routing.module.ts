@@ -1,3 +1,5 @@
+import { AddProductComponent } from './components/admin/add-product/add-product.component';
+import { LoginComponent } from './components/login/login.component';
 import { SubCategoryDisplayComponent } from './components/content/sub-category-display/sub-category-display.component';
 import { CategoryDisplayComponent } from './components/content/category-display/category-display.component';
 
@@ -21,6 +23,15 @@ const routes: Routes = [
   {
     path: 'c/:categoryName/:subCategoryName',
     component: SubCategoryDisplayComponent,
+  },
+
+  {
+    path: 'login',
+    component: LoginComponent,
+  },
+  {
+    path: 'a',
+    component: AddProductComponent,
   },
 
   {
