@@ -12,10 +12,14 @@ export class ProductService {
   constructor(private firebase: AngularFireDatabase, private storage: AngularFireStorage) { }
 
   insertProductDetails(productDetails) {
-    console.log(productDetails)
+
     this.firebase.list('product/' + productDetails.category + '/' + productDetails.subCategory).push(productDetails);
   }
+  getProductDetailsList(path:string) {
+    this.productDetailList = this.firebase.list(path);
 
+
+  }
 
 
 }

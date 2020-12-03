@@ -25,20 +25,20 @@ export class AddProductComponent implements OnInit, DoCheck {
   });
   ngOnInit(): void {
     this.categoryList = this.categories.navlink.map(category => {
-      return category[0];
+      return category;
     })
   }
   ngDoCheck(): void {
+    // get subcategory list when picking category
     const categoryName = this.formTemplate.value['category'];
     this.categories.navlink.map(category => {
-      if (category[0] === categoryName) {
+      if (category[1] === categoryName) {
         this.subCategoryList = [];
         for (let n = 0; n < category[2].length; n++) {
-          this.subCategoryList[n] = category[2][n][0];
+          this.subCategoryList[n] = category[2][n];
         }
       };
     })
-
 
   }
   onSubmit(formValue) {
