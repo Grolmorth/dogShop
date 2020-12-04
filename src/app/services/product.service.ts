@@ -13,13 +13,24 @@ export class ProductService {
 
   insertProductDetails(productDetails) {
 
-    this.firebase.list('product/' + productDetails.category + '/' + productDetails.subCategory).push(productDetails);
+    const category = this.replaceChar(productDetails.category.toLowerCase());
+    const subCategory = this.replaceChar(productDetails.subCategory.toLowerCase());
+    this.firebase.list('product/' + category + '/' + subCategory).push(productDetails);
+
   }
-  getProductDetailsList(path:string) {
+  getProductDetailsList(path: string) {
     this.productDetailList = this.firebase.list(path);
-
-
   }
+  replaceChar(val) {
+    let value = val;
+    const chars = [[' ', '-'], ['ą', 'a'], ['ę', 'e'], ['ć', 'c'], ['ł', 'l'], ['ń', 'n'], ['ó', 'o'], ['ś', 's'], ['ż', 'z'], ['ź', 'z']];
+    for (let n = 0; n < chars.length; n++) {
+      value = value.replaceAll(chars[n][0], chars[n][1])
+
+    }
+    return value
+  }
+
 
 
 }

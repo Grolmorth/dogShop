@@ -15,13 +15,13 @@
         <div>
             <mat-label class="m-3">Kategoria</mat-label>
             <mat-select formControlName="category" required placeholder="Wybierz kategorie" class="form-control select">
-                <mat-option *ngFor="let category of categoryList" [value]="category[1]">{{category[0]}}</mat-option>
+                <mat-option *ngFor="let category of categoryList" [value]="category[0]">{{category[0]}}</mat-option>
             </mat-select>
         </div>
         <div>
             <mat-label class="m-3">Podkategoria</mat-label>
             <mat-select formControlName="subCategory" required placeholder="Wybierz podkategorie" class="form-control">
-                <mat-option *ngFor="let category of subCategoryList" [value]="category[1]">{{category[0]}}</mat-option>
+                <mat-option *ngFor="let category of subCategoryList" [value]="category[0]">{{category[0]}}</mat-option>
             </mat-select>
         </div>
         <button class="m-3 " mat-stroked-button type="submit()" [disabled]="formTemplate.invalid">Dodaj</button>

@@ -1,6 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NavComponent } from './components/nav/nav.component';
@@ -8,7 +7,6 @@ import { PageNotFoundComponent } from './components/page-not-found/page-not-foun
 import { HeaderComponent } from './components/header/header.component';
 import { LoginComponent } from './components/login/login.component';
 import { FooterComponent } from './components/footer/footer.component';
-
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatTabsModule } from '@angular/material/tabs';
 import { NavDisplayItemComponent } from './components/nav/nav-display-item/nav-display-item.component';
@@ -28,6 +26,7 @@ import { MatSelectModule } from '@angular/material/select';
 import {MatButtonModule} from '@angular/material/button';
 
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -41,13 +40,13 @@ import {MatButtonModule} from '@angular/material/button';
     SubCategoryDisplayComponent,
     AddProductComponent,
 
-
   ],
   imports: [
     BrowserModule,
     FormsModule,
     ReactiveFormsModule,
     AppRoutingModule,
+
     BrowserAnimationsModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFireDatabaseModule,
@@ -58,7 +57,8 @@ import {MatButtonModule} from '@angular/material/button';
     MatInputModule,
     MatCardModule,
     MatSelectModule,
-    MatButtonModule
+    MatButtonModule,
+
   ],
   providers: [],
   bootstrap: [AppComponent]

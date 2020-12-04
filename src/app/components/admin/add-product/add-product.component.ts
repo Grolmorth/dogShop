@@ -21,7 +21,6 @@ export class AddProductComponent implements OnInit, DoCheck {
     category: new FormControl('', Validators.required),
     subCategory: new FormControl('', Validators.required),
 
-
   });
   ngOnInit(): void {
     this.categoryList = this.categories.navlink.map(category => {
@@ -32,7 +31,7 @@ export class AddProductComponent implements OnInit, DoCheck {
     // get subcategory list when picking category
     const categoryName = this.formTemplate.value['category'];
     this.categories.navlink.map(category => {
-      if (category[1] === categoryName) {
+      if (category[0] === categoryName) {
         this.subCategoryList = [];
         for (let n = 0; n < category[2].length; n++) {
           this.subCategoryList[n] = category[2][n];
