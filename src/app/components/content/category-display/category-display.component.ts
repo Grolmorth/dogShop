@@ -15,34 +15,24 @@ export class CategoryDisplayComponent implements OnInit {
   constructor(private navServ: NavServiceService, private route: ActivatedRoute, private productService: ProductService) { }
   navigation: any;
   ngOnInit(): void {
+    //subscribe route params
     this.sub = this.route.params.subscribe(params => {
       this.category = params.categoryName;
-      console.log(this.category)
+      //get
       this.navServ.navlink.map(v => {
-        if (v[1] ===  this.category) {
+        if (v[1] === this.category) {
           this.navigation = v[2];
-          console.log(v[2])
         };
       })
-
-
       this.productService.getProductDetailsList('product/' + this.category);
       this.getProductList();
     }), (err) => console.error(err);
   }
-  // ngDoCheck() {
-  //   const categoryName = this.route.snapshot.paramMap.get('categoryName')
-  //   this.navServ.navlink.map(v => {
-  //     if (v[1] === categoryName) {
-  //       this.navigation = v[2];
-  //       console.log(v[2])
-  //     };
-  //   })
-  // }
+
   getProductList() {
     this.productService.productDetailList.snapshotChanges().subscribe(list => {
       this.productList = list.map(item => {
-        return ({  ...item.payload.val() })
+        return ({ ...item.payload.val() })
       });
     });
 
