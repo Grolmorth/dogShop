@@ -4,3 +4,11 @@
         <a [routerLink]=[link[1]]>{{link[0]}}</a>
     </div>
 </div>
+<div class="grid-container">
+    <div class=" grid-item mb-1" *ngFor="let product of productList ">
+
+        {{product|json}}
+
+
+    </div>
+</div>
