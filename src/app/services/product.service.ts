@@ -1,3 +1,4 @@
+import { Product } from './product';
 import { Injectable } from '@angular/core';
 import { AngularFireDatabase, AngularFireList } from '@angular/fire/database';
 import { AngularFireStorage } from '@angular/fire/storage';
@@ -6,20 +7,33 @@ import { AngularFireStorage } from '@angular/fire/storage';
 })
 export class ProductService {
   productDetailList: AngularFireList<any>;
-  product: any
+  product: Product;
+  file: AngularFireList<any>;
 
 
   constructor(private firebase: AngularFireDatabase, private storage: AngularFireStorage) { }
 
-  insertProductDetails(productDetails) {
-
-    const category = this.replaceChar(productDetails.category.toLowerCase());
-    const subCategory = this.replaceChar(productDetails.subCategory.toLowerCase());
-    this.firebase.list('product/' + category + '/' + subCategory).push(productDetails);
+  insertProductDetails(productDetails: Product) {
+    this.product = productDetails;
+    this.product.nameLink = this.replaceChar(productDetails.nameDisplay.toLowerCase());
+    this.product.categoryLink = this.replaceChar(productDetails.categoryDisplay.toLowerCase());
+    this.product.subCategoryLink = this.replaceChar(productDetails.subCategoryDisplay.toLowerCase());
+    this.firebase.list('product/' + this.product.categoryLink + '/' + this.product.subCategoryLink).push(this.product);
 
   }
   getProductDetailsList(path: string) {
     this.productDetailList = this.firebase.list(path);
+  }
+  getProduct() {
+    this.file = this.firebase.list('product/');
+    this.file.snapshotChanges().subscribe(v => {
+      console.log(v)
+    }
+
+    )
+    console.log(this.file);
+
+
   }
   replaceChar(val) {
     let value = val;

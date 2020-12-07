@@ -3,7 +3,8 @@
 <div class="grid-container">
     <div class=" grid-item mb-1" *ngFor="let product of productList ">
 
-        {{product|json}}
+        <app-display-item [product]="product"></app-display-item>
+
 
 
     </div>

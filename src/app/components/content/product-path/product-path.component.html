@@ -1,5 +1,5 @@
 <div class="container m-3" *ngIf="categoryLink">
-    <a href="">
+    <a routerLink=''>
         <mat-icon aria-hidden="false" aria-label="home icon">home</mat-icon>
     </a>
     <mat-icon aria-hidden="false" aria-label="arrow icon" class="m-1">arrow_forward</mat-icon>
@@ -11,9 +11,9 @@
     </span>
 
 
-    <span *ngIf="item">
+    <span *ngIf="itemName">
       <mat-icon aria-hidden="false" aria-label="arrow icon" class="m-1" routerLinkActive='active'>arrow_forward</mat-icon>
-      <div class="item"><a routerLink="">{{item}}</a></div>
+      <div class="item"><a routerLink="">{{itemName}}</a></div>
     </span>
 
 

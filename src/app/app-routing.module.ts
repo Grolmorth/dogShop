@@ -1,3 +1,4 @@
+import { DisplayDetailItemComponent } from './components/content/display-detail-item/display-detail-item.component';
 import { AddProductComponent } from './components/admin/add-product/add-product.component';
 import { LoginComponent } from './components/login/login.component';
 import { SubCategoryDisplayComponent } from './components/content/sub-category-display/sub-category-display.component';
@@ -24,6 +25,10 @@ const routes: Routes = [
     path: 'c/:categoryName/:subCategoryName',
     component: SubCategoryDisplayComponent,
   },
+  {
+    path: 'p/:item/:id',
+    component: DisplayDetailItemComponent,
+  },
 
   {
     path: 'login',
@@ -38,6 +43,7 @@ const routes: Routes = [
     path: '**',
     component: PageNotFoundComponent
   }
+
 ];
 
 @NgModule({

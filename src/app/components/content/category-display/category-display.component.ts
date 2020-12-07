@@ -1,8 +1,8 @@
 import { ProductService } from './../../../services/product.service';
 import { NavServiceService } from './../../../services/nav-service.service';
-import { Component, DoCheck, OnInit } from '@angular/core';
-import { Location } from '@angular/common';
-import { ActivatedRoute } from '@angular/router';
+import { Component, OnInit } from '@angular/core';
+
+import { ActivatedRoute, Router } from '@angular/router';
 @Component({
   selector: 'app-category-display',
   templateUrl: './category-display.component.html',
@@ -13,7 +13,7 @@ export class CategoryDisplayComponent implements OnInit {
   categoryLink: string;
   categoryName: any;
   sub: any;
-  constructor(private navServ: NavServiceService, private route: ActivatedRoute, private productService: ProductService) { }
+  constructor(private navServ: NavServiceService, private route: ActivatedRoute, private productService: ProductService, private router: Router) { }
   navigation: any;
   ngOnInit(): void {
     //subscribe route params
@@ -28,6 +28,10 @@ export class CategoryDisplayComponent implements OnInit {
       this.productService.getProductDetailsList('product/' + this.categoryLink);
       this.getProductList();
     }), (err) => console.error(err);
+    if (this.categoryName === undefined) {
+      this.router.navigateByUrl('page-not-found');
+
+    }
   }
 
   getProductList() {

@@ -43,6 +43,10 @@ export class SubCategoryDisplayComponent implements OnInit, OnDestroy {
       this.productService.getProductDetailsList('product/' + this.categoryLink + '/' + this.subCategoryLink);
       this.getProductList();
     }), (err) => console.error(err);
+    if (this.subCategoryName === undefined) {
+      this.router.navigateByUrl('page-not-found');
+
+    }
 
   }
   getProductList() {

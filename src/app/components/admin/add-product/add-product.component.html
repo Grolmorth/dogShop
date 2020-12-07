@@ -3,7 +3,7 @@
         <div>
             <mat-form-field>
                 <mat-label>Nazwa</mat-label>
-                <input matInput required formControlName="name" placeholder="nazwa" class="form-control">
+                <input matInput required formControlName="nameDisplay" placeholder="nazwa" class="form-control">
             </mat-form-field>
         </div>
         <div>
@@ -13,14 +13,20 @@
             </mat-form-field>
         </div>
         <div>
+            <mat-form-field>
+                <mat-label>Id</mat-label>
+                <textarea matInput required formControlName="id" placeholder="id" class="form-control"></textarea>
+            </mat-form-field>
+        </div>
+        <div>
             <mat-label class="m-3">Kategoria</mat-label>
-            <mat-select formControlName="category" required placeholder="Wybierz kategorie" class="form-control select">
+            <mat-select formControlName="categoryDisplay" required placeholder="Wybierz kategorie" class="form-control select">
                 <mat-option *ngFor="let category of categoryList" [value]="category[0]">{{category[0]}}</mat-option>
             </mat-select>
         </div>
         <div>
             <mat-label class="m-3">Podkategoria</mat-label>
-            <mat-select formControlName="subCategory" required placeholder="Wybierz podkategorie" class="form-control">
+            <mat-select formControlName="subCategoryDisplay" required placeholder="Wybierz podkategorie" class="form-control">
                 <mat-option *ngFor="let category of subCategoryList" [value]="category[0]">{{category[0]}}</mat-option>
             </mat-select>
         </div>

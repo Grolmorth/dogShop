@@ -16,10 +16,11 @@ export class AddProductComponent implements OnInit, DoCheck {
   constructor(private productService: ProductService, private categories: NavServiceService) { }
 
   formTemplate = new FormGroup({
-    name: new FormControl('', Validators.required),
+    nameDisplay: new FormControl('', Validators.required),
+    categoryDisplay: new FormControl('', Validators.required),
+    subCategoryDisplay: new FormControl('', Validators.required),
     info: new FormControl('', Validators.required),
-    category: new FormControl('', Validators.required),
-    subCategory: new FormControl('', Validators.required),
+    id: new FormControl('', Validators.required),
 
   });
   ngOnInit(): void {
@@ -29,7 +30,7 @@ export class AddProductComponent implements OnInit, DoCheck {
   }
   ngDoCheck(): void {
     // get subcategory list when picking category
-    const categoryName = this.formTemplate.value['category'];
+    const categoryName = this.formTemplate.value['categoryDisplay'];
     this.categories.navlink.map(category => {
       if (category[0] === categoryName) {
         this.subCategoryList = [];

@@ -1,14 +1,12 @@
 export interface Product {
-  name: string;
-  category: string;
-  subCategory: string;
+  nameDisplay: string;
+  nameLink: string;
+  categoryDisplay: string;
+  categoryLink: string;
+  subCategoryDisplay: string;
+  subCategoryLink: string;
   info: string;
-  alteration: [Alteration];
-}
-export interface Alteration {
   id: number;
-  name: string;
-  img: string;
-  price: number;
-  quantity: number;
+
+
 }

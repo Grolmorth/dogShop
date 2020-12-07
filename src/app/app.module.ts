@@ -26,6 +26,8 @@ import { MatSelectModule } from '@angular/material/select';
 import {MatButtonModule} from '@angular/material/button';
 import { ProductPathComponent } from './components/content/product-path/product-path.component';
 import {MatIconModule} from '@angular/material/icon';
+import { DisplayItemComponent } from './components/content/display-item/display-item.component';
+import { DisplayDetailItemComponent } from './components/content/display-detail-item/display-detail-item.component';
 
 
 
@@ -42,6 +44,8 @@ import {MatIconModule} from '@angular/material/icon';
     SubCategoryDisplayComponent,
     AddProductComponent,
     ProductPathComponent,
+    DisplayItemComponent,
+    DisplayDetailItemComponent,
 
   ],
   imports: [
