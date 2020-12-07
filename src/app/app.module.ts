@@ -24,6 +24,8 @@ import { AddProductComponent } from './components/admin/add-product/add-product.
 import { MatCardModule } from '@angular/material/card';
 import { MatSelectModule } from '@angular/material/select';
 import {MatButtonModule} from '@angular/material/button';
+import { ProductPathComponent } from './components/content/product-path/product-path.component';
+import {MatIconModule} from '@angular/material/icon';
 
 
 
@@ -39,6 +41,7 @@ import {MatButtonModule} from '@angular/material/button';
     CategoryDisplayComponent,
     SubCategoryDisplayComponent,
     AddProductComponent,
+    ProductPathComponent,
 
   ],
   imports: [
@@ -58,6 +61,7 @@ import {MatButtonModule} from '@angular/material/button';
     MatCardModule,
     MatSelectModule,
     MatButtonModule,
+    MatIconModule
 
   ],
   providers: [],

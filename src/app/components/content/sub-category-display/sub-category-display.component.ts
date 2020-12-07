@@ -1,5 +1,5 @@
 import { ProductService } from './../../../services/product.service';
-import { AfterContentInit, AfterViewChecked, AfterViewInit, Component, OnDestroy, OnInit, DoCheck } from '@angular/core';
+import {  Component, OnDestroy, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 
 

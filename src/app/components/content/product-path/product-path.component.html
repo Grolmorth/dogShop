@@ -1,0 +1,20 @@
+<div class="container m-3">
+    <a href="">
+        <mat-icon aria-hidden="false" aria-label="home icon">home</mat-icon>
+    </a>
+    <mat-icon aria-hidden="false" aria-label="arrow icon" class="m-1">arrow_forward</mat-icon>
+    <div class="item"><a routerLink="">{{category}}</a></div>
+
+    <span *ngIf="subCategory">
+      <mat-icon aria-hidden="false" aria-label="arrow icon" class="m-1">arrow_forward</mat-icon>
+      <div class="item"><a routerLink="">{{subCategory}}</a></div>
+    </span>
+
+
+    <span *ngIf="item">
+      <mat-icon aria-hidden="false" aria-label="arrow icon" class="m-1">arrow_forward</mat-icon>
+      <div class="item"><a routerLink="">{{item}}</a></div>
+    </span>
+
+
+</div>
