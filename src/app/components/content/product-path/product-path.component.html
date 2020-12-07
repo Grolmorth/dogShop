@@ -1,18 +1,18 @@
-<div class="container m-3">
+<div class="container m-3" *ngIf="category">
     <a href="">
         <mat-icon aria-hidden="false" aria-label="home icon">home</mat-icon>
     </a>
     <mat-icon aria-hidden="false" aria-label="arrow icon" class="m-1">arrow_forward</mat-icon>
-    <div class="item"><a routerLink="">{{category}}</a></div>
+    <div class="item"><a [routerLink]="['/c', category]" routerLinkActive='active'>{{category}}</a></div>
 
     <span *ngIf="subCategory">
-      <mat-icon aria-hidden="false" aria-label="arrow icon" class="m-1">arrow_forward</mat-icon>
-      <div class="item"><a routerLink="">{{subCategory}}</a></div>
+      <mat-icon aria-hidden="false" aria-label="arrow icon" class="m-1" >arrow_forward</mat-icon>
+      <div class="item"><a [routerLink]="['/c', category, subCategory]">{{subCategory}}</a></div>
     </span>
 
 
     <span *ngIf="item">
-      <mat-icon aria-hidden="false" aria-label="arrow icon" class="m-1">arrow_forward</mat-icon>
+      <mat-icon aria-hidden="false" aria-label="arrow icon" class="m-1" routerLinkActive='active'>arrow_forward</mat-icon>
       <div class="item"><a routerLink="">{{item}}</a></div>
     </span>
 
