@@ -1,6 +1,7 @@
 import { ProductService } from './../../../services/product.service';
-import {  Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
+import { NavServiceService } from 'src/app/services/nav-service.service';
 
 
 
@@ -13,19 +14,33 @@ export class SubCategoryDisplayComponent implements OnInit, OnDestroy {
 
 
   sub: any;
-  category: string;
-  subCategory: string;
+  categoryName: any;
+  subCategoryName: string;
+  categoryLink: string;
+  subCategoryLink: string;
 
-  constructor(private productService: ProductService, private router: Router, private route: ActivatedRoute) {
+  constructor(private productService: ProductService, private router: Router, private route: ActivatedRoute, private navServ: NavServiceService,) {
 
   }
 
   productList: any;
   ngOnInit() {
     this.sub = this.route.params.subscribe(params => {
-      this.category = params.categoryName;
-      this.subCategory = params.subCategoryName;
-      this.productService.getProductDetailsList('product/' + this.category + '/' + this.subCategory);
+      this.categoryLink = params.categoryName;
+      this.subCategoryLink = params.subCategoryName;
+      this.navServ.navlink.map(v => {
+        if (v[1] === this.categoryLink) {
+          this.categoryName = v[0];
+          v.map(n => {
+            for (let m = 0; m < n.length; m++) {
+              if (n[m][1] === this.subCategoryLink) {
+                this.subCategoryName  = n[m][0]
+              }
+            }
+          })
+        };
+      })
+      this.productService.getProductDetailsList('product/' + this.categoryLink + '/' + this.subCategoryLink);
       this.getProductList();
     }), (err) => console.error(err);
 

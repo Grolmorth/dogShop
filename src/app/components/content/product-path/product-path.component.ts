@@ -9,8 +9,10 @@ export class ProductPathComponent implements OnInit {
 
   constructor() { }
 
-  @Input() category: string;
-  @Input() subCategory: string;
+  @Input() categoryLink: string;
+  @Input() categoryName: string;
+  @Input() subCategoryLink: any;
+  @Input() subCategoryName: any;
   @Input() item: string;
 
   ngOnInit(): void {

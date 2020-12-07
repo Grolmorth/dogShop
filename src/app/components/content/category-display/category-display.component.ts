@@ -10,21 +10,22 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class CategoryDisplayComponent implements OnInit {
   productList: any;
-  category: string;
+  categoryLink: string;
+  categoryName: any;
   sub: any;
   constructor(private navServ: NavServiceService, private route: ActivatedRoute, private productService: ProductService) { }
   navigation: any;
   ngOnInit(): void {
     //subscribe route params
     this.sub = this.route.params.subscribe(params => {
-      this.category = params.categoryName;
-      //get
+      this.categoryLink = params.categoryName;
       this.navServ.navlink.map(v => {
-        if (v[1] === this.category) {
+        if (v[1] === this.categoryLink) {
+          this.categoryName = v[0];
           this.navigation = v[2];
         };
       })
-      this.productService.getProductDetailsList('product/' + this.category);
+      this.productService.getProductDetailsList('product/' + this.categoryLink);
       this.getProductList();
     }), (err) => console.error(err);
   }
