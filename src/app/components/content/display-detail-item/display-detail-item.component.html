@@ -1,4 +1,6 @@
-<app-product-path [categoryName]="product.categoryDisplay" [subCategoryName]="product.subCategoryDisplay" [itemName]="product.nameDisplay" [categoryLink]="product.categoryLink" [subCategoryLink]="product.subCategoryLink" [itemLink]="product.nameLink">
-</app-product-path>
+<div *ngIf="product">
+    <app-product-path [categoryName]="product.categoryDisplay" [subCategoryName]="product.subCategoryDisplay" [itemName]="product.nameDisplay" [categoryLink]="product.categoryLink" [subCategoryLink]="product.subCategoryLink" [itemLink]="product.nameLink">
+    </app-product-path>
 
-{{product|json}}
+    {{product|json}}
+</div>
