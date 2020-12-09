@@ -1,1 +1,4 @@
-<!-- <app-product-path [categoryLink]="product." [categoryName]="category"></app-product-path> -->
+<app-product-path [categoryName]="product.categoryDisplay" [subCategoryName]="product.subCategoryDisplay" [itemName]="product.nameDisplay" [categoryLink]="product.categoryLink" [subCategoryLink]="product.subCategoryLink" [itemLink]="product.nameLink">
+</app-product-path>
+
+{{product|json}}

@@ -16,7 +16,7 @@ export class DisplayItemComponent implements OnInit {
   id:number;
   ngOnInit(): void {
     this.category = this.product.categoryLink;
-    this.subCategory = this.product.subCategoryDisplay;
+    this.subCategory = this.product.subCategoryLink;
     this.name = this.product.nameLink;
     this.id = this.product.id;
   }

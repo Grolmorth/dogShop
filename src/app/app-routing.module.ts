@@ -26,7 +26,7 @@ const routes: Routes = [
     component: SubCategoryDisplayComponent,
   },
   {
-    path: 'p/:item/:id',
+    path: 'p/:categoryLink/:subCategoryLink/:nameLink/:id',
     component: DisplayDetailItemComponent,
   },
 

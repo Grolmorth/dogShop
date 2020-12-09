@@ -1,6 +1,6 @@
 import { Product } from './product';
 import { Injectable } from '@angular/core';
-import { AngularFireDatabase, AngularFireList } from '@angular/fire/database';
+import { AngularFireDatabase, AngularFireList, AngularFireObject } from '@angular/fire/database';
 import { AngularFireStorage } from '@angular/fire/storage';
 @Injectable({
   providedIn: 'root'
@@ -9,6 +9,7 @@ export class ProductService {
   productDetailList: AngularFireList<any>;
   product: Product;
   file: AngularFireList<any>;
+
 
 
   constructor(private firebase: AngularFireDatabase, private storage: AngularFireStorage) { }
@@ -24,23 +25,14 @@ export class ProductService {
   getProductDetailsList(path: string) {
     this.productDetailList = this.firebase.list(path);
   }
-  getProduct() {
-    this.file = this.firebase.list('product/');
-    this.file.snapshotChanges().subscribe(v => {
-      console.log(v)
-    }
-
-    )
-    console.log(this.file);
-
-
+  getProduct(category: string, subCategory: string) {
+    this.file = this.firebase.list('product/' + category + '/' + subCategory);
   }
   replaceChar(val) {
     let value = val;
     const chars = [[' ', '-'], ['ą', 'a'], ['ę', 'e'], ['ć', 'c'], ['ł', 'l'], ['ń', 'n'], ['ó', 'o'], ['ś', 's'], ['ż', 'z'], ['ź', 'z']];
     for (let n = 0; n < chars.length; n++) {
       value = value.replaceAll(chars[n][0], chars[n][1])
-
     }
     return value
   }
