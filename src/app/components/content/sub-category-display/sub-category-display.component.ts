@@ -2,6 +2,7 @@ import { ProductService } from './../../../services/product.service';
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { NavServiceService } from 'src/app/services/nav-service.service';
+import { Product } from 'src/app/services/product';
 
 
 
@@ -23,7 +24,7 @@ export class SubCategoryDisplayComponent implements OnInit, OnDestroy {
 
   }
 
-  productList: any;
+  productList: Product[];
   ngOnInit() {
     this.sub = this.route.params.subscribe(params => {
       this.categoryLink = params.categoryName;
@@ -52,7 +53,7 @@ export class SubCategoryDisplayComponent implements OnInit, OnDestroy {
   getProductList() {
     this.productService.productDetailList.snapshotChanges().subscribe(list => {
       this.productList = list.map(item => {
-        return ({ key: item.payload.key, ...item.payload.val() })
+        return ({  ...item.payload.val() })
       });
     });
 
