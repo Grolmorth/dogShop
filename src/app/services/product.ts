@@ -7,6 +7,11 @@ export interface Product {
   subCategoryLink: string;
   info: string;
   id: number;
-
+  infoLong?: string;
+  infoShort1?: string;
+  infoShort2?: string;
+  infoShort3?: string;
+  imgUrl?: string;
+  imgRef?: string;
 
 }

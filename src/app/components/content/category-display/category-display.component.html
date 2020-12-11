@@ -1,7 +1,9 @@
 <app-product-path [categoryLink]="categoryLink" [categoryName]="categoryName"></app-product-path>
-<div class="m3-3">
+<div class="m-3">
 
     <div *ngFor="let link of navigation">
-        <a [routerLink]=[link[1]]>{{link[0]}}</a>
+        <div [routerLink]=[link[1]] class="category my-1">
+            <p class="m-auto p-2">{{link[0]}}</p>
+        </div>
     </div>
 </div>

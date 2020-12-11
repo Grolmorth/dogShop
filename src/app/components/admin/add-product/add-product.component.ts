@@ -2,6 +2,8 @@ import { NavServiceService } from './../../../services/nav-service.service';
 import { ProductService } from './../../../services/product.service';
 import { Component, DoCheck, OnChanges, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { AngularFireStorage } from '@angular/fire/storage';
+import { finalize } from 'rxjs/operators';
 
 @Component({
   selector: 'app-add-product',
@@ -11,16 +13,23 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 export class AddProductComponent implements OnInit, DoCheck {
 
   categoryList: any;
-  subCategoryList: any
+  subCategoryList: any;
+  imgSrc: string = 'assets/default-image.jpg';
+  selectedImage: any;
 
-  constructor(private productService: ProductService, private categories: NavServiceService) { }
+  constructor(private productService: ProductService, private categories: NavServiceService, private storage: AngularFireStorage) { }
 
   formTemplate = new FormGroup({
     nameDisplay: new FormControl('', Validators.required),
     categoryDisplay: new FormControl('', Validators.required),
     subCategoryDisplay: new FormControl('', Validators.required),
+    imageUrl: new FormControl('', Validators.required),
     info: new FormControl('', Validators.required),
-    id: new FormControl('', Validators.required),
+    id: new FormControl('', [Validators.required, Validators.pattern('^[0-9]*$')]),
+    infoLong: new FormControl(),
+    infoShort1: new FormControl(),
+    infoShort2: new FormControl(),
+    infoShort3: new FormControl(),
 
   });
   ngOnInit(): void {
@@ -45,7 +54,51 @@ export class AddProductComponent implements OnInit, DoCheck {
     this.sendAndReset(formValue)
   }
   sendAndReset(formValue) {
-    this.productService.insertProductDetails(formValue);
 
+    let filePath = `${this.replaceChar(formValue.categoryDisplay)}/${this.replaceChar(this.selectedImage.name)}-${new Date().getTime()}`
+    let fileRef = this.storage.ref(filePath);
+    this.storage.upload(filePath, this.selectedImage).snapshotChanges().pipe(
+      finalize(() => {
+        fileRef.getDownloadURL().subscribe((url) => {
+          formValue.imageUrl = url;
+          formValue.fileRef = filePath;
+          this.productService.insertProductDetails(formValue);
+          this.reset();
+        })
+      })).subscribe()
+
+
+
+  }
+  //show images after picking them
+  showPreview(event: any) {
+    if (event.target.files && event.target.files[0]) {
+      const reader = new FileReader();
+      reader.onload = (e: any) => this.imgSrc = e.target.result;
+      reader.readAsDataURL(event.target.files[0]);
+      this.selectedImage = event.target.files[0];
+    }
+  }
+  reset() {
+    this.formTemplate.reset();
+    this.formTemplate.setValue({
+      nameDisplay: '',
+      categoryDisplay: '',
+      subCategoryDisplay: '',
+      imageUrl: '',
+      info: '',
+      id: '',
+    })
+    this.selectedImage = null;
+    this.imgSrc = 'assets/default-image.jpg';
+  }
+  //replace polish letters, replace space
+  replaceChar(val) {
+    let value = val.toLowerCase();
+    const chars = [[' ', '-'], ['ą', 'a'], ['ę', 'e'], ['ć', 'c'], ['ł', 'l'], ['ń', 'n'], ['ó', 'o'], ['ś', 's'], ['ż', 'z'], ['ź', 'z']];
+    for (let n = 0; n < chars.length; n++) {
+      value = value.replaceAll(chars[n][0], chars[n][1])
+    }
+    return value
   }
 }
