@@ -1,11 +1,11 @@
 <app-product-path [categoryLink]="categoryLink" [categoryName]="categoryName" [subCategoryLink]="subCategoryLink" [subCategoryName]="subCategoryName"></app-product-path>
 
-<div class="grid-container">
-    <div class=" grid-item mb-1" *ngFor="let product of productList ">
+<div class="container">
+    <div class="row">
+        <div class="col-sm-4" *ngFor="let product of productList ">
 
-        <app-display-item [product]="product"></app-display-item>
+            <app-display-item [product]="product"></app-display-item>
 
-
-
+        </div>
     </div>
 </div>

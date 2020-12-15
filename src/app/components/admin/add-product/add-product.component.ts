@@ -1,6 +1,6 @@
 import { NavServiceService } from './../../../services/nav-service.service';
 import { ProductService } from './../../../services/product.service';
-import { Component, DoCheck, OnChanges, OnInit } from '@angular/core';
+import { Component, DoCheck, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { AngularFireStorage } from '@angular/fire/storage';
 import { finalize } from 'rxjs/operators';
@@ -26,13 +26,12 @@ export class AddProductComponent implements OnInit, DoCheck {
     imageUrl: new FormControl('', Validators.required),
     info: new FormControl('', Validators.required),
     id: new FormControl('', [Validators.required, Validators.pattern('^[0-9]*$')]),
-    infoLong: new FormControl(),
-    infoShort1: new FormControl(),
-    infoShort2: new FormControl(),
-    infoShort3: new FormControl(),
+    company: new FormControl('', Validators.required),
+
 
   });
   ngOnInit(): void {
+    // get category list
     this.categoryList = this.categories.navlink.map(category => {
       return category;
     })
@@ -48,13 +47,12 @@ export class AddProductComponent implements OnInit, DoCheck {
         }
       };
     })
-
   }
   onSubmit(formValue) {
     this.sendAndReset(formValue)
   }
+  //send data to service, and then reset
   sendAndReset(formValue) {
-
     let filePath = `${this.replaceChar(formValue.categoryDisplay)}/${this.replaceChar(this.selectedImage.name)}-${new Date().getTime()}`
     let fileRef = this.storage.ref(filePath);
     this.storage.upload(filePath, this.selectedImage).snapshotChanges().pipe(
@@ -79,6 +77,7 @@ export class AddProductComponent implements OnInit, DoCheck {
       this.selectedImage = event.target.files[0];
     }
   }
+  //reset form
   reset() {
     this.formTemplate.reset();
     this.formTemplate.setValue({
@@ -87,6 +86,7 @@ export class AddProductComponent implements OnInit, DoCheck {
       subCategoryDisplay: '',
       imageUrl: '',
       info: '',
+      company: '',
       id: '',
     })
     this.selectedImage = null;

@@ -13,12 +13,16 @@ export class DisplayItemComponent implements OnInit {
   category: string;
   subCategory: string;
   name: string;
-  id:number;
+  id: number;
   ngOnInit(): void {
     this.category = this.product.categoryLink;
     this.subCategory = this.product.subCategoryLink;
     this.name = this.product.nameLink;
     this.id = this.product.id;
+
   }
+
+
+
 
 }

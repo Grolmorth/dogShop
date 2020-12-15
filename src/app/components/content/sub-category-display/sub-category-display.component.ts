@@ -20,12 +20,11 @@ export class SubCategoryDisplayComponent implements OnInit, OnDestroy {
   categoryLink: string;
   subCategoryLink: string;
 
-  constructor(private productService: ProductService, private router: Router, private route: ActivatedRoute, private navServ: NavServiceService,) {
-
-  }
+  constructor(private productService: ProductService, private router: Router, private route: ActivatedRoute, private navServ: NavServiceService,) { }
 
   productList: Product[];
   ngOnInit() {
+
     this.sub = this.route.params.subscribe(params => {
       this.categoryLink = params.categoryName;
       this.subCategoryLink = params.subCategoryName;
@@ -35,7 +34,7 @@ export class SubCategoryDisplayComponent implements OnInit, OnDestroy {
           v.map(n => {
             for (let m = 0; m < n.length; m++) {
               if (n[m][1] === this.subCategoryLink) {
-                this.subCategoryName  = n[m][0]
+                this.subCategoryName = n[m][0]
               }
             }
           })
@@ -53,7 +52,7 @@ export class SubCategoryDisplayComponent implements OnInit, OnDestroy {
   getProductList() {
     this.productService.productDetailList.snapshotChanges().subscribe(list => {
       this.productList = list.map(item => {
-        return ({  ...item.payload.val() })
+        return ({ ...item.payload.val() })
       });
     });
 
@@ -62,9 +61,6 @@ export class SubCategoryDisplayComponent implements OnInit, OnDestroy {
   ngOnDestroy(): void {
     this.sub.unsubscribe()
   }
-
-
-
 
 
 }
