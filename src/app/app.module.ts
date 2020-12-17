@@ -28,6 +28,7 @@ import { ProductPathComponent } from './components/content/product-path/product-
 import {MatIconModule} from '@angular/material/icon';
 import { DisplayItemComponent } from './components/content/display-item/display-item.component';
 import { DisplayDetailItemComponent } from './components/content/display-detail-item/display-detail-item.component';
+import {MatTooltipModule} from '@angular/material/tooltip';
 
 
 
@@ -65,7 +66,8 @@ import { DisplayDetailItemComponent } from './components/content/display-detail-
     MatCardModule,
     MatSelectModule,
     MatButtonModule,
-    MatIconModule
+    MatIconModule,
+    MatTooltipModule
 
   ],
   providers: [],

@@ -1,14 +1,18 @@
-<mat-card class=" card">
-    <mat-card-header>
-        <div mat-card-avatar class="header-image"></div>
-        <mat-card-title><a [routerLink]="['/p', category,subCategory,name, id]">{{product.nameDisplay}}</a></mat-card-title>
+<a [routerLink]="['/p', category,subCategory,name, id]">
+    <mat-card class=" card m-3">
 
-    </mat-card-header>
+        <mat-card-header>
+            <mat-card-title class="title" [matTooltip]="product.nameDisplay">{{product.nameDisplay}} </mat-card-title>
 
-    <mat-card-content class="card-content-item">
-        <img class="card-image-item" mat-card-image [src]="product.imageUrl">
+        </mat-card-header>
+
+        <mat-card-content class="card-content-item ">
+
+            <img class="card-image-item img-fluid d-block mx-auto" mat-card-image [src]="product.imageUrl">
+
+        </mat-card-content>
 
 
-    </mat-card-content>
-
-</mat-card>
+    </mat-card>
+</a>
+<button mat-button class="cart-button"><mat-icon aria-hidden="false" aria-label="add cart icon" class="" >add_shopping_cart</mat-icon></button>
