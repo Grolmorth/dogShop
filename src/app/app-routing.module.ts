@@ -1,3 +1,4 @@
+import { CartDisplayComponent } from './components/cart/cart-display/cart-display.component';
 import { DisplayDetailItemComponent } from './components/content/display-detail-item/display-detail-item.component';
 import { AddProductComponent } from './components/admin/add-product/add-product.component';
 import { LoginComponent } from './components/login/login.component';
@@ -37,6 +38,10 @@ const routes: Routes = [
   {
     path: 'a',
     component: AddProductComponent,
+  },
+  {
+    path: 'cart',
+    component: CartDisplayComponent,
   },
 
   {

@@ -1,5 +1,7 @@
+import { MessengerService } from './../../../services/messenger.service';
 import { Product } from './../../../services/product';
 import { Component, Input, OnInit } from '@angular/core';
+
 
 @Component({
   selector: 'app-display-item',
@@ -8,7 +10,7 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class DisplayItemComponent implements OnInit {
 
-  constructor() { }
+  constructor(private msg: MessengerService) { }
   @Input() product: Product;
   category: string;
   subCategory: string;
@@ -20,6 +22,10 @@ export class DisplayItemComponent implements OnInit {
     this.name = this.product.nameLink;
     this.id = this.product.id;
 
+  }
+  handlerAddToCart() {
+    console.log(this.product);
+    this.msg.sendMessage(this.product);
   }
 
 

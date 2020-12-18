@@ -9,10 +9,11 @@
         <mat-card-content class="card-content-item ">
 
             <img class="card-image-item img-fluid d-block mx-auto" mat-card-image [src]="product.imageUrl">
+            <p class="price">{{product.price}}</p>
 
         </mat-card-content>
 
 
     </mat-card>
 </a>
-<button mat-button class="cart-button"><mat-icon aria-hidden="false" aria-label="add cart icon" class="" >add_shopping_cart</mat-icon></button>
+<button mat-button (click)="handlerAddToCart()" class="cart-button"><mat-icon aria-hidden="false" aria-label="add cart icon" class="" >add_shopping_cart</mat-icon></button>

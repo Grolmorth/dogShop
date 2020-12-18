@@ -26,6 +26,7 @@ export class AddProductComponent implements OnInit, DoCheck {
     imageUrl: new FormControl('', Validators.required),
     info: new FormControl('', Validators.required),
     id: new FormControl('', [Validators.required, Validators.pattern('^[0-9]*$')]),
+    price: new FormControl('', [Validators.required, Validators.pattern('^[0-9]*$')]),
     company: new FormControl('', Validators.required),
 
 
@@ -88,6 +89,7 @@ export class AddProductComponent implements OnInit, DoCheck {
       info: '',
       company: '',
       id: '',
+      price: '',
     })
     this.selectedImage = null;
     this.imgSrc = 'assets/default-image.jpg';

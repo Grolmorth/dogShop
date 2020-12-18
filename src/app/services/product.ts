@@ -10,5 +10,7 @@ export interface Product {
   company: string;
   imageUrl: string;
   imgRef: string;
+  price: number;
+  quantity?: number;
 
 }

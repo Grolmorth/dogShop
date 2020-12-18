@@ -29,6 +29,8 @@ import {MatIconModule} from '@angular/material/icon';
 import { DisplayItemComponent } from './components/content/display-item/display-item.component';
 import { DisplayDetailItemComponent } from './components/content/display-detail-item/display-detail-item.component';
 import {MatTooltipModule} from '@angular/material/tooltip';
+import { CartItemComponent } from './components/cart/cart-item/cart-item.component';
+import { CartDisplayComponent } from './components/cart/cart-display/cart-display.component';
 
 
 
@@ -47,6 +49,8 @@ import {MatTooltipModule} from '@angular/material/tooltip';
     ProductPathComponent,
     DisplayItemComponent,
     DisplayDetailItemComponent,
+    CartItemComponent,
+    CartDisplayComponent,
 
   ],
   imports: [

@@ -35,6 +35,10 @@
     text-overflow: ellipsis;
 }
 
+.price {
+    color: black;
+}
+
 @media only screen and (max-width: 767px) and (min-width:400px) {
     .card-image-item {
         max-height: 300px;
