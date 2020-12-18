@@ -24,7 +24,6 @@ export class DisplayItemComponent implements OnInit {
 
   }
   handlerAddToCart() {
-    console.log(this.product);
     this.msg.sendMessage(this.product);
   }
 

@@ -5,9 +5,37 @@
     width: $size-of-nav-item;
     position: relative;
     list-style: none;
+    list-style-type: none;
     background-color: #f8f9fa;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     z-index: 1;
+}
+
+@media screen and (min-width: 767px) {
+    .sub-menu-item {
+        display: none;
+        padding: 3px;
+        width: $size-of-nav-item;
+        position: relative;
+        list-style: none;
+        list-style-type: none;
+        background-color: #f8f9fa;
+        font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+        z-index: 1;
+        text-align: center;
+    }
+    .menu-link {
+        width: $size-of-nav-item;
+        position: relative;
+        height: 40px;
+        padding: 0px;
+        text-align: center;
+    }
+}
+
+li {
+    list-style-type: none;
+    cursor: pointer;
 }
 
 .sub-menu {
@@ -23,14 +51,16 @@
     padding: 0px;
 }
 
-.menu-link:hover {
-    .sub-menu-item {
-        display: block;
-        transition: .3s ease;
-        animation: sub-menu-animation .5s ease-in;
-    }
-    .menu-item {
-        color: #6c757d;
+@media screen and (min-width: 767px) {
+    .menu-link:hover {
+        .sub-menu-item {
+            display: block;
+            transition: .3s ease;
+            animation: sub-menu-animation .5s ease-in;
+        }
+        .menu-item {
+            color: #6c757d;
+        }
     }
 }
 
@@ -56,5 +86,45 @@ a {
     }
     100% {
         opacity: 1;
+    }
+}
+
+@media screen and (max-width: 913px) and (min-width:767px) {
+    .sub-menu-item {
+        width: 190px;
+        font-size: 15px;
+    }
+    .menu-link {
+        width: 190px;
+        font-size: 15px;
+    }
+}
+
+@media screen and (max-width: 767px) {
+    .sub-menu-item {
+        padding: 1px;
+        margin: 0px;
+        display: block;
+        position: relative;
+        width: 100%;
+        font-size: 12px;
+    }
+    .sub-menu {
+        margin: 2px;
+        padding-left: 8px;
+        position: relative;
+        width: 100%;
+        display: block;
+        line-height: 13px;
+        padding: 3px
+    }
+    .menu-link {
+        position: relative;
+        display: inline-block;
+        width: 100%;
+    }
+    .sub-menu-item:hover {
+        background: rgb(69, 124, 184);
+        color: #f8f9fa;
     }
 }

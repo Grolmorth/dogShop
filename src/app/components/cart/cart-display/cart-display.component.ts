@@ -19,8 +19,8 @@ export class CartDisplayComponent implements OnInit {
     this.getCartFromStorage()
     this.msg.getMessage().subscribe((product: Product) => {
       this.addProductToCart(product);
-
     });
+    this.getTotalCost()
   }
   addProductToCart(product: Product) {
 
@@ -34,24 +34,62 @@ export class CartDisplayComponent implements OnInit {
         break;
       }
     }
-
     if (!productExist) {
       product.quantity = 1;
       this.cartItems.push(product);
-      localStorage.setItem('cart', JSON.stringify(this.cartItems))
+      this.pushCartToStorage()
     }
-
+    this.getTotalCost()
+  }
+  getTotalCost() {
     this.cartTotal = 0;
     this.cartItems.forEach(item => {
       this.cartTotal += (item.price * item.quantity);
     });
-
-
   }
-
   getCartFromStorage() {
     if (localStorage.getItem('cart')) {
       this.cartItems = JSON.parse(localStorage.getItem('cart'))
     }
   }
+  pushCartToStorage() {
+    localStorage.setItem('cart', JSON.stringify(this.cartItems))
+  }
+  removeItem(item) {
+    for (let i in this.cartItems) {
+      if (this.cartItems[i].id === item.id) {
+        this.cartItems.splice(Number(i), 1);
+        this.pushCartToStorage();
+        break;
+      }
+    }
+    this.getTotalCost();
+  }
+  quantityMinus(item) {
+    for (let i in this.cartItems) {
+      if (this.cartItems[i].id === item.id) {
+        this.cartItems[i].quantity--;
+        if (this.cartItems[i].quantity === 0) {
+          this.removeItem(item)
+        }
+        this.pushCartToStorage();
+        break;
+      }
+    }
+    this.getTotalCost()
+
+  }
+  quantityPlus(item) {
+    for (let i in this.cartItems) {
+      if (this.cartItems[i].id === item.id) {
+        this.cartItems[i].quantity++
+        this.pushCartToStorage();
+        break;
+      }
+    }
+    this.getTotalCost()
+  }
+
+
+
 }
