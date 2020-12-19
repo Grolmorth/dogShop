@@ -1,0 +1,11 @@
+<div class="container text-center">
+    <div class="row">
+        <div class="col-sm"><button>login</button></div>
+        <div class="col-sm">
+
+            <button mat-button *ngIf="shopItems===0"><mat-icon  [matBadge]="shopItems" matBadgeColor="warn">shopping_cart</mat-icon></button>
+            <button mat-button class="cart-button" *ngIf="shopItems>0"><mat-icon  [matBadge]="shopItems" matBadgeColor="warn">shopping_cart</mat-icon></button>
+            <app-cart-display class="cart"></app-cart-display>
+        </div>
+    </div>
+</div>

@@ -14,5 +14,16 @@ export class NavComponent implements OnInit {
 
     this.navLinks = this.navServ.navlink;
   }
-
+  collapse() {
+    console.log(window.innerWidth)
+    if (window.innerWidth < 767) {
+      window.document.getElementById('mainmenu').setAttribute('data-toggle', 'collapse')
+      window.document.getElementById('mainmenu').setAttribute('data-target', '#mainmenu')
+    }
+    setTimeout(() => {
+      window.document.getElementById('mainmenu').removeAttribute('data-toggle')
+      window.document.getElementById('mainmenu').removeAttribute('data-target')
+    }, 20
+    );
+  }
 }

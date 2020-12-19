@@ -31,6 +31,9 @@ import { DisplayDetailItemComponent } from './components/content/display-detail-
 import {MatTooltipModule} from '@angular/material/tooltip';
 import { CartItemComponent } from './components/cart/cart-item/cart-item.component';
 import { CartDisplayComponent } from './components/cart/cart-display/cart-display.component';
+import { MenuPanelComponent } from './components/menu-panel/menu-panel.component';
+import {MatBadgeModule} from '@angular/material/badge';
+
 
 
 
@@ -51,6 +54,8 @@ import { CartDisplayComponent } from './components/cart/cart-display/cart-displa
     DisplayDetailItemComponent,
     CartItemComponent,
     CartDisplayComponent,
+    MenuPanelComponent,
+
 
   ],
   imports: [
@@ -71,7 +76,8 @@ import { CartDisplayComponent } from './components/cart/cart-display/cart-displa
     MatSelectModule,
     MatButtonModule,
     MatIconModule,
-    MatTooltipModule
+    MatTooltipModule,
+    MatBadgeModule
 
   ],
   providers: [],
