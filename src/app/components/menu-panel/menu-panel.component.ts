@@ -8,6 +8,8 @@ import { Component, DoCheck } from '@angular/core';
 export class MenuPanelComponent implements DoCheck {
 
   shopItems = 0;
+  cartVisible = false;
+
 
   constructor() { }
 
@@ -15,6 +17,16 @@ export class MenuPanelComponent implements DoCheck {
     if (localStorage.getItem('cart')) {
       this.shopItems = JSON.parse(localStorage.getItem('cart')).length;
     }
+    if (this.shopItems === 0 && this.cartVisible === true) {
+      setTimeout(() => {
+        this.cartVisible = false;
+
+      }, 1000
+      );
+    }
+  }
+  toggleCart() {
+    this.cartVisible = !this.cartVisible;
   }
 
 }

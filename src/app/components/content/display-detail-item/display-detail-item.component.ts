@@ -1,3 +1,4 @@
+import { MessengerService } from './../../../services/messenger.service';
 import { ActivatedRoute } from '@angular/router';
 import { ProductService } from './../../../services/product.service';
 import { Component, OnDestroy, OnInit } from '@angular/core';
@@ -10,7 +11,8 @@ import { Product } from 'src/app/services/product';
 })
 export class DisplayDetailItemComponent implements OnInit, OnDestroy {
 
-  constructor(private productServ: ProductService, private route: ActivatedRoute) { }
+  quantity = 1;
+  constructor(private productServ: ProductService, private route: ActivatedRoute, private msg: MessengerService) { }
   paramSub: any;
   productSub: any;
   categoryLink: string;
@@ -41,5 +43,9 @@ export class DisplayDetailItemComponent implements OnInit, OnDestroy {
   ngOnDestroy(): void {
     this.paramSub.unsubscribe();
     this.productSub.unsubscribe();
+  }
+  handlerAddToCart() {
+    this.product.quantity = this.quantity;
+    this.msg.sendMessage(this.product);
   }
 }

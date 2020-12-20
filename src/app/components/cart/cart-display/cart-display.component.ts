@@ -28,14 +28,19 @@ export class CartDisplayComponent implements OnInit {
 
     for (let i in this.cartItems) {
       if (this.cartItems[i].id === product.id) {
-        this.cartItems[i].quantity++;
+        if (!product.quantity) {
+          this.cartItems[i].quantity++;
+        } else {
+          this.cartItems[i].quantity += product.quantity;
+        }
+
         productExist = true;
         localStorage.setItem('cart', JSON.stringify(this.cartItems))
         break;
       }
     }
     if (!productExist) {
-      product.quantity = 1;
+      if (!product.quantity) { product.quantity = 1; }
       this.cartItems.push(product);
       this.pushCartToStorage()
     }

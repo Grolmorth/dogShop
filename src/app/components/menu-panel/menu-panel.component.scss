@@ -1,16 +1,22 @@
 .container {
     background-color: #f8f9fa;
-    padding: 10px;
     width: 100%;
     max-width: 100%;
+    right: 0;
 }
 
-.cart {
+.mat-button {
+    padding: 3px;
+    margin: 3px;
+}
+
+.cart-show {
+    display: block;
+    position: absolute;
+    z-index: 100;
+    width: 90%;
+}
+
+.cart-hide {
     display: none;
-}
-
-.cart-button:hover {
-    .cart {
-        display: block;
-    }
 }

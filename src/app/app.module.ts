@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NavComponent } from './components/nav/nav.component';
@@ -23,16 +24,18 @@ import { AngularFireAuthModule } from '@angular/fire/auth';
 import { AddProductComponent } from './components/admin/add-product/add-product.component';
 import { MatCardModule } from '@angular/material/card';
 import { MatSelectModule } from '@angular/material/select';
-import {MatButtonModule} from '@angular/material/button';
+import { MatButtonModule } from '@angular/material/button';
 import { ProductPathComponent } from './components/content/product-path/product-path.component';
-import {MatIconModule} from '@angular/material/icon';
+import { MatIconModule } from '@angular/material/icon';
 import { DisplayItemComponent } from './components/content/display-item/display-item.component';
 import { DisplayDetailItemComponent } from './components/content/display-detail-item/display-detail-item.component';
-import {MatTooltipModule} from '@angular/material/tooltip';
+import { MatTooltipModule } from '@angular/material/tooltip';
 import { CartItemComponent } from './components/cart/cart-item/cart-item.component';
 import { CartDisplayComponent } from './components/cart/cart-display/cart-display.component';
 import { MenuPanelComponent } from './components/menu-panel/menu-panel.component';
-import {MatBadgeModule} from '@angular/material/badge';
+import { MatBadgeModule } from '@angular/material/badge';
+import { CurrencyPlnPipe } from './pipes/currency-pln.pipe';
+
 
 
 
@@ -55,6 +58,8 @@ import {MatBadgeModule} from '@angular/material/badge';
     CartItemComponent,
     CartDisplayComponent,
     MenuPanelComponent,
+    CurrencyPlnPipe,
+
 
 
   ],
@@ -63,7 +68,6 @@ import {MatBadgeModule} from '@angular/material/badge';
     FormsModule,
     ReactiveFormsModule,
     AppRoutingModule,
-
     BrowserAnimationsModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFireDatabaseModule,
@@ -77,10 +81,12 @@ import {MatBadgeModule} from '@angular/material/badge';
     MatButtonModule,
     MatIconModule,
     MatTooltipModule,
-    MatBadgeModule
+    MatBadgeModule,
+
 
   ],
-  providers: [],
+  providers: [
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

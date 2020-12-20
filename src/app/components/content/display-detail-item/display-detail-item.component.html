@@ -1,6 +1,55 @@
 <div *ngIf="product">
     <app-product-path [categoryName]="product.categoryDisplay" [subCategoryName]="product.subCategoryDisplay" [itemName]="product.nameDisplay" [categoryLink]="product.categoryLink" [subCategoryLink]="product.subCategoryLink" [itemLink]="product.nameLink">
     </app-product-path>
-
-    {{product|json}}
+</div>
+<div class="container full-item" *ngIf="product">
+    <div class="row title  p-3">
+        <p> {{product.nameDisplay}} </p>
+    </div>
+    <div class="row">
+        <div class="col-sm-6 image-item">
+            <img class="img-fluid img-thumbnail m-1 p-1" [src]="product.imageUrl">
+        </div>
+        <div class="col-sm-6">
+            <div class="row info-item">
+                <div class="col-3 info-item-category">
+                    <p> Cena:</p>
+                </div>
+                <div class="col-9 info-item-details">
+                    <p> {{product.price|currencyPln}}</p>
+                </div>
+            </div>
+            <div class="row info-item">
+                <div class="col-3 info-item-category">
+                    <p> Marka:</p>
+                </div>
+                <div class="col-9 info-item-details">
+                    <p> {{product.company}}</p>
+                </div>
+            </div>
+            <div class="row info-item">
+                <div class="col-3 info-item-category">
+                    <p> Detale:</p>
+                </div>
+                <div class="col-9 info-item-details">
+                    <p> {{product.info}}</p>
+                </div>
+            </div>
+            <div class="row info-item">
+                <div class="col-3 info-item-category">Ilość:</div>
+                <div class="col-9">
+                    <mat-form-field class="example-full-width">
+                        <mat-label>Ilość</mat-label>
+                        <input type="number" matInput [(ngModel)]="quantity">
+                        <button mat-button *ngIf="quantity" matSuffix (click)="quantity=''">  <mat-icon>close</mat-icon>
+                  </button>
+                    </mat-form-field>
+                </div>
+            </div>
+            <div class="row info-item">
+                <div class="col-12">
+                    <button mat-raised-button color="primary" [disabled]="1>quantity" class="order-button" (click)="handlerAddToCart()">Dodaj do koszyka</button></div>
+            </div>
+        </div>
+    </div>
 </div>

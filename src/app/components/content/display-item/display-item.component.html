@@ -9,7 +9,7 @@
         <mat-card-content class="card-content-item ">
 
             <img class="card-image-item img-fluid d-block mx-auto" mat-card-image [src]="product.imageUrl">
-            <p class="price">{{product.price}}</p>
+            <p class="price">{{product.price|currencyPln}}</p>
 
         </mat-card-content>
 
