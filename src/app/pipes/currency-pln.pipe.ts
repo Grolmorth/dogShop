@@ -7,7 +7,7 @@ export class CurrencyPlnPipe implements PipeTransform {
 
   transform(value: number): string {
     const currencyCode: string = 'PLN';
-    let newValue: string = value.toString() + ' ' + currencyCode;
+    let newValue: string = value.toString() +  currencyCode;
     return (newValue)
   }
 

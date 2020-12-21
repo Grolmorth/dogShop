@@ -1,1 +1,3 @@
- {{cartItem.nameDisplay}} {{cartItem.price|currencyPln}} x {{cartItem.quantity}}
+<a active [routerLink]="['/p', cartItem.categoryLink,cartItem.subCategoryLink,cartItem.nameLink, cartItem.id]">{{cartItem.nameDisplay}} </a>
+
+<p>{{cartItem.price|currencyPln}} x {{cartItem.quantity}}</p>

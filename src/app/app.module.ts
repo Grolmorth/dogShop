@@ -40,6 +40,7 @@ import { CurrencyPlnPipe } from './pipes/currency-pln.pipe';
 
 
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -82,6 +83,7 @@ import { CurrencyPlnPipe } from './pipes/currency-pln.pipe';
     MatIconModule,
     MatTooltipModule,
     MatBadgeModule,
+
 
 
   ],

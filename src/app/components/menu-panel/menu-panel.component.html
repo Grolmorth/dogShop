@@ -7,9 +7,11 @@
 
             <button mat-button *ngIf="shopItems===0"><mat-icon (click)="toggleCart()" >shopping_cart</mat-icon></button>
             <button mat-button class="cart-button" (click)="toggleCart()" *ngIf="shopItems>0"><mat-icon  [matBadge]="shopItems" matBadgeColor="warn">shopping_cart</mat-icon></button>
-            <app-cart-display class="cart" [ngClass]="{'cart-show':cartVisible, 'cart-hide':!cartVisible }">
+            <ng-container *ngIf="showContent">
+                <app-cart-display class="cart" [ngClass]="{'cart-show':cartVisible, 'cart-hide':!cartVisible }">
+                </app-cart-display>
+            </ng-container>
 
-            </app-cart-display>
         </div>
     </div>
 </div>

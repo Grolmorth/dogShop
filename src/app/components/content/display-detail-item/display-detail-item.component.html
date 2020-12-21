@@ -41,14 +41,16 @@
                     <mat-form-field class="example-full-width">
                         <mat-label>Ilość</mat-label>
                         <input type="number" matInput [(ngModel)]="quantity">
-                        <button mat-button *ngIf="quantity" matSuffix (click)="quantity=''">  <mat-icon>close</mat-icon>
+                        <button mat-button class="mx-2" *ngIf="quantity" matSuffix (click)="quantity=''">  <mat-icon>close</mat-icon>
                   </button>
                     </mat-form-field>
                 </div>
             </div>
             <div class="row info-item">
                 <div class="col-12">
-                    <button mat-raised-button color="primary" [disabled]="1>quantity" class="order-button" (click)="handlerAddToCart()">Dodaj do koszyka</button></div>
+                    <button mat-raised-button color="primary" [disabled]="buttonDisabled===true || 1>quantity" class="order-button" (click)="handlerAddToCart()">Dodaj do koszyka</button>
+                </div>
+                <div class="alert alert-info m-3" *ngIf="buttonDisabled===true">Dodano</div>
             </div>
         </div>
     </div>

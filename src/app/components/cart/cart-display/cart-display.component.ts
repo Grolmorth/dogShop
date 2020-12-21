@@ -2,6 +2,7 @@ import { Product } from 'src/app/services/product';
 import { MessengerService } from './../../../services/messenger.service';
 
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 
 
 @Component({
@@ -11,11 +12,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CartDisplayComponent implements OnInit {
 
+  showButton = true;
+
   cartItems: Product[] = [];
   cartTotal = 0;
-  constructor(private msg: MessengerService) { }
+  constructor(private msg: MessengerService, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
+    if (this.route.snapshot['_routerState'].url === "/cart") {
+      this.showButton = false;
+    }
     this.getCartFromStorage()
     this.msg.getMessage().subscribe((product: Product) => {
       this.addProductToCart(product);

@@ -30,7 +30,7 @@ export class ProductService {
   }
   replaceChar(val) {
     let value = val.toLowerCase();
-    const chars = [[' ', '-'], ['ą', 'a'], ['ę', 'e'], ['ć', 'c'], ['ł', 'l'], ['ń', 'n'], ['ó', 'o'], ['ś', 's'], ['ż', 'z'], ['ź', 'z']];
+    const chars = [[' ', '-'], ['ą', 'a'], ['ę', 'e'], ['ć', 'c'], ['ł', 'l'], ['ń', 'n'], ['ó', 'o'], ['ś', 's'], ['ż', 'z'], ['ź', 'z'], [',', '-'], ['.', '-']];
     for (let n = 0; n < chars.length; n++) {
       value = value.replaceAll(chars[n][0], chars[n][1])
     }

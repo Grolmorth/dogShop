@@ -1,19 +1,33 @@
-import { Component, DoCheck } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { Component, DoCheck, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-menu-panel',
   templateUrl: './menu-panel.component.html',
   styleUrls: ['./menu-panel.component.scss']
 })
-export class MenuPanelComponent implements DoCheck {
+export class MenuPanelComponent implements DoCheck, OnInit {
 
   shopItems = 0;
   cartVisible = false;
+  showContent = true;
 
 
-  constructor() { }
+  constructor(private route: ActivatedRoute) { }
+
+  ngOnInit(): void {
+
+  }
+
 
   ngDoCheck(): void {
+    if (this.route.snapshot['_routerState'].url === "/cart") {
+      this.showContent = false;
+      this.cartVisible =false;
+    }
+    else {
+      this.showContent = true;
+    }
     if (localStorage.getItem('cart')) {
       this.shopItems = JSON.parse(localStorage.getItem('cart')).length;
     }

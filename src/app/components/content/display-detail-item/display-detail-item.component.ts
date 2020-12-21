@@ -12,6 +12,7 @@ import { Product } from 'src/app/services/product';
 export class DisplayDetailItemComponent implements OnInit, OnDestroy {
 
   quantity = 1;
+  buttonDisabled = false;
   constructor(private productServ: ProductService, private route: ActivatedRoute, private msg: MessengerService) { }
   paramSub: any;
   productSub: any;
@@ -23,12 +24,17 @@ export class DisplayDetailItemComponent implements OnInit, OnDestroy {
 
 
   ngOnInit(): void {
-    //subscribe route params
+    //subscribe route params to get right items
     this.paramSub = this.route.params.subscribe(params => {
+      if (this.id && this.id !== params.id) {
+        location.reload()
+      }
+
       this.categoryLink = params.categoryLink;
       this.subCategoryLink = params.subCategoryLink;
       this.nameLink = params.nameLink;
       this.id = params.id;
+
     })
     this.productServ.getProduct(this.categoryLink, this.subCategoryLink)
     this.productSub = this.productServ.file.valueChanges().subscribe(v => {
@@ -45,7 +51,15 @@ export class DisplayDetailItemComponent implements OnInit, OnDestroy {
     this.productSub.unsubscribe();
   }
   handlerAddToCart() {
+
     this.product.quantity = this.quantity;
     this.msg.sendMessage(this.product);
+    this.buttonDisabled = true;
+    this.quantity = 1;
+    setTimeout(() => {
+      this.buttonDisabled = false;
+    }, 2000)
+
+
   }
 }
