@@ -1,6 +1,13 @@
-<app-header>
-</app-header>
-<app-menu-panel></app-menu-panel>
-<app-nav></app-nav>
-<router-outlet></router-outlet>
-<app-footer></app-footer>
+<div id="page-container">
+    <div id="content-wrap">
+        <app-header>
+        </app-header>
+        <mat-divider></mat-divider>
+        <app-menu-panel></app-menu-panel>
+        <mat-divider></mat-divider>
+        <app-nav></app-nav>
+        <mat-divider></mat-divider>
+        <router-outlet></router-outlet>
+    </div>
+    <app-footer id="footer"></app-footer>
+</div>

@@ -35,7 +35,7 @@ import { CartDisplayComponent } from './components/cart/cart-display/cart-displa
 import { MenuPanelComponent } from './components/menu-panel/menu-panel.component';
 import { MatBadgeModule } from '@angular/material/badge';
 import { CurrencyPlnPipe } from './pipes/currency-pln.pipe';
-
+import {MatDividerModule} from '@angular/material/divider';
 
 
 
@@ -83,6 +83,7 @@ import { CurrencyPlnPipe } from './pipes/currency-pln.pipe';
     MatIconModule,
     MatTooltipModule,
     MatBadgeModule,
+    MatDividerModule
 
 
 
