@@ -28,8 +28,8 @@
             <mat-form-field>
                 <mat-label>Cena</mat-label>
                 <input matInput formControlName="price" placeholder="cena" class="form-control">
-                <mat-error *ngIf="formTemplate.get('price').invalid && formTemplate.get('price').dirty && formTemplate.get('price').value">
-                    Tylko <strong>numer</strong>
+                <mat-error *ngIf="formTemplate.get('price').invalid">
+                    <strong>zły format ceny.</strong> podaj cenę w PLN, dalej "." i ilość groszy
                 </mat-error>
             </mat-form-field>
         </div>

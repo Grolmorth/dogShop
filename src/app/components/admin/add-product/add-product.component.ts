@@ -26,7 +26,7 @@ export class AddProductComponent implements OnInit, DoCheck {
     imageUrl: new FormControl('', Validators.required),
     info: new FormControl('', Validators.required),
     id: new FormControl('', [Validators.required, Validators.pattern('^[0-9]*$')]),
-    price: new FormControl('', [Validators.required, Validators.pattern('^[0-9]*$')]),
+    price: new FormControl('', [Validators.required, Validators.pattern('^[0-9]{0,7}[.][0-9]{1,2}')]),
     company: new FormControl('', Validators.required),
 
 

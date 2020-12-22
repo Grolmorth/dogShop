@@ -22,7 +22,7 @@ export class SubCategoryDisplayComponent implements OnInit, OnDestroy {
 
   constructor(private productService: ProductService, private router: Router, private route: ActivatedRoute, private navServ: NavServiceService,) { }
 
-  productList: Product[];
+  productList: Product[] = [];
   ngOnInit() {
 
     this.sub = this.route.params.subscribe(params => {
