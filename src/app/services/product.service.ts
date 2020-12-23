@@ -22,19 +22,19 @@ export class ProductService {
     this.firebase.list('product/' + this.product.categoryLink + '/' + this.product.subCategoryLink).push(this.product);
 
   }
-  getProductDetailsList(path: string) {
-    this.productDetailList = this.firebase.list(path);
+  getProductList(path: string): AngularFireList<any> {
+    return this.firebase.list(path);
   }
-  getProduct(category: string, subCategory: string) {
+  getProduct(category: string, subCategory: string): void {
     this.file = this.firebase.list('product/' + category + '/' + subCategory);
   }
-  replaceChar(val) {
+  replaceChar(val): string {
     let value = val.toLowerCase();
     const chars = [[' ', '-'], ['ą', 'a'], ['ę', 'e'], ['ć', 'c'], ['ł', 'l'], ['ń', 'n'], ['ó', 'o'], ['ś', 's'], ['ż', 'z'], ['ź', 'z'], [',', '-'], ['.', '-']];
     for (let n = 0; n < chars.length; n++) {
       value = value.replaceAll(chars[n][0], chars[n][1])
     }
-    return value
+    return value;
   }
 
 

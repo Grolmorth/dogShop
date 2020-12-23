@@ -36,6 +36,11 @@ import { MenuPanelComponent } from './components/menu-panel/menu-panel.component
 import { MatBadgeModule } from '@angular/material/badge';
 import { CurrencyPlnPipe } from './pipes/currency-pln.pipe';
 import {MatDividerModule} from '@angular/material/divider';
+import { ProductListComponent } from './components/admin/product-list/product-list.component';
+import { ProductListItemComponent } from './components/admin/product-list-item/product-list-item.component';
+import {MatTreeModule} from '@angular/material/tree';
+import {MatProgressBarModule} from '@angular/material/progress-bar';
+import {MatListModule} from '@angular/material/list';
 
 
 
@@ -60,6 +65,8 @@ import {MatDividerModule} from '@angular/material/divider';
     CartDisplayComponent,
     MenuPanelComponent,
     CurrencyPlnPipe,
+    ProductListComponent,
+    ProductListItemComponent,
 
 
 
@@ -83,7 +90,10 @@ import {MatDividerModule} from '@angular/material/divider';
     MatIconModule,
     MatTooltipModule,
     MatBadgeModule,
-    MatDividerModule
+    MatDividerModule,
+    MatTreeModule,
+    MatProgressBarModule,
+    MatListModule
 
 
 

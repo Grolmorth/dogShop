@@ -1,0 +1,11 @@
+<mat-list *ngFor="let category of categoryList; let i = index">
+    <mat-list-item>
+
+        <button mat-button (click)="loadCategory(category.index)">{{category.name}}</button>
+
+        <app-product-list-item *ngIf="categories[i].display" [category]=category></app-product-list-item>
+
+    </mat-list-item>
+
+
+</mat-list>

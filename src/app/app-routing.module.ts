@@ -1,3 +1,4 @@
+
 import { CartDisplayComponent } from './components/cart/cart-display/cart-display.component';
 import { DisplayDetailItemComponent } from './components/content/display-detail-item/display-detail-item.component';
 import { AddProductComponent } from './components/admin/add-product/add-product.component';
@@ -8,6 +9,7 @@ import { CategoryDisplayComponent } from './components/content/category-display/
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { ProductListComponent } from './components/admin/product-list/product-list.component';
 
 
 
@@ -36,8 +38,12 @@ const routes: Routes = [
     component: LoginComponent,
   },
   {
-    path: 'a',
+    path: 'a/add',
     component: AddProductComponent,
+  },
+  {
+    path: 'a/show',
+    component: ProductListComponent,
   },
   {
     path: 'cart',

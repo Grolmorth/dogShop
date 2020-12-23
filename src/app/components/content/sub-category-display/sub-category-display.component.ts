@@ -3,6 +3,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { NavServiceService } from 'src/app/services/nav-service.service';
 import { Product } from 'src/app/services/product';
+import { AngularFireList } from '@angular/fire/database';
 
 
 
@@ -19,11 +20,12 @@ export class SubCategoryDisplayComponent implements OnInit, OnDestroy {
   subCategoryName: string;
   categoryLink: string;
   subCategoryLink: string;
+  productListRaw: AngularFireList<any>;
 
   constructor(private productService: ProductService, private router: Router, private route: ActivatedRoute, private navServ: NavServiceService,) { }
 
   productList: Product[] = [];
-  ngOnInit() {
+  ngOnInit(): void {
 
     this.sub = this.route.params.subscribe(params => {
       this.categoryLink = params.categoryName;
@@ -40,7 +42,7 @@ export class SubCategoryDisplayComponent implements OnInit, OnDestroy {
           })
         };
       })
-      this.productService.getProductDetailsList('product/' + this.categoryLink + '/' + this.subCategoryLink);
+      this.productListRaw = this.productService.getProductList('product/' + this.categoryLink + '/' + this.subCategoryLink);
       this.getProductList();
     }), (err) => console.error(err);
     if (this.subCategoryName === undefined) {
@@ -49,8 +51,8 @@ export class SubCategoryDisplayComponent implements OnInit, OnDestroy {
     }
 
   }
-  getProductList() {
-    this.productService.productDetailList.snapshotChanges().subscribe(list => {
+  getProductList(): void {
+    this.productListRaw.snapshotChanges().subscribe(list => {
       this.productList = list.map(item => {
         return ({ ...item.payload.val() })
       });
