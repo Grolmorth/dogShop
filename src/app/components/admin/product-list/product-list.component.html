@@ -1,11 +1,49 @@
-<mat-list *ngFor="let category of categoryList; let i = index">
-    <mat-list-item>
+<div class="container m-3">
+    <div class="row">
+        <div class="col-sm-3">
+            <div>
+                <mat-label class="m-3">Kategoria</mat-label>
+                <mat-select placeholder="Wybierz kategorie" [(value)]="categorySelected" class="form-control select">
+                    <mat-option *ngFor="let category of categoryList" [value]="category[1]">{{category[0]}}</mat-option>
+                </mat-select>
+            </div>
+            <div>
+                <mat-label class="m-3">Podkategoria</mat-label>
+                <mat-select required placeholder="Wybierz podkategorie" [(value)]="subCategorySelected" class="form-control select">
+                    <mat-option *ngFor="let category of subCategoryList" [value]="category[1]">{{category[0]}}</mat-option>
+                </mat-select>
+            </div>
+            <div>
+                <mat-label>Cena minimalna </mat-label>
+                <mat-form-field class="example-form-field">
+                    <mat-label>Cena minimalna </mat-label>
+                    <input matInput type="number" [(ngModel)]="minPrice">
+                    <button mat-button *ngIf="minPrice" matSuffix mat-icon-button aria-label="Clear" (click)="value=''">
+                <mat-icon>close</mat-icon>
+              </button>
+                </mat-form-field>
+            </div>
+            <div>
+                <mat-label>Cena maksymalna </mat-label>
+                <mat-form-field class="example-form-field">
+                    <mat-label>Cena maksymalna </mat-label>
+                    <input matInput type="number" [(ngModel)]="maxPrice">
+                    <button mat-button *ngIf="maxPrice" matSuffix mat-icon-button aria-label="Clear" (click)="value=''">
+                  <mat-icon>close</mat-icon>
+                </button>
+                </mat-form-field>
+            </div>
 
-        <button mat-button (click)="loadCategory(category.index)">{{category.name}}</button>
 
-        <app-product-list-item *ngIf="categories[i].display" [category]=category></app-product-list-item>
-
-    </mat-list-item>
-
-
-</mat-list>
+            <div>
+                <button class="m-3" mat-button (click)="loadProducts()">Pokaż</button>
+            </div>
+        </div>
+        <div class="col-sm-9">
+            <div *ngIf="productList.length===0">Brak przedmiotów spełniających kryteria</div>
+            <div *ngFor="let product of productList">
+                {{product|json}}
+            </div>
+        </div>
+    </div>
+</div>

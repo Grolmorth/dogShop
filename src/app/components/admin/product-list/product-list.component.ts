@@ -1,6 +1,6 @@
 import { NavServiceService } from './../../../services/nav-service.service';
 import { ProductService } from './../../../services/product.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, DoCheck } from '@angular/core';
 import { Product } from 'src/app/services/product';
 import { AngularFireList } from '@angular/fire/database';
 
@@ -11,47 +11,52 @@ import { AngularFireList } from '@angular/fire/database';
   styleUrls: ['./product-list.component.scss']
 })
 
-export class ProductListComponent implements OnInit {
+export class ProductListComponent implements OnInit, DoCheck {
 
   productList: Product[] = [];
-  categoryList: [{ name: string, link: string, index: number }] = [{ name: '', link: '', index: 0 }];
-  listRaw: AngularFireList<any>;
-  categories: [{ display: boolean }] = [{ display: false }];
+  categoryList: any;
+  categorySelected: string;
+  subCategoryList: any;
+  subCategorySelected: string;
+  rawList: AngularFireList<any>;
+  maxPrice: number = 10000000;
+  minPrice: number = 0;
+
 
   constructor(private productService: ProductService, private navService: NavServiceService) { }
 
   ngOnInit(): void {
     this.getCategoryList();
   }
+  ngDoCheck(): void {
+    // get subcategory list when picking category
 
-  getCategoryList(): void {
-    //get raw list from firestore
-    this.listRaw = this.productService.getProductList('/product');
-    //create category list item with name and link for every category in firebase
-    this.listRaw.valueChanges().subscribe(list => {
-
-      let m = 0;
-      list.map(item => {
-        for (let n = 0; n < this.navService.navlink.length; n++) {
-          if (item.key === this.navService.navlink[n][1]) {
-            this.categoryList[m] = {
-              name: this.navService.navlink[n][0].toString(),
-              link: this.navService.navlink[n][1].toString(),
-              index: m
-            };
-
-            this.categories[m] = { display: false }
-            m++;
-            break;
-          }
-        }
-      });
-    });
+    this.getSubCategoryList()
   }
 
+  getCategoryList(): void {
+    this.categoryList = this.navService.navlink.map(category => {
+      return category
+    })
+  }
+  getSubCategoryList(): void {
+    this.navService.navlink.map(category => {
+      if (category[1] === this.categorySelected) {
+        this.subCategoryList = [];
+        for (let n = 0; n < category[2].length; n++) {
+          this.subCategoryList[n] = category[2][n];
+        }
+      };
+    })
+  }
 
-  loadCategory(index) {
-    this.categories[index].display = !this.categories[index].display;
+  loadProducts() {
+
+    this.rawList = this.productService.getProductListWithFilter('product/' + this.categorySelected + '/' + this.subCategorySelected, this.maxPrice, this.minPrice)
+    this.rawList.valueChanges().subscribe(val => {
+      this.productList = val;
+    })
+
   }
 
 }
