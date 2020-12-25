@@ -21,6 +21,7 @@ export class ProductListComponent implements OnInit, DoCheck {
   rawList: AngularFireList<any>;
   maxPrice: number = 10000000;
   minPrice: number = 0;
+  priceChecked = false;
 
 
   constructor(private productService: ProductService, private navService: NavServiceService) { }
@@ -51,11 +52,23 @@ export class ProductListComponent implements OnInit, DoCheck {
   }
 
   loadProducts() {
+    if (this.priceChecked) {
 
-    this.rawList = this.productService.getProductListWithFilter('product/' + this.categorySelected + '/' + this.subCategorySelected, this.maxPrice, this.minPrice)
-    this.rawList.valueChanges().subscribe(val => {
-      this.productList = val;
-    })
+      this.rawList = this.productService.getProductListWithFilter('product/' + this.categorySelected + '/' + this.subCategorySelected, this.maxPrice, this.minPrice)
+      this.rawList.valueChanges().subscribe(val => {
+        this.productList = val;
+
+      })
+    } else {
+
+      this.rawList = this.productService.getProductListWithFilter('product/' + this.categorySelected + '/' + this.subCategorySelected)
+      this.rawList.valueChanges().subscribe(val => {
+
+        this.productList = val;
+      })
+    }
+
+
 
   }
 

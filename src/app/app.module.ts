@@ -41,6 +41,7 @@ import { ProductListItemComponent } from './components/admin/product-list-item/p
 import {MatTreeModule} from '@angular/material/tree';
 import {MatProgressBarModule} from '@angular/material/progress-bar';
 import {MatListModule} from '@angular/material/list';
+import {MatCheckboxModule} from '@angular/material/checkbox';
 
 
 
@@ -93,7 +94,8 @@ import {MatListModule} from '@angular/material/list';
     MatDividerModule,
     MatTreeModule,
     MatProgressBarModule,
-    MatListModule
+    MatListModule,
+    MatCheckboxModule
 
 
 

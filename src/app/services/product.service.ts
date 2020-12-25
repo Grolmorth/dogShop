@@ -26,7 +26,12 @@ export class ProductService {
     return this.firebase.list(path);
   }
   getProductListWithFilter(path: string, priceMax?: number, priceMin?: number): AngularFireList<any> {
-    return this.firebase.list(path, ref => ref.orderByChild('price').endAt(priceMax).startAt(priceMin));
+    if (priceMax || priceMin) {
+      return this.firebase.list(path, ref => ref.orderByChild('price').endAt(priceMax).startAt(priceMin));
+    } else {
+      return this.firebase.list(path);
+    }
+
   }
   getProduct(category: string, subCategory: string): void {
     this.file = this.firebase.list('product/' + category + '/' + subCategory);
