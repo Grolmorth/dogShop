@@ -42,6 +42,9 @@ import {MatTreeModule} from '@angular/material/tree';
 import {MatProgressBarModule} from '@angular/material/progress-bar';
 import {MatListModule} from '@angular/material/list';
 import {MatCheckboxModule} from '@angular/material/checkbox';
+import {MatTableModule} from '@angular/material/table';
+import {MatSortModule} from '@angular/material/sort';
+
 
 
 
@@ -95,7 +98,9 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
     MatTreeModule,
     MatProgressBarModule,
     MatListModule,
-    MatCheckboxModule
+    MatCheckboxModule,
+    MatTableModule,
+    MatSortModule
 
 
 

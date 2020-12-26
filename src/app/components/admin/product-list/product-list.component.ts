@@ -1,8 +1,11 @@
 import { NavServiceService } from './../../../services/nav-service.service';
 import { ProductService } from './../../../services/product.service';
-import { Component, OnInit, DoCheck } from '@angular/core';
+import { Component, OnInit, DoCheck, AfterViewInit, ViewChild } from '@angular/core';
 import { Product } from 'src/app/services/product';
 import { AngularFireList } from '@angular/fire/database';
+import { MatTableDataSource } from '@angular/material/table';
+import { MatSort } from '@angular/material/sort';
+
 
 
 @Component({
@@ -13,25 +16,30 @@ import { AngularFireList } from '@angular/fire/database';
 
 export class ProductListComponent implements OnInit, DoCheck {
 
+
   productList: Product[] = [];
   categoryList: any;
   categorySelected: string;
   subCategoryList: any;
   subCategorySelected: string;
   rawList: AngularFireList<any>;
-  maxPrice: number = 10000000;
-  minPrice: number = 0;
+  maxPrice: number = null;
+  minPrice: number = null;
   priceChecked = false;
+  displayedColumns: string[] = ['id', 'name', 'company', 'price'];
+  dataSource = new MatTableDataSource(this.productList);
+  @ViewChild(MatSort) sort: MatSort;
 
 
   constructor(private productService: ProductService, private navService: NavServiceService) { }
+
+
 
   ngOnInit(): void {
     this.getCategoryList();
   }
   ngDoCheck(): void {
     // get subcategory list when picking category
-
     this.getSubCategoryList()
   }
 
@@ -53,10 +61,18 @@ export class ProductListComponent implements OnInit, DoCheck {
 
   loadProducts() {
     if (this.priceChecked) {
-
-      this.rawList = this.productService.getProductListWithFilter('product/' + this.categorySelected + '/' + this.subCategorySelected, this.maxPrice, this.minPrice)
+      let maxPrice = this.maxPrice;
+      let minPrice = this.minPrice;
+      if (maxPrice === null) {
+        maxPrice = 1000000;
+      }
+      if (minPrice === null) {
+        minPrice = 0;
+      }
+      this.rawList = this.productService.getProductListWithFilter('product/' + this.categorySelected + '/' + this.subCategorySelected, maxPrice, minPrice)
       this.rawList.valueChanges().subscribe(val => {
         this.productList = val;
+        this.dataSource = new MatTableDataSource(this.productList);
 
       })
     } else {
@@ -65,11 +81,17 @@ export class ProductListComponent implements OnInit, DoCheck {
       this.rawList.valueChanges().subscribe(val => {
 
         this.productList = val;
+        this.dataSource = new MatTableDataSource(this.productList);
       })
     }
 
 
+  }
+  sortData() {
+    this.dataSource.sort = this.sort;
 
   }
+
+
 
 }
