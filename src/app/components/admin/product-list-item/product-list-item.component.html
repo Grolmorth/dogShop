@@ -1,10 +1,28 @@
-<mat-list *ngFor="let category of categoryList">
-    <mat-list-item>
+<div *ngIf="productList.length===0">Brak przedmiotów spełniających kryteria</div>
+<div class="container">
+    <table *ngIf="productList.length>0" mat-table [dataSource]="dataSource" matSort (matSortChange)="sortData()" class="mat-elevation-z8">
 
-        {{category.name}}
+        <ng-container matColumnDef="id">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Nr artykułu </th>
+            <td mat-cell *matCellDef="let product"> {{product.id}} </td>
+        </ng-container>
 
+        <ng-container matColumnDef="name">
+            <th mat-header-cell *matHeaderCellDef> Nazwa </th>
+            <td mat-cell *matCellDef="let product"> {{product.nameDisplay}} </td>
+        </ng-container>
 
-    </mat-list-item>
+        <ng-container matColumnDef="company">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Marka </th>
+            <td mat-cell *matCellDef="let product"> {{product.company}} </td>
+        </ng-container>
 
+        <ng-container matColumnDef="price">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Cena </th>
+            <td mat-cell *matCellDef="let product"> {{product.price|currencyPln}} </td>
+        </ng-container>
 
-</mat-list>
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+</div>

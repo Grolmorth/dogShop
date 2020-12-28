@@ -1,15 +1,12 @@
 import { NavServiceService } from './../../../services/nav-service.service';
 import { ProductService } from './../../../services/product.service';
-import { Component, OnInit, DoCheck, AfterViewInit, ViewChild } from '@angular/core';
+import { Component, OnInit, DoCheck} from '@angular/core';
 import { Product } from 'src/app/services/product';
 import { AngularFireList } from '@angular/fire/database';
 import { MatTableDataSource } from '@angular/material/table';
-import { MatSort } from '@angular/material/sort';
 import { FormControl } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { map, startWith } from 'rxjs/operators';
-
-
 
 @Component({
   selector: 'app-product-list',
@@ -30,20 +27,12 @@ export class ProductListComponent implements OnInit, DoCheck {
   minPrice: number = null;
   priceChecked = false;
   brandChecked = false;
-  displayedColumns: string[] = ['id', 'name', 'company', 'price'];
-  dataSource = new MatTableDataSource(this.productList);
   // brand checkbox
   brandControl = new FormControl();
   brands: string[] = ['SELECT GOLD', 'PREMIERE', 'MultiFit', 'REAL NATURE', 'Hunter'];
   filteredOptions: Observable<string[]>;
 
-
-  @ViewChild(MatSort) sort: MatSort;
-
-
   constructor(private productService: ProductService, private navService: NavServiceService) { }
-
-
 
   ngOnInit(): void {
     this.getCategoryList();
@@ -112,13 +101,7 @@ export class ProductListComponent implements OnInit, DoCheck {
   fillProductList() {
     this.rawList.valueChanges().subscribe(val => {
       this.productList = val;
-      this.dataSource = new MatTableDataSource(this.productList);
     })
-  }
-
-  // sort for sorting table
-  sortData() {
-    this.dataSource.sort = this.sort;
   }
   // filter for brands
   private _filter(value: string): string[] {
@@ -126,7 +109,5 @@ export class ProductListComponent implements OnInit, DoCheck {
 
     return this.brands.filter(brands => brands.toLowerCase().includes(filterValue));
   }
-
-
 
 }
