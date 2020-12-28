@@ -9,7 +9,7 @@
             </div>
             <div>
                 <mat-label class="m-3">Podkategoria</mat-label>
-                <mat-select required placeholder="Wybierz podkategorie" [(value)]="subCategorySelected" class="form-control select">
+                <mat-select placeholder="Wybierz podkategorie" [(value)]="subCategorySelected" class="form-control select">
                     <mat-option *ngFor="let category of subCategoryList" [value]="category[1]">{{category[0]}}</mat-option>
                 </mat-select>
             </div>
@@ -20,20 +20,36 @@
 
                     <mat-form-field class="form-field">
                         <mat-label>Cena minimalna </mat-label>
-                        <input matInput [disabled]="!priceChecked" type="number" [(ngModel)]="minPrice">
+                        <input matInput type="number" [(ngModel)]="minPrice">
 
                     </mat-form-field>
 
                     <mat-form-field class="form-field">
                         <mat-label>Cena maksymalna </mat-label>
-                        <input matInput [disabled]="!priceChecked" type="number" [(ngModel)]="maxPrice">
+                        <input matInput type="number" [(ngModel)]="maxPrice">
 
                     </mat-form-field>
                 </div>
             </section>
+            <mat-divider class="m-2"></mat-divider>
+            <section class="brand">
+                <mat-checkbox [(ngModel)]="brandChecked">Uwzględnij markę</mat-checkbox>
+                <div *ngIf="brandChecked">
+                    <mat-form-field class="form-field">
+                        <mat-label>Wybierz markę </mat-label>
+                        <input type="text" matInput [formControl]="brandControl" [matAutocomplete]="auto">
+                        <mat-autocomplete #auto="matAutocomplete">
+                            <mat-option *ngFor="let brand of filteredOptions |async " [value]="brand">
+                                {{brand}}
+                            </mat-option>
+                        </mat-autocomplete>
+                    </mat-form-field>
+
+                </div>
+            </section>
 
             <div>
-                <button class="m-3" mat-button (click)="loadProducts()">Pokaż</button>
+                <button class="m-3" color="primary" mat-stroked-button (click)="loadProducts()">Pokaż</button>
             </div>
         </div>
         <div class="col-sm-9">

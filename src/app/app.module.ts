@@ -44,6 +44,7 @@ import {MatListModule} from '@angular/material/list';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import {MatTableModule} from '@angular/material/table';
 import {MatSortModule} from '@angular/material/sort';
+import {MatAutocompleteModule} from '@angular/material/autocomplete';
 
 
 
@@ -100,7 +101,8 @@ import {MatSortModule} from '@angular/material/sort';
     MatListModule,
     MatCheckboxModule,
     MatTableModule,
-    MatSortModule
+    MatSortModule,
+    MatAutocompleteModule
 
 
 
