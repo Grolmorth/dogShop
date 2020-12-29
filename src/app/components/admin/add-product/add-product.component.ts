@@ -65,9 +65,6 @@ export class AddProductComponent implements OnInit, DoCheck {
           this.reset();
         })
       })).subscribe()
-
-
-
   }
   //show images after picking them
   showPreview(event: any) {

@@ -1,4 +1,3 @@
-<div *ngIf="productList.length===0">Brak przedmiotów spełniających kryteria</div>
 <div class="container">
     <table *ngIf="productList.length>0" mat-table [dataSource]="dataSource" matSort (matSortChange)="sortData()" class="mat-elevation-z8">
 
@@ -20,6 +19,13 @@
         <ng-container matColumnDef="price">
             <th mat-header-cell *matHeaderCellDef mat-sort-header> Cena </th>
             <td mat-cell *matCellDef="let product"> {{product.price|currencyPln}} </td>
+        </ng-container>
+        <ng-container matColumnDef="action">
+            <th mat-header-cell *matHeaderCellDef> Akcje </th>
+            <td mat-cell *matCellDef="let product">
+                <button mat-button (click)="editProduct(product)">Edytuj</button>
+                <button mat-button>Usuń</button>
+            </td>
         </ng-container>
 
         <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>

@@ -1,0 +1,27 @@
+<mat-card class="m-3">
+    <form [formGroup]="formTemplate" class="form-group" (ngSubmit)="onSubmit(formTemplate.value)">
+        {{editProduct.nameDisplay}}
+
+        <div>
+            <mat-form-field>
+                <mat-label>Opis</mat-label>
+                <textarea matInput required formControlName="info" placeholder="opis" class="form-control"></textarea>
+                <mat-error *ngIf="formTemplate.get('info').invalid">
+                    Pole <strong>wymagane</strong>
+                </mat-error>
+            </mat-form-field>
+        </div>
+
+        <div>
+            <mat-form-field>
+                <mat-label>Cena</mat-label>
+                <input matInput formControlName="price" type="number" placeholder="cena" class="form-control">
+                <mat-error *ngIf="formTemplate.get('price').invalid">
+                    <strong>zły format ceny.</strong> podaj cenę w PLN, dalej "." i ilość groszy
+                </mat-error>
+            </mat-form-field>
+        </div>
+
+        <button class="m-3 " mat-stroked-button type="submit()" [disabled]="formTemplate.invalid">Zmień</button>
+    </form>
+</mat-card>

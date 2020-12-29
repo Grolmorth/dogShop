@@ -1,9 +1,8 @@
 import { NavServiceService } from './../../../services/nav-service.service';
 import { ProductService } from './../../../services/product.service';
-import { Component, OnInit, DoCheck} from '@angular/core';
+import { Component, OnInit, DoCheck } from '@angular/core';
 import { Product } from 'src/app/services/product';
 import { AngularFireList } from '@angular/fire/database';
-import { MatTableDataSource } from '@angular/material/table';
 import { FormControl } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { map, startWith } from 'rxjs/operators';
@@ -64,6 +63,7 @@ export class ProductListComponent implements OnInit, DoCheck {
   }
 
   loadProducts() {
+    this.productList = [];
 
     if (this.priceChecked && !this.brandChecked) {
       let maxPrice = this.maxPrice;

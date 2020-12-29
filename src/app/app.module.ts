@@ -45,6 +45,7 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
 import {MatTableModule} from '@angular/material/table';
 import {MatSortModule} from '@angular/material/sort';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
+import { EditProductComponent } from './components/admin/edit-product/edit-product.component';
 
 
 
@@ -72,6 +73,7 @@ import {MatAutocompleteModule} from '@angular/material/autocomplete';
     CurrencyPlnPipe,
     ProductListComponent,
     ProductListItemComponent,
+    EditProductComponent,
 
 
 

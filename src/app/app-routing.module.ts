@@ -1,3 +1,4 @@
+import { EditProductComponent } from './components/admin/edit-product/edit-product.component';
 
 import { CartDisplayComponent } from './components/cart/cart-display/cart-display.component';
 import { DisplayDetailItemComponent } from './components/content/display-detail-item/display-detail-item.component';
@@ -40,6 +41,10 @@ const routes: Routes = [
   {
     path: 'a/add',
     component: AddProductComponent,
+  },
+  {
+    path: 'a/edit',
+    component: EditProductComponent,
   },
   {
     path: 'a/show',
