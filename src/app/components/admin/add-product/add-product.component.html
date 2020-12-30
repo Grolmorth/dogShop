@@ -37,7 +37,7 @@
         <div>
             <mat-form-field>
                 <mat-label>Id</mat-label>
-                <input matInput formControlName="id" placeholder="id" class="form-control">
+                <input matInput formControlName="id" type="number" placeholder="id" class="form-control">
                 <mat-error *ngIf="formTemplate.get('id').hasError('required')">
                     Pole <strong>wymagane</strong>
                 </mat-error>
@@ -48,7 +48,7 @@
 
         </div>
         <div>
-            <input type="file" accept="image/*" #fileUploader formControlName="imageUrl" class="form-control fileInput m-2 p-1" (change)="showPreview($event)">
+            <input type="file" accept="image/*" #fileUploader class="form-control fileInput m-2 p-1" (change)="showPreview($event)">
 
         </div>
         <div>

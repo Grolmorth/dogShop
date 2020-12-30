@@ -23,7 +23,6 @@ export class AddProductComponent implements OnInit, DoCheck {
     nameDisplay: new FormControl('', Validators.required),
     categoryDisplay: new FormControl('', Validators.required),
     subCategoryDisplay: new FormControl('', Validators.required),
-    imageUrl: new FormControl('', Validators.required),
     info: new FormControl('', Validators.required),
     id: new FormControl('', [Validators.required, Validators.pattern('^[0-9]*$')]),
     price: new FormControl('', [Validators.required, Validators.pattern('^[0-9]{0,7}[.][0-9]{1,2}')]),
@@ -59,10 +58,10 @@ export class AddProductComponent implements OnInit, DoCheck {
     this.storage.upload(filePath, this.selectedImage).snapshotChanges().pipe(
       finalize(() => {
         fileRef.getDownloadURL().subscribe((url) => {
-          formValue.imageUrl = url;
-          formValue.fileRef = filePath;
+          formValue.imgUrl = url;
+          formValue.imgRef = filePath;
           this.productService.insertProductDetails(formValue);
-          this.reset();
+         // this.reset();
         })
       })).subscribe()
   }
@@ -82,7 +81,7 @@ export class AddProductComponent implements OnInit, DoCheck {
       nameDisplay: '',
       categoryDisplay: '',
       subCategoryDisplay: '',
-      imageUrl: '',
+      imgUrl: '',
       info: '',
       company: '',
       id: '',
@@ -94,7 +93,7 @@ export class AddProductComponent implements OnInit, DoCheck {
   //replace polish letters, replace space
   replaceChar(val) {
     let value = val.toLowerCase();
-    const chars = [[' ', '-'], ['ą', 'a'], ['ę', 'e'], ['ć', 'c'], ['ł', 'l'], ['ń', 'n'], ['ó', 'o'], ['ś', 's'], ['ż', 'z'], ['ź', 'z']];
+    const chars = [[' ', '-'], ['ą', 'a'], ['ę', 'e'], ['ć', 'c'], ['ł', 'l'], ['ń', 'n'], ['ó', 'o'], ['ś', 's'], ['ż', 'z'], ['ź', 'z'], [',','-'],['.', '-']];
     for (let n = 0; n < chars.length; n++) {
       value = value.replaceAll(chars[n][0], chars[n][1])
     }

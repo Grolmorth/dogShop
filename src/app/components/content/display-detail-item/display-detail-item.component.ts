@@ -39,7 +39,8 @@ export class DisplayDetailItemComponent implements OnInit, OnDestroy {
     this.productServ.getProduct(this.categoryLink, this.subCategoryLink)
     this.productSub = this.productServ.file.valueChanges().subscribe(v => {
       v.map(n => {
-        if (n.id === this.id && n.nameLink === this.nameLink) {
+        // == becouse params convert number to string
+        if (n.id == this.id && n.nameLink === this.nameLink) {
           this.product = n;
         }
       });

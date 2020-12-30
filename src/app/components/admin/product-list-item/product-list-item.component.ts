@@ -1,3 +1,4 @@
+import { ProductService } from './../../../services/product.service';
 import { Router } from '@angular/router';
 import { AfterContentChecked, AfterContentInit, Component, Input, ViewChild } from '@angular/core';
 import { Product } from 'src/app/services/product';
@@ -15,7 +16,7 @@ export class ProductListItemComponent implements AfterContentInit {
   displayedColumns: string[] = ['id', 'name', 'company', 'price', 'action'];
   dataSource = new MatTableDataSource(this.productList);
   @ViewChild(MatSort) sort: MatSort;
-  constructor(private router: Router) { }
+  constructor(private router: Router, private productService: ProductService) { }
   sortData(): void {
     this.dataSource.sort = this.sort;
 
@@ -27,4 +28,9 @@ export class ProductListItemComponent implements AfterContentInit {
     localStorage.setItem('editProduct', JSON.stringify(product))
     this.router.navigateByUrl('a/edit');
   }
+  deleteProduct(product: Product) {
+    this.productService.removeProduct(product.categoryLink, product.subCategoryLink, product.id);
+    this.productService.removeImage(product.imgRef);
+  }
+
 }

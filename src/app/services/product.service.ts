@@ -44,6 +44,24 @@ export class ProductService {
   getProduct(category: string, subCategory: string): void {
     this.file = this.firebase.list('product/' + category + '/' + subCategory);
   }
+  removeProduct(category: string, subCategory: string, id: number): void {
+    let key: string;
+    // getting product key
+    this.firebase.list('product/' + category + '/' + subCategory, ref =>
+      ref.orderByChild('id').equalTo(id)
+    ).snapshotChanges().subscribe(val => {
+      val.map(el => {
+        key = el.key;
+      })
+      this.firebase.list('product/' + category + '/' + subCategory + '/' + key).remove();
+    })
+
+
+  }
+  removeImage(ref: string): void {
+
+    this.storage.ref(ref).delete();
+  }
   replaceChar(val): string {
     let value = val.toLowerCase();
     const chars = [[' ', '-'], ['ą', 'a'], ['ę', 'e'], ['ć', 'c'], ['ł', 'l'], ['ń', 'n'], ['ó', 'o'], ['ś', 's'], ['ż', 'z'], ['ź', 'z'], [',', '-'], ['.', '-']];
