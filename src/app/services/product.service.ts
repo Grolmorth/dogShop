@@ -25,21 +25,15 @@ export class ProductService {
   getProductList(path: string): AngularFireList<any> {
     return this.firebase.list(path);
   }
-  getProductListWithFilter(path: string, priceMax?: number, priceMin?: number, brand?: string): AngularFireList<any> {
-    if (!brand && priceMax || priceMin) {
+  getProductListWithFilter(path: string, priceMax: number, priceMin: number, brand?: string): AngularFireList<any> {
+    if (!brand) {
 
       return this.firebase.list(path, ref => ref.orderByChild('price').endAt(priceMax).startAt(priceMin));
     } else if (brand) {
-
       return this.firebase.list(path, ref =>
         ref.orderByChild('price').endAt(priceMax).startAt(priceMin) && ref.orderByChild('company').equalTo(brand)
-
       );
     }
-    else {
-      return this.firebase.list(path);
-    }
-
   }
   getProduct(category: string, subCategory: string): void {
     this.file = this.firebase.list('product/' + category + '/' + subCategory);

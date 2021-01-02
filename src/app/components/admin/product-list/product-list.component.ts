@@ -64,36 +64,25 @@ export class ProductListComponent implements OnInit, DoCheck {
 
   loadProducts() {
     this.productList = [];
-
-    if (this.priceChecked && !this.brandChecked) {
-      let maxPrice = this.maxPrice;
-      let minPrice = this.minPrice;
-      if (maxPrice === null) {
-        maxPrice = 1000000;
-      }
-      if (minPrice === null) {
-        minPrice = 0;
-      }
-      this.rawList = this.productService.getProductListWithFilter('product/' + this.categorySelected + '/' + this.subCategorySelected, maxPrice, minPrice)
-      this.fillProductList();
-    } else if (!this.priceChecked && !this.brandChecked) {
-      this.rawList = this.productService.getProductListWithFilter('product/' + this.categorySelected + '/' + this.subCategorySelected)
-      this.fillProductList();
+    let maxPrice: number;
+    let minPrice: number;
+    // fill price if empty
+    if (this.priceChecked) {
+      maxPrice = this.maxPrice;
+      minPrice = this.minPrice;
     }
-    else if (!this.priceChecked && this.brandChecked) {
-      this.rawList = this.productService.getProductListWithFilter('product/' + this.categorySelected + '/' + this.subCategorySelected, 1000000, 0, this.brandControl.value)
-      this.fillProductList();
+    if (maxPrice === null) {
+      maxPrice = 1000000;
     }
-    else if (this.priceChecked && this.brandChecked) {
-      let maxPrice = this.maxPrice;
-      let minPrice = this.minPrice;
-      if (maxPrice === null) {
-        maxPrice = 1000000;
-      }
-      if (minPrice === null) {
-        minPrice = 0;
-      }
+    if (minPrice === null) {
+      minPrice = 0;
+    }
+    if (this.brandChecked) {
       this.rawList = this.productService.getProductListWithFilter('product/' + this.categorySelected + '/' + this.subCategorySelected, maxPrice, minPrice, this.brandControl.value)
+      this.fillProductList();
+    }
+    else if (!this.brandChecked) {
+      this.rawList = this.productService.getProductListWithFilter('product/' + this.categorySelected + '/' + this.subCategorySelected, maxPrice, minPrice)
       this.fillProductList();
     }
   }
@@ -102,6 +91,8 @@ export class ProductListComponent implements OnInit, DoCheck {
     this.rawList.valueChanges().subscribe(val => {
       this.productList = val;
     })
+
+
   }
   // filter for brands
   private _filter(value: string): string[] {
