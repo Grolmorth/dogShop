@@ -64,7 +64,7 @@ export class ProductListComponent implements OnInit, DoCheck {
 
   //get all products from category -- no subcategory needed =>
   //get all products from all subcategory =>
-  //make multiple arrays with product from every subcategory and then connect them
+  //get products from subcategory, add to rest, and so on
 
   loadAllFromCategory() {
     this.clearProductList();
