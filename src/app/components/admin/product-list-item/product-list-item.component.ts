@@ -1,6 +1,6 @@
 import { ProductService } from './../../../services/product.service';
 import { Router } from '@angular/router';
-import { AfterContentChecked, AfterContentInit, Component, Input, ViewChild } from '@angular/core';
+import { AfterContentChecked, AfterContentInit, Component, Input, OnChanges, SimpleChanges, ViewChild } from '@angular/core';
 import { Product } from 'src/app/services/product';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatSort } from '@angular/material/sort';
@@ -10,7 +10,7 @@ import { MatSort } from '@angular/material/sort';
   templateUrl: './product-list-item.component.html',
   styleUrls: ['./product-list-item.component.scss']
 })
-export class ProductListItemComponent implements AfterContentInit {
+export class ProductListItemComponent implements AfterContentInit, OnChanges {
   @Input() productList: Product[] = [];
 
   displayedColumns: string[] = ['id', 'name', 'company', 'price', 'action'];
@@ -20,6 +20,9 @@ export class ProductListItemComponent implements AfterContentInit {
   sortData(): void {
     this.dataSource.sort = this.sort;
 
+  }
+  ngOnChanges(changes: SimpleChanges): void {
+    this.dataSource = new MatTableDataSource(this.productList);
   }
   ngAfterContentInit(): void {
     this.dataSource = new MatTableDataSource(this.productList);

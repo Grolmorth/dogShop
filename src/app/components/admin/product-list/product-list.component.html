@@ -49,12 +49,13 @@
             </section>
             <!-- [disabled]="!subCategorySelected && categorySelected" -->
             <div>
-                <button class="m-3" color="primary" mat-stroked-button (click)="loadProducts()">Pokaż</button>
+                <button *ngIf="subCategorySelected" class="m-3" color="primary" mat-stroked-button (click)="loadFromOneCategory()">Pokaż</button>
+                <button *ngIf="!subCategorySelected" class="m-3" color="primary" mat-stroked-button (click)="loadAllFromCategory()">Pokaż</button>
             </div>
         </div>
         <div class="col-sm-9">
-            <div *ngIf="productList.length===0">Brak przedmiotów spełniających kryteria</div>
-            <app-product-list-item *ngIf="productList.length>0" [productList]="productList"></app-product-list-item>
+            <div *ngIf="productListAll.length===0">Brak przedmiotów spełniających kryteria</div>
+            <app-product-list-item *ngIf="productListAll.length>0" [productList]="productListAll"></app-product-list-item>
         </div>
     </div>
 </div>
