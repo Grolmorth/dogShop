@@ -1,9 +1,26 @@
 <app-product-path [categoryLink]="categoryLink" [categoryName]="categoryName"></app-product-path>
-<div class="m-3">
 
-    <div *ngFor="let link of navigation">
-        <div [routerLink]=[link[1]] class="category my-1">
-            <p class="m-auto p-2">{{link[0]}}</p>
+
+
+<div class="container ">
+    <div class="row">
+        <div class="col-3">
+            <div *ngFor="let link of navigation">
+                <div [routerLink]=[link[1]] class="category my-1">
+                    <p class="m-auto p-2">{{link[0]}}</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-9">
+            <div class="container" *ngIf="productListAll">
+                <div class="row">
+                    <div class="col-sm-12 col-md-6 col-lg-4" *ngFor="let product of productListAll ">
+
+                        <app-display-item [product]="product"></app-display-item>
+
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </div>

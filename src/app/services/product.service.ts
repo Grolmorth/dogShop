@@ -27,7 +27,6 @@ export class ProductService {
   }
   getProductListWithFilter(path: string, priceMax: number, priceMin: number, brand?: string): AngularFireList<any> {
     if (!brand) {
-      console.log(path, priceMax, priceMin)
       return this.firebase.list(path, ref => ref.orderByChild('price').endAt(priceMax).startAt(priceMin));
     }
     // brand filter if there is a brand

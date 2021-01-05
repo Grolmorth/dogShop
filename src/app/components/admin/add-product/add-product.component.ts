@@ -61,7 +61,7 @@ export class AddProductComponent implements OnInit, DoCheck {
           formValue.imgUrl = url;
           formValue.imgRef = filePath;
           this.productService.insertProductDetails(formValue);
-         // this.reset();
+          this.reset();
         })
       })).subscribe()
   }
@@ -81,7 +81,6 @@ export class AddProductComponent implements OnInit, DoCheck {
       nameDisplay: '',
       categoryDisplay: '',
       subCategoryDisplay: '',
-      imgUrl: '',
       info: '',
       company: '',
       id: '',

@@ -29,7 +29,7 @@ export class ProductListComponent implements OnInit, DoCheck {
   brandChecked = false;
   // brand checkbox
   brandControl = new FormControl();
-  brands: string[] = ['SELECT GOLD', 'PREMIERE', 'MultiFit', 'REAL NATURE', 'Hunter'];
+  brands: string[] = ['SELECT GOLD', 'PREMIERE', 'MultiFit', 'REAL NATURE', 'Hunter', 'Canina', '	Happy Dog', 'Trixie', 'AniOne', '	CooCoo Design', 'FIT+FUN', 'MORE FOR', 'Earth Rated', 'Europet Bernina', 'Moser', 'Quiko', '	TAKE CARE', '	Dogs Creek', 'Kong'];
   filteredOptions: Observable<string[]>;
 
   constructor(private productService: ProductService, private navService: NavServiceService) { }
@@ -75,6 +75,7 @@ export class ProductListComponent implements OnInit, DoCheck {
   loadFromOneCategory() {
     this.clearProductList();
     this.loadProducts(this.subCategorySelected);
+    this.subCategorySelected = ''
   }
 
   loadProducts(subCategory: string) {
