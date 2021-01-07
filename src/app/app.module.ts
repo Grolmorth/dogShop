@@ -35,19 +35,21 @@ import { CartDisplayComponent } from './components/cart/cart-display/cart-displa
 import { MenuPanelComponent } from './components/menu-panel/menu-panel.component';
 import { MatBadgeModule } from '@angular/material/badge';
 import { CurrencyPlnPipe } from './pipes/currency-pln.pipe';
-import {MatDividerModule} from '@angular/material/divider';
+import { MatDividerModule } from '@angular/material/divider';
 import { ProductListComponent } from './components/admin/product-list/product-list.component';
 import { ProductListItemComponent } from './components/admin/product-list-item/product-list-item.component';
-import {MatTreeModule} from '@angular/material/tree';
-import {MatProgressBarModule} from '@angular/material/progress-bar';
-import {MatListModule} from '@angular/material/list';
-import {MatCheckboxModule} from '@angular/material/checkbox';
-import {MatTableModule} from '@angular/material/table';
-import {MatSortModule} from '@angular/material/sort';
-import {MatAutocompleteModule} from '@angular/material/autocomplete';
+import { MatTreeModule } from '@angular/material/tree';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
+import { MatListModule } from '@angular/material/list';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatTableModule } from '@angular/material/table';
+import { MatSortModule } from '@angular/material/sort';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { EditProductComponent } from './components/admin/edit-product/edit-product.component';
 import { FilterPipe } from './pipes/filter.pipe';
-import {MatPaginatorModule} from '@angular/material/paginator';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatPaginatorIntl } from '@angular/material/paginator';
+import { CustomPaginator } from './services/customPaginatorConfiguration';
 
 
 
@@ -113,7 +115,7 @@ import {MatPaginatorModule} from '@angular/material/paginator';
 
 
   ],
-  providers: [
+  providers: [{ provide: MatPaginatorIntl, useValue: CustomPaginator() }
   ],
   bootstrap: [AppComponent]
 })
