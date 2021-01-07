@@ -14,13 +14,15 @@
         <div class="col-9">
             <div class="container" *ngIf="productListAll">
                 <div class="row">
-                    <div class="col-sm-12 col-md-6 col-lg-4" *ngFor="let product of productListAll ">
+                    <div class="col-sm-12 col-md-6 col-lg-4" *ngFor="let product of obs|async, let i = index">
 
                         <app-display-item [product]="product"></app-display-item>
 
                     </div>
                 </div>
             </div>
+            <mat-paginator [pageSize]="3" [pageSizeOptions]="[3, 6, 9, 12]">
+            </mat-paginator>
         </div>
     </div>
 </div>

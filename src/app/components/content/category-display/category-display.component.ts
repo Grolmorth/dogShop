@@ -1,10 +1,13 @@
 import { ProductService } from './../../../services/product.service';
 import { NavServiceService } from './../../../services/nav-service.service';
-import { AfterContentInit, Component, OnInit } from '@angular/core';
+import { AfterContentInit, Component, OnInit, ViewChild } from '@angular/core';
 
 import { ActivatedRoute, Router } from '@angular/router';
 import { Product } from 'src/app/services/product';
 import { AngularFireList } from '@angular/fire/database';
+import { MatPaginator } from '@angular/material/paginator';
+import { MatTableDataSource } from '@angular/material/table';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-category-display',
@@ -12,15 +15,21 @@ import { AngularFireList } from '@angular/fire/database';
   styleUrls: ['./category-display.component.scss']
 })
 export class CategoryDisplayComponent implements OnInit, AfterContentInit {
+
+  @ViewChild(MatPaginator) paginator: MatPaginator;
+
   rawList: AngularFireList<any>;
   productList: Product[] = [];
   productListAll: Product[] = [];
+  dataSource: MatTableDataSource<Product> = new MatTableDataSource<Product>(this.productListAll);
   categoryLink: string;
   categoryName: any;
   sub: any;
+  obs: Observable<any>;
   constructor(private navServ: NavServiceService, private route: ActivatedRoute, private productService: ProductService, private router: Router) { }
   navigation: any;
   ngOnInit(): void {
+
     //subscribe route params
     this.sub = this.route.params.subscribe(params => {
       if (this.categoryLink && this.categoryLink !== params.categoryName) {
@@ -51,6 +60,9 @@ export class CategoryDisplayComponent implements OnInit, AfterContentInit {
     this.rawList.valueChanges().subscribe(val => {
       this.productList = val;
       this.productListAll = this.productListAll.concat(this.productList);
+      this.dataSource = new MatTableDataSource<Product>(this.productListAll);
+      this.dataSource.paginator = this.paginator;
+      this.obs = this.dataSource.connect();
     })
 
   }
@@ -66,5 +78,9 @@ export class CategoryDisplayComponent implements OnInit, AfterContentInit {
   }
   ngOnDestroy() {
     this.sub.unsubscribe();
+    if (this.dataSource) {
+      this.dataSource.disconnect();
+    }
   }
+
 }

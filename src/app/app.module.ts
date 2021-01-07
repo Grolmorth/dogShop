@@ -46,6 +46,8 @@ import {MatTableModule} from '@angular/material/table';
 import {MatSortModule} from '@angular/material/sort';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import { EditProductComponent } from './components/admin/edit-product/edit-product.component';
+import { FilterPipe } from './pipes/filter.pipe';
+import {MatPaginatorModule} from '@angular/material/paginator';
 
 
 
@@ -74,6 +76,7 @@ import { EditProductComponent } from './components/admin/edit-product/edit-produ
     ProductListComponent,
     ProductListItemComponent,
     EditProductComponent,
+    FilterPipe,
 
 
 
@@ -104,7 +107,8 @@ import { EditProductComponent } from './components/admin/edit-product/edit-produ
     MatCheckboxModule,
     MatTableModule,
     MatSortModule,
-    MatAutocompleteModule
+    MatAutocompleteModule,
+    MatPaginatorModule
 
 
 
