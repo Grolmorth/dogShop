@@ -2,12 +2,12 @@
 
 
 
-<div class="container ">
+<div class="container menu-on">
     <div class="row">
         <div class="col-3">
             <div *ngFor="let link of navigation">
                 <div [routerLink]=[link[1]] class="category my-1">
-                    <p class="m-auto p-2">{{link[0]}}</p>
+                    <p class="m-auto ">{{link[0]}}</p>
                 </div>
             </div>
         </div>
@@ -21,6 +21,25 @@
                     </div>
                 </div>
             </div>
+            <mat-divider class="mt-2"></mat-divider>
+            <mat-paginator [pageSize]="3" [pageSizeOptions]="[3, 6, 9, 12]">
+            </mat-paginator>
+        </div>
+    </div>
+</div>
+<div class="container menu-off">
+    <div class="row">
+        <div class="col-12">
+            <div class="container" *ngIf="productListAll">
+                <div class="row">
+                    <div class="col-sm-12 col-md-6 col-lg-4" *ngFor="let product of obs|async, let i = index">
+
+                        <app-display-item [product]="product"></app-display-item>
+
+                    </div>
+                </div>
+            </div>
+            <mat-divider class="mt-2"></mat-divider>
             <mat-paginator [pageSize]="3" [pageSizeOptions]="[3, 6, 9, 12]">
             </mat-paginator>
         </div>

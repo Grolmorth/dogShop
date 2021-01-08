@@ -1,18 +1,54 @@
 .category {
     left: 0px;
     width: 90%;
-    border: 2px solid #7F675B;
     margin: auto;
-    border-radius: 8px;
      :hover {
         transition: 0.5s;
-        background-color: #FFEAEE;
-        border-radius: 8px;
-        box-shadow: 0px 0px 18px 5px rgba(0, 0, 0, 0.66);
+        background-color: #aee2bf;
+        box-shadow: 0px 0px 18px 5px rgba(123, 189, 145, 0.66);
     }
 }
 
 p {
     cursor: pointer;
-    font-size: 20px;
+    font-size: 14px;
+}
+
+.mat-paginator {
+    background-color: white;
+    color: black;
+}
+
+::ng-deep .mat-select-arrow {
+    color: black;
+}
+
+::ng-deep .mat-select-value {
+    color: black;
+}
+
+::ng-deep .mat-select-panel {
+    background: #777575;
+    color: black;
+}
+
+::ng-deep .mat-option {
+    background: #ffffff;
+    color: black;
+}
+
+.mat-divider {
+    border-top-color: rgba(165, 68, 68, 0.12);
+}
+
+@media only screen and (max-width: 768px) {
+    .menu-on {
+        display: none;
+    }
+}
+
+@media only screen and (min-width: 769px) {
+    .menu-off {
+        display: none;
+    }
 }
