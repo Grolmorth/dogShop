@@ -1,6 +1,6 @@
 import { ProductService } from './../../../services/product.service';
 import { NavServiceService } from './../../../services/nav-service.service';
-import { AfterContentInit, Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 
 import { ActivatedRoute, Router } from '@angular/router';
 import { Product } from 'src/app/services/product';
@@ -14,7 +14,7 @@ import { Observable } from 'rxjs';
   templateUrl: './category-display.component.html',
   styleUrls: ['./category-display.component.scss']
 })
-export class CategoryDisplayComponent implements OnInit, AfterContentInit {
+export class CategoryDisplayComponent implements OnInit {
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
 
@@ -32,14 +32,13 @@ export class CategoryDisplayComponent implements OnInit, AfterContentInit {
 
     //subscribe route params
     this.sub = this.route.params.subscribe(params => {
-      if (this.categoryLink && this.categoryLink !== params.categoryName) {
-        location.reload()
-      }
       this.categoryLink = params.categoryName;
       this.navServ.navlink.map(v => {
+        // change content if params are changed
         if (v[1] === this.categoryLink) {
           this.categoryName = v[0];
           this.navigation = v[2];
+          this.loadAllFromCategory();
         }
       });
 
@@ -49,14 +48,12 @@ export class CategoryDisplayComponent implements OnInit, AfterContentInit {
     }
 
   }
-  ngAfterContentInit() {
-    this.loadAllFromCategory();
-  }
+
   loadProducts(subCategory: string) {
     this.rawList = this.productService.getProductListWithFilter('product/' + this.categoryLink + '/' + subCategory, 100000, 0)
     this.fillProductList();
   }
-  fillProductList() {
+  fillProductList(): void {
     this.rawList.valueChanges().subscribe(val => {
       this.productList = val;
       this.productListAll = this.productListAll.concat(this.productList);
@@ -66,21 +63,36 @@ export class CategoryDisplayComponent implements OnInit, AfterContentInit {
     })
 
   }
-  loadAllFromCategory() {
+  loadAllFromCategory(): void {
     this.clearProductList();
     for (const category of this.navigation) {
       this.loadProducts(category[1])
     }
   }
-  clearProductList() {
+  clearProductList(): void {
     this.productList = [];
     this.productListAll = [];
   }
-  ngOnDestroy() {
+  ngOnDestroy(): void {
     this.sub.unsubscribe();
     if (this.dataSource) {
       this.dataSource.disconnect();
     }
   }
-
+  sortData(order: string): void {
+    if (order === 'priceAsc') {
+      this.productListAll.sort(function (a, b) {
+        return a.price - b.price
+      })
+    }
+    if (order === 'priceDsc') {
+      this.productListAll.sort(function (a, b) {
+        return b.price - a.price
+      })
+    }
+    this.dataSource = new MatTableDataSource<Product>(this.productListAll);
+    this.dataSource.paginator = this.paginator;
+    this.obs = this.dataSource.connect();
+    console.log(this.productListAll)
+  }
 }

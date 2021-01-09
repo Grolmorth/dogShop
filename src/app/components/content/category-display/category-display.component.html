@@ -2,7 +2,7 @@
 
 
 
-<div class="container menu-on">
+<div class="container">
     <div class="row">
         <div class="col-3">
             <div *ngFor="let link of navigation">
@@ -12,27 +12,17 @@
             </div>
         </div>
         <div class="col-9">
+            <div>Sortuj według ceny:</div>
+            <button mat-button (click)="sortData('priceDsc')"><mat-icon aria-hidden="false" aria-label="dsc icon" class="m-1">trending_down </mat-icon></button>
+            <button mat-button (click)="sortData('priceAsc')"><mat-icon aria-hidden="false" aria-label="asc icon" class="m-1">trending_up </mat-icon></button>
+            <div>Sortuj według marki:</div>
+            <button mat-button (click)="sortData('brandDsc')">Malejąco <mat-icon aria-hidden="false" aria-label="dsc icon" class="m-1">trending_down </mat-icon></button>
+            <button mat-button (click)="sortData('brandAsc')">Rosnąco <mat-icon aria-hidden="false" aria-label="asc icon" class="m-1">trending_up </mat-icon></button>
+
+            <mat-divider class="m-2"></mat-divider>
             <div class="container" *ngIf="productListAll">
                 <div class="row">
-                    <div class="col-sm-12 col-md-6 col-lg-4" *ngFor="let product of obs|async, let i = index">
-
-                        <app-display-item [product]="product"></app-display-item>
-
-                    </div>
-                </div>
-            </div>
-            <mat-divider class="mt-2"></mat-divider>
-            <mat-paginator [pageSize]="3" [pageSizeOptions]="[3, 6, 9, 12]">
-            </mat-paginator>
-        </div>
-    </div>
-</div>
-<div class="container menu-off">
-    <div class="row">
-        <div class="col-12">
-            <div class="container" *ngIf="productListAll">
-                <div class="row">
-                    <div class="col-sm-12 col-md-6 col-lg-4" *ngFor="let product of obs|async, let i = index">
+                    <div class="col-sm-12 col-md-6 col-lg-4" *ngFor="let product of obs|async">
 
                         <app-display-item [product]="product"></app-display-item>
 
