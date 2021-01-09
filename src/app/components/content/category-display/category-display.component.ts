@@ -24,6 +24,7 @@ export class CategoryDisplayComponent implements OnInit {
   dataSource: MatTableDataSource<Product> = new MatTableDataSource<Product>(this.productListAll);
   categoryLink: string;
   categoryName: any;
+  sortByBrand: boolean = true;
   sub: any;
   obs: Observable<any>;
   constructor(private navServ: NavServiceService, private route: ActivatedRoute, private productService: ProductService, private router: Router) { }
@@ -90,9 +91,19 @@ export class CategoryDisplayComponent implements OnInit {
         return b.price - a.price
       })
     }
+    if (order === 'brand' && this.sortByBrand) {
+      this.sortByBrand = !this.sortByBrand;
+      this.productListAll.sort(function (a, b) {
+        return a.company.localeCompare(b.company);
+      })
+    } else if (order === 'brand' && !this.sortByBrand) {
+      this.sortByBrand = !this.sortByBrand;
+      this.productListAll.sort(function (a, b) {
+        return b.company.localeCompare(a.company);
+      })
+    }
     this.dataSource = new MatTableDataSource<Product>(this.productListAll);
     this.dataSource.paginator = this.paginator;
     this.obs = this.dataSource.connect();
-    console.log(this.productListAll)
   }
 }

@@ -16,8 +16,8 @@
             <button mat-button (click)="sortData('priceDsc')"><mat-icon aria-hidden="false" aria-label="dsc icon" class="m-1">trending_down </mat-icon></button>
             <button mat-button (click)="sortData('priceAsc')"><mat-icon aria-hidden="false" aria-label="asc icon" class="m-1">trending_up </mat-icon></button>
             <div>Sortuj według marki:</div>
-            <button mat-button (click)="sortData('brandDsc')">Malejąco <mat-icon aria-hidden="false" aria-label="dsc icon" class="m-1">trending_down </mat-icon></button>
-            <button mat-button (click)="sortData('brandAsc')">Rosnąco <mat-icon aria-hidden="false" aria-label="asc icon" class="m-1">trending_up </mat-icon></button>
+
+            <button mat-button (click)="sortData('brand')">Rosnąco <mat-icon aria-hidden="false" aria-label="sort icon" class="m-1">sort_by_alpha</mat-icon></button>
 
             <mat-divider class="m-2"></mat-divider>
             <div class="container" *ngIf="productListAll">
