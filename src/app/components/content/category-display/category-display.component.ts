@@ -8,6 +8,7 @@ import { AngularFireList } from '@angular/fire/database';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { Observable } from 'rxjs';
+import { filter } from 'rxjs/operators';
 
 @Component({
   selector: 'app-category-display',
@@ -17,7 +18,9 @@ import { Observable } from 'rxjs';
 export class CategoryDisplayComponent implements OnInit {
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
-
+  maxPrice: number = null;
+  minPrice: number = null;
+  priceChecked = false;
   rawList: AngularFireList<any>;
   productList: Product[] = [];
   productListAll: Product[] = [];
@@ -25,6 +28,7 @@ export class CategoryDisplayComponent implements OnInit {
   categoryLink: string;
   categoryName: any;
   sortByBrand: boolean = true;
+  sortByPrice: boolean = true;
   sub: any;
   obs: Observable<any>;
   constructor(private navServ: NavServiceService, private route: ActivatedRoute, private productService: ProductService, private router: Router) { }
@@ -81,12 +85,14 @@ export class CategoryDisplayComponent implements OnInit {
     }
   }
   sortData(order: string): void {
-    if (order === 'priceAsc') {
+    if (order === 'price' && !this.sortByPrice) {
+      this.sortByPrice = !this.sortByPrice;
       this.productListAll.sort(function (a, b) {
         return a.price - b.price
       })
     }
-    if (order === 'priceDsc') {
+    else if (order === 'price' && this.sortByPrice) {
+      this.sortByPrice = !this.sortByPrice;
       this.productListAll.sort(function (a, b) {
         return b.price - a.price
       })
@@ -105,5 +111,11 @@ export class CategoryDisplayComponent implements OnInit {
     this.dataSource = new MatTableDataSource<Product>(this.productListAll);
     this.dataSource.paginator = this.paginator;
     this.obs = this.dataSource.connect();
+  }
+  applyFilters(): void {
+    console.log(this.productListAll);
+
+    console.log(this.obs)
+
   }
 }
