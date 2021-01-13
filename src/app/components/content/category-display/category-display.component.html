@@ -10,47 +10,10 @@
                     <p class="m-auto ">{{link[0]}}</p>
                 </div>
             </div>
-            <div class="mt-2">
-                <b>Filtry</b>
-                <section class="price">
-                    <mat-checkbox [(ngModel)]="priceChecked">Uwzględnij cenę</mat-checkbox>
-                    <div *ngIf="priceChecked">
-
-                        <mat-form-field class="form-field">
-                            <mat-label>Cena minimalna </mat-label>
-                            <input matInput type="number" [(ngModel)]="minPrice">
-
-                        </mat-form-field>
-
-                        <mat-form-field class="form-field">
-                            <mat-label>Cena maksymalna </mat-label>
-                            <input matInput type="number" [(ngModel)]="maxPrice">
-
-                        </mat-form-field>
-                    </div>
-
-                </section>
-                <button mat-button (click)="applyFilters()">Zastosuj filtry</button>
-            </div>
         </div>
-        <div class="col-9">
-            <div>
-                <button *ngIf="sortByPrice" mat-button (click)="sortData('price')">Sortuj według ceny<mat-icon aria-hidden="false" aria-label="dsc icon" class="m-1">trending_down </mat-icon></button>
-                <button *ngIf="!sortByPrice" mat-button (click)="sortData('price')">Sortuj według ceny<mat-icon aria-hidden="false" aria-label="asc icon" class="m-1">trending_up </mat-icon></button>
-                <button mat-button (click)="sortData('brand')">Sortuj według marki<mat-icon aria-hidden="false" aria-label="sort icon" class="m-1">sort_by_alpha</mat-icon></button>
-            </div>
 
-            <mat-divider class="m-2"></mat-divider>
-            <div class="container" *ngIf="productListAll">
-                <div class="row">
-                    <div class="col-sm-12 col-md-6 col-lg-4" *ngFor="let product of obs|async">
-                        <app-display-item [product]="product"></app-display-item>
-                    </div>
-                </div>
-            </div>
-            <mat-divider class="mt-2"></mat-divider>
-            <mat-paginator [pageSize]="3" [pageSizeOptions]="[3, 6, 9, 12]">
-            </mat-paginator>
+        <div class="col-9">
+            <app-all-products-display [productListAll]="productListAll"></app-all-products-display>
         </div>
     </div>
 </div>

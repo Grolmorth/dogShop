@@ -50,6 +50,7 @@ import { FilterPipe } from './pipes/filter.pipe';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatPaginatorIntl } from '@angular/material/paginator';
 import { CustomPaginator } from './services/customPaginatorConfiguration';
+import { AllProductsDisplayComponent } from './components/content/all-products-display/all-products-display.component';
 
 
 
@@ -79,6 +80,7 @@ import { CustomPaginator } from './services/customPaginatorConfiguration';
     ProductListItemComponent,
     EditProductComponent,
     FilterPipe,
+    AllProductsDisplayComponent,
 
 
 

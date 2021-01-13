@@ -1,0 +1,26 @@
+.mat-paginator {
+    background-color: white;
+    color: black;
+}
+
+::ng-deep .mat-select-arrow {
+    color: black;
+}
+
+::ng-deep .mat-select-value {
+    color: black;
+}
+
+::ng-deep .mat-select-panel {
+    background: #777575;
+    color: black;
+}
+
+::ng-deep .mat-option {
+    background: #ffffff;
+    color: black;
+}
+
+.mat-divider {
+    border-top-color: rgba(165, 68, 68, 0.12);
+}

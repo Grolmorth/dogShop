@@ -1,20 +1,3 @@
 <app-product-path [categoryLink]="categoryLink" [categoryName]="categoryName" [subCategoryLink]="subCategoryLink" [subCategoryName]="subCategoryName"></app-product-path>
 
-<div class="container" *ngIf="productList">
-    <div class="row">
-        <div class="col-sm-12 col-md-6 col-lg-4" *ngFor="let product of productList ">
-
-            <app-display-item [product]="product"></app-display-item>
-
-        </div>
-    </div>
-</div>
-<div class="container" *ngIf="productList.length===0">
-    <div class="row">
-        <div class="col-sm-12 ">
-            <p>Brak Przedmiotów w tej kategorii</p>
-
-
-        </div>
-    </div>
-</div>
+<app-all-products-display [productListAll]="productList"></app-all-products-display>

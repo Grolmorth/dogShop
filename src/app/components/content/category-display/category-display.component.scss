@@ -14,33 +14,6 @@ p {
     padding-left: 5px;
 }
 
-.mat-paginator {
-    background-color: white;
-    color: black;
-}
-
-::ng-deep .mat-select-arrow {
-    color: black;
-}
-
-::ng-deep .mat-select-value {
-    color: black;
-}
-
-::ng-deep .mat-select-panel {
-    background: #777575;
-    color: black;
-}
-
-::ng-deep .mat-option {
-    background: #ffffff;
-    color: black;
-}
-
-.mat-divider {
-    border-top-color: rgba(165, 68, 68, 0.12);
-}
-
 ::ng-deep .mat-checkbox .mat-checkbox-frame {
     border-color: rgb(0, 0, 0);
 }

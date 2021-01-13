@@ -1,0 +1,50 @@
+<div class="container" *ngIf="productListAll.length>0">
+    <div class="row">
+        <div class="col-6">
+
+            <section class="price">
+                <mat-checkbox [(ngModel)]="priceChecked" (change)="applyFilters()">Uwzględnij cenę</mat-checkbox>
+                <div *ngIf="priceChecked">
+
+                    <mat-form-field class="form-field">
+                        <mat-label>Cena minimalna </mat-label>
+                        <input matInput type="number" (keyup)="applyFilters()" [(ngModel)]="minPrice">
+
+                    </mat-form-field>
+
+                    <mat-form-field class="form-field">
+                        <mat-label>Cena maksymalna </mat-label>
+                        <input matInput type="number" (keyup)="applyFilters()" [(ngModel)]="maxPrice">
+
+                    </mat-form-field>
+                </div>
+            </section>
+        </div>
+        <div class="col-6">
+            <button *ngIf="sortByPrice" mat-button (click)="sortData('price')">Sortuj według ceny<mat-icon aria-hidden="false" aria-label="dsc icon" class="m-1">trending_down </mat-icon></button>
+            <button *ngIf="!sortByPrice" mat-button (click)="sortData('price')">Sortuj według ceny<mat-icon aria-hidden="false" aria-label="asc icon" class="m-1">trending_up </mat-icon></button>
+            <button mat-button (click)="sortData('brand')">Sortuj według marki<mat-icon aria-hidden="false" aria-label="sort icon" class="m-1">sort_by_alpha</mat-icon></button>
+        </div>
+
+        <div class="row">
+            <mat-divider class="m-2"></mat-divider>
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-12 col-md-6 col-lg-4" *ngFor="let product of obs|async">
+                        <app-display-item [product]="product"></app-display-item>
+                    </div>
+                    <div *ngIf="dataSource.data.length===0"> Brak przedmiotów spełniających podane kryteria</div>
+                </div>
+            </div>
+            <mat-divider class="mt-2"></mat-divider>
+            <mat-paginator [pageSize]="3" [pageSizeOptions]="[3, 6, 9, 12]">
+            </mat-paginator>
+
+        </div>
+    </div>
+</div>
+<div class="container">
+    <div class="row">
+        <div *ngIf="productListAll.length===0"> Brak przedmiotów w danej kategorii</div>
+    </div>
+</div>
