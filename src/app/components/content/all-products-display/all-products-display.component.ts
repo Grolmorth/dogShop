@@ -34,28 +34,28 @@ export class AllProductsDisplayComponent implements OnDestroy, OnChanges {
   sortData(order: string): void {
     if (order === 'price' && !this.sortByPrice) {
       this.sortByPrice = !this.sortByPrice;
-      this.productListAll.sort(function (a, b) {
+      this.dataSource.data.sort(function (a, b) {
         return a.price - b.price
       })
     }
     else if (order === 'price' && this.sortByPrice) {
       this.sortByPrice = !this.sortByPrice;
-      this.productListAll.sort(function (a, b) {
+      this.dataSource.data.sort(function (a, b) {
         return b.price - a.price
       })
     }
     if (order === 'brand' && this.sortByBrand) {
       this.sortByBrand = !this.sortByBrand;
-      this.productListAll.sort(function (a, b) {
+      this.dataSource.data.sort(function (a, b) {
         return a.company.localeCompare(b.company);
       })
     } else if (order === 'brand' && !this.sortByBrand) {
       this.sortByBrand = !this.sortByBrand;
-      this.productListAll.sort(function (a, b) {
+      this.dataSource.data.sort(function (a, b) {
         return b.company.localeCompare(a.company);
       })
     }
-    this.dataSource = new MatTableDataSource<Product>(this.productListAll);
+    this.dataSource = new MatTableDataSource<Product>(this.dataSource.data);
     this.dataSource.paginator = this.paginator;
     this.obs = this.dataSource.connect();
   }
