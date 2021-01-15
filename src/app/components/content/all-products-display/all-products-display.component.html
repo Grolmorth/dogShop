@@ -19,6 +19,21 @@
                     </mat-form-field>
                 </div>
             </section>
+            <section class="brand">
+                <mat-checkbox [(ngModel)]="brandChecked" (change)="applyFilters()">Uwzględnij markę</mat-checkbox>
+                <div *ngIf="brandChecked">
+                    <mat-form-field class="form-field">
+                        <mat-label>Wybierz markę </mat-label>
+                        <input type="text" matInput (click)="applyFilters()" [formControl]="brandControl" [matAutocomplete]="auto">
+                        <mat-autocomplete #auto="matAutocomplete">
+                            <mat-option *ngFor="let brand of filteredOptions |async " [value]="brand">
+                                {{brand}}
+                            </mat-option>
+                        </mat-autocomplete>
+                    </mat-form-field>
+
+                </div>
+            </section>
         </div>
         <div class="col-6">
             <button *ngIf="sortByPrice" mat-button (click)="sortData('price')">Sortuj według ceny<mat-icon aria-hidden="false" aria-label="dsc icon" class="m-1">trending_down </mat-icon></button>
