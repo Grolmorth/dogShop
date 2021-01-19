@@ -1,0 +1,17 @@
+<div class="alert alert-info" *ngIf="cartItems.length===0">Twój koszyk jest pusty</div>
+
+<ul class="list-group" *ngIf="cartItems.length>0">
+    <li class="list-group-item" *ngFor="let item of cartItems">
+
+        <app-cart-item [cartItem]="item"></app-cart-item>
+        <div class="action">
+            <button mat-raised-button color="primary" (click)="quantityPlus(item)"><mat-icon aria-hidden="false" aria-label="plus one icon" >exposure_plus_1</mat-icon></button>
+            <button mat-raised-button color="primary" (click)="quantityMinus(item)"><mat-icon aria-hidden="false" aria-label="neg one icon" >exposure_neg_1</mat-icon></button>
+            <button mat-raised-button color="primary" (click)="removeItem(item)"><mat-icon aria-hidden="false" aria-label="remove icon" >clear</mat-icon></button>
+        </div>
+    </li>
+    <li class="list-group-item active total">
+        <strong>Wszystko:</strong> {{cartTotal|currencyPln}}
+        <button mat-button class="pay-button">Zapłać</button>
+    </li>
+</ul>

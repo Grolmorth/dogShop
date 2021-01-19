@@ -5,3 +5,30 @@
 .container {
     background-color: azure;
 }
+
+.mat-card {
+    background-color: rgb(144, 144, 228);
+    height: 300px;
+    overflow-y: scroll;
+}
+
+.total {
+    background-color: rgb(144, 144, 228);
+    border: none;
+}
+
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #888;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}

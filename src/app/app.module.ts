@@ -51,6 +51,7 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatPaginatorIntl } from '@angular/material/paginator';
 import { CustomPaginator } from './services/customPaginatorConfiguration';
 import { AllProductsDisplayComponent } from './components/content/all-products-display/all-products-display.component';
+import { CartCenterComponent } from './components/content/cart-center/cart-center.component';
 
 
 
@@ -81,6 +82,7 @@ import { AllProductsDisplayComponent } from './components/content/all-products-d
     EditProductComponent,
     FilterPipe,
     AllProductsDisplayComponent,
+    CartCenterComponent,
 
 
 

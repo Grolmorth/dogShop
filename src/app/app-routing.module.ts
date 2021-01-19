@@ -1,3 +1,4 @@
+import { CartCenterComponent } from './components/content/cart-center/cart-center.component';
 import { EditProductComponent } from './components/admin/edit-product/edit-product.component';
 
 import { CartDisplayComponent } from './components/cart/cart-display/cart-display.component';
@@ -52,7 +53,7 @@ const routes: Routes = [
   },
   {
     path: 'cart',
-    component: CartDisplayComponent,
+    component: CartCenterComponent,
   },
 
   {
