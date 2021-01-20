@@ -1,7 +1,6 @@
 <div class="container" *ngIf="productListAll.length>0">
-    <div class="row">
-        <div class="col-6">
-
+    <div class="row m-1">
+        <div class="col-12 col-md-6">
             <section class="price">
                 <mat-checkbox [(ngModel)]="priceChecked" (change)="applyFilters()">Uwzględnij cenę</mat-checkbox>
                 <div *ngIf="priceChecked">
@@ -35,7 +34,8 @@
                 </div>
             </section>
         </div>
-        <div class="col-6">
+        <div class="col-12 col-md-6">
+
             <button *ngIf="sortByPrice" mat-button (click)="sortData('price')">Sortuj według ceny<mat-icon aria-hidden="false" aria-label="dsc icon" class="m-1">trending_down </mat-icon></button>
             <button *ngIf="!sortByPrice" mat-button (click)="sortData('price')">Sortuj według ceny<mat-icon aria-hidden="false" aria-label="asc icon" class="m-1">trending_up </mat-icon></button>
             <button mat-button (click)="sortData('brand')">Sortuj według marki<mat-icon aria-hidden="false" aria-label="sort icon" class="m-1">sort_by_alpha</mat-icon></button>

@@ -1,10 +1,10 @@
 .category {
     left: 0px;
     width: 90%;
-    border-radius: 3px;
+    padding-right: 2px;
      :hover {
         transition: 0.4s;
-        box-shadow: 0px 0px 6px 2px rgb(0, 0, 0);
+        box-shadow: 4px 4px 2px -2px gray;
     }
 }
 

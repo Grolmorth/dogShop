@@ -16,12 +16,6 @@
         display: none;
         padding: 3px;
         width: $size-of-nav-item;
-        position: relative;
-        list-style: none;
-        list-style-type: none;
-        background-color: #f8f9fa;
-        font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-        z-index: 1;
         text-align: center;
     }
     .menu-link {
@@ -56,7 +50,7 @@ li {
         .sub-menu-item {
             display: block;
             transition: .3s ease;
-            animation: sub-menu-animation .5s ease-in;
+            animation: sub-menu-animation .2s ease-in;
         }
         .menu-item {
             color: #6c757d;
@@ -65,9 +59,8 @@ li {
 }
 
 .sub-menu-item:hover {
-    background: rgb(0, 123, 255);
-    background: linear-gradient(105deg, rgb(255, 255, 255) 0%, rgba(0, 123, 255, 1) 15%, rgba(0, 123, 255, 1) 50%, rgba(0, 123, 255, 1) 85%, rgb(255, 255, 255) 100%);
-    color: #f8f9fa;
+    transition: 0.4s;
+    box-shadow: inset 0 0 1em grey;
 }
 
 a {

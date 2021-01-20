@@ -4,7 +4,7 @@
 
 <div class="container">
     <div class="row">
-        <div class="col-3">
+        <div class="col-12 col-md-3">
             <div *ngFor="let link of navigation">
                 <div [routerLink]=[link[1]] class="category my-1">
                     <p class="m-auto ">{{link[0]}}</p>
@@ -12,7 +12,7 @@
             </div>
         </div>
 
-        <div class="col-9">
+        <div class="col-12 col-md-9">
             <app-all-products-display [productListAll]="productListAll"></app-all-products-display>
         </div>
     </div>

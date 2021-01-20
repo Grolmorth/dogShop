@@ -1,21 +1,10 @@
-.action {
-    float: right
-}
-
-.container {
-    background-color: azure;
-}
-
-.mat-card {
-    background-color: rgb(144, 144, 228);
+.cart {
+    background-color: rgb(255, 255, 255);
     height: fit-content;
     max-height: 350px;
     overflow-y: scroll;
-}
-
-.total {
-    background-color: rgb(144, 144, 228);
-    border: none;
+    border: 1px solid black;
+    border-radius: 5px;
 }
 
 ::-webkit-scrollbar {
@@ -36,4 +25,8 @@
 
 .mat-card {
     border: 1px solid black
+}
+
+.mat-divider {
+    border-top-color: rgba(0, 0, 0, 0.12);
 }
