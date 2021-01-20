@@ -24,3 +24,19 @@
 .mat-divider {
     border-top-color: rgba(165, 68, 68, 0.12);
 }
+
+::ng-deep .mat-checkbox .mat-checkbox-frame {
+    border-color: rgb(148, 109, 109)!important;
+}
+
+::ng-deep .mat-form-field-label {
+    color: rgb(66, 116, 64) !important;
+}
+
+::ng-deep.mat-form-field-underline {
+    background-color: rgb(66, 116, 64) !important;
+}
+
+::ng-deep.mat-form-field-ripple {
+    background-color: rgb(66, 116, 64) !important;
+}

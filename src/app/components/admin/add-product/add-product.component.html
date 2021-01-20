@@ -48,7 +48,8 @@
 
         </div>
         <div>
-            <input type="file" accept="image/*" #fileUploader class="form-control fileInput m-2 p-1" (change)="showPreview($event)">
+            <label for="fileInput">Wybierz plik</label>
+            <input type="file" accept="image/*" #fileUploader class="form-control m-2 p-1" id="fileInput" (change)="showPreview($event)">
 
         </div>
         <div>

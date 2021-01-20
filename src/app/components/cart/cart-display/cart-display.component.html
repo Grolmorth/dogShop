@@ -1,6 +1,6 @@
 <div class="alert alert-info" *ngIf="cartItems.length===0">Twój koszyk jest pusty</div>
-<mat-card>
-    <ul class="list-group" *ngIf="cartItems.length>0">
+<mat-card *ngIf="cartItems.length>0">
+    <ul class="list-group">
         <li class="list-group-item" *ngFor="let item of cartItems">
 
             <app-cart-item [cartItem]="item"></app-cart-item>

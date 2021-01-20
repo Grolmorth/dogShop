@@ -1,17 +1,9 @@
-.mat-select {
-    background-color: rgb(66, 116, 64);
-}
-
 .mat-form-field {
     width: 100%;
 }
 
-.mat-option {
-    background-color: rgb(24, 73, 43);
-}
-
-.fileInput {
-    width: 50%;
+#fileInput {
+    display: none
 }
 
 .imageDisplay {
@@ -21,5 +13,57 @@
 }
 
 .mat-card {
-    background-color: rgb(80, 115, 145);
+    background-color: rgb(205, 213, 219);
+    color: black !important
+}
+
+::ng-deep .mat-checkbox .mat-checkbox-frame {
+    border-color: rgb(148, 109, 109) !important;
+}
+
+::ng-deep .mat-form-field-label {
+    color: rgb(66, 116, 64) !important;
+}
+
+::ng-deep.mat-form-field-underline {
+    background-color: rgb(66, 116, 64) !important;
+}
+
+::ng-deep.mat-form-field-ripple {
+    background-color: rgb(66, 116, 64) !important;
+}
+
+::ng-deep .mat-select-arrow {
+    color: black;
+}
+
+::ng-deep .mat-select-value {
+    color: black;
+}
+
+::ng-deep .mat-select-panel {
+    background: #777575;
+    color: black;
+}
+
+::ng-deep .mat-option {
+    background: #ffffff;
+    color: black;
+}
+
+label {
+    background: rgb(66, 116, 64);
+    border: none;
+    border-radius: 5px;
+    color: #fff;
+    cursor: pointer;
+    display: inline-block;
+    font-size: inherit;
+    font-weight: 500;
+    margin-bottom: 1rem;
+    outline: none;
+    padding: 1rem 50px;
+    position: relative;
+    transition: all 0.3s;
+    vertical-align: middle;
 }

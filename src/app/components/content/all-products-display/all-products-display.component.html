@@ -6,13 +6,13 @@
                 <mat-checkbox [(ngModel)]="priceChecked" (change)="applyFilters()">Uwzględnij cenę</mat-checkbox>
                 <div *ngIf="priceChecked">
 
-                    <mat-form-field class="form-field">
+                    <mat-form-field class="form-field m-1">
                         <mat-label>Cena minimalna </mat-label>
                         <input matInput type="number" (keyup)="applyFilters()" [(ngModel)]="minPrice">
 
                     </mat-form-field>
 
-                    <mat-form-field class="form-field">
+                    <mat-form-field class="form-field m-1">
                         <mat-label>Cena maksymalna </mat-label>
                         <input matInput type="number" (keyup)="applyFilters()" [(ngModel)]="maxPrice">
 
@@ -22,7 +22,7 @@
             <section class="brand">
                 <mat-checkbox [(ngModel)]="brandChecked" (change)="applyFilters()">Uwzględnij markę</mat-checkbox>
                 <div *ngIf="brandChecked">
-                    <mat-form-field class="form-field">
+                    <mat-form-field class="form-field m-1">
                         <mat-label>Wybierz markę </mat-label>
                         <input type="text" matInput (click)="applyFilters()" [formControl]="brandControl" [matAutocomplete]="auto">
                         <mat-autocomplete #auto="matAutocomplete">

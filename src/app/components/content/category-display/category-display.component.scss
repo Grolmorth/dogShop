@@ -14,22 +14,6 @@ p {
     padding-left: 5px;
 }
 
-::ng-deep .mat-checkbox .mat-checkbox-frame {
-    border-color: rgb(0, 0, 0);
-}
-
-::ng-deep .mat-form-field-label {
-    color: rgb(66, 116, 64) !important;
-}
-
-::ng-deep.mat-form-field-underline {
-    background-color: rgb(66, 116, 64) !important;
-}
-
-::ng-deep.mat-form-field-ripple {
-    background-color: rgb(66, 116, 64) !important;
-}
-
 @media only screen and (max-width: 768px) {
     p {
         cursor: pointer;
