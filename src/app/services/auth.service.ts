@@ -2,6 +2,11 @@ import { Injectable, NgZone } from '@angular/core';
 import { Router } from '@angular/router';
 import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/firestore';
 import { AngularFireAuth } from '@angular/fire/auth';
+import firebase from 'firebase/app';
+
+import { Location } from '@angular/common';
+
+
 
 export interface User {
   uid: string;
@@ -18,6 +23,7 @@ export class AuthService {
     public afAuth: AngularFireAuth, // Inject Firebase auth service
     public router: Router,
     public ngZone: NgZone, // NgZone service to remove outside scope warning
+    private location: Location
 
   ) {
     /* Saving user data in localstorage when
@@ -37,8 +43,19 @@ export class AuthService {
     return this.afAuth.signInWithEmailAndPassword(email, password)
       .then((result) => {
         this.ngZone.run(() => {
-          this.router.navigate(['admin']);
+          this.router.navigate(['login']);
         });
+        this.setUserData(result.user);
+      }).catch((error) => {
+        window.alert(error.message);
+      });
+  }
+  signUp(email, password) {
+    return this.afAuth.createUserWithEmailAndPassword(email, password)
+      .then((result) => {
+        /* Call the SendVerificaitonMail() function when new user sign
+        up and returns promise */
+
         this.setUserData(result.user);
       }).catch((error) => {
         window.alert(error.message);
@@ -58,7 +75,7 @@ export class AuthService {
     return this.afAuth.signOut().then(() => {
       localStorage.removeItem('user');
       this.refresh();
-      this.router.navigate(['admin']);
+      this.router.navigate(['login']);
 
     });
   }
@@ -68,6 +85,22 @@ export class AuthService {
   get isLoggedIn(): boolean {
     const user = JSON.parse(localStorage.getItem('user'));
     return (user !== null) ? true : false;
+  }
+  googleAuth() {
+    return this.authLogin(new firebase.auth.GoogleAuthProvider()).then(() => {
+      this.location.back();
+    });
+  }
+  authLogin(provider) {
+    return this.afAuth.signInWithPopup(provider)
+      .then((result) => {
+        this.ngZone.run(() => {
+          this.location.back();
+        });
+        this.setUserData(result.user);
+      }).catch((error) => {
+        window.alert(error);
+      });
   }
 
 }

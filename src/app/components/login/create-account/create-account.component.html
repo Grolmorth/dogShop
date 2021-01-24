@@ -1,0 +1,46 @@
+<mat-card class="container text-center">
+    <div class="displayTableCell">
+
+        <div class="authBlock">
+            <h3>Stwórz konto</h3>
+
+            <div class="formGroup">
+                <mat-form-field>
+                    <mat-label>Email</mat-label>
+                    <input matInput type="email" class="formControl m-1" placeholder="Adres e-mail" #userEmail required>
+                </mat-form-field>
+            </div>
+
+            <div class="formGroup">
+                <mat-form-field>
+                    <mat-label>Hasło</mat-label>
+                    <input matInput type="password" class="formControl m-1" placeholder="Hasło" #userPwd required>
+                </mat-form-field>
+            </div>
+
+
+            <div class="formGroup">
+                <input type="button" class="btn btn-primary m-1" value="Stwórz konto" (click)="authService.signUp(userEmail.value, userPwd.value)">
+            </div>
+
+            <div class="formGroup">
+                <span class="or"><span class="orInner">Lub</span></span>
+            </div>
+
+            <!-- Continue with Google -->
+            <div class="formGroup">
+                <button type="button" class="btn btn-danger m-1" (click)="authService.googleAuth()">
+          <i class="fab fa-google-plus-g"></i>
+          Zaloguj z Google
+        </button>
+            </div>
+
+
+        </div>
+
+        <div class="redirectToLogin">
+            <span>Masz konto? <span class="btn btn-primary m-1" routerLink="/sign-in">Zaloguj</span></span>
+        </div>
+    </div>
+
+</mat-card>

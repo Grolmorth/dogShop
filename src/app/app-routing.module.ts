@@ -1,3 +1,4 @@
+import { CreateAccountComponent } from './components/login/create-account/create-account.component';
 import { CartCenterComponent } from './components/content/cart-center/cart-center.component';
 import { EditProductComponent } from './components/admin/edit-product/edit-product.component';
 
@@ -38,6 +39,10 @@ const routes: Routes = [
   {
     path: 'login',
     component: LoginComponent,
+  },
+  {
+    path: 'create-user',
+    component: CreateAccountComponent,
   },
   {
     path: 'a/add',

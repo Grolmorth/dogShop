@@ -52,6 +52,9 @@ import { MatPaginatorIntl } from '@angular/material/paginator';
 import { CustomPaginator } from './services/customPaginatorConfiguration';
 import { AllProductsDisplayComponent } from './components/content/all-products-display/all-products-display.component';
 import { CartCenterComponent } from './components/content/cart-center/cart-center.component';
+import { AccountComponent } from './components/login/account/account.component';
+import { CreateAccountComponent } from './components/login/create-account/create-account.component';
+import { ForgotPasswordComponent } from './components/login/forgot-password/forgot-password.component';
 
 
 
@@ -83,6 +86,9 @@ import { CartCenterComponent } from './components/content/cart-center/cart-cente
     FilterPipe,
     AllProductsDisplayComponent,
     CartCenterComponent,
+    AccountComponent,
+    CreateAccountComponent,
+    ForgotPasswordComponent,
 
 
 
