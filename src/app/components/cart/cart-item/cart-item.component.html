@@ -1,3 +1,19 @@
-<a active [routerLink]="['/p', cartItem.categoryLink,cartItem.subCategoryLink,cartItem.nameLink, cartItem.id]">{{cartItem.nameDisplay}} </a>
+<div class="container">
 
-<p>{{cartItem.price|currencyPln}} x {{cartItem.quantity}}</p>
+    <div class="row">
+        <div class="col-3 m-0 image-container p-3 m-auto">
+            <img class="item-preview img-fluid" [src]="cartItem.imgUrl">
+        </div>
+        <div class="col-9 my-auto">
+            <div class="row ml-1">
+                <a active [routerLink]="['/p', cartItem.categoryLink,cartItem.subCategoryLink,cartItem.nameLink, cartItem.id]">{{cartItem.nameDisplay}} </a>
+            </div>
+            <div class="row ml-1">
+                <p id="price">{{cartItem.price|currencyPln}}</p>
+                <p>&nbsp;x&nbsp;</p>
+                <p id="quantity">{{cartItem.quantity}}</p>
+            </div>
+        </div>
+    </div>
+
+</div>

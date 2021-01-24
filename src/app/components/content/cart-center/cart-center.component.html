@@ -1,10 +1,15 @@
 <div class="alert alert-info" *ngIf="cartItems.length===0">Twój koszyk jest pusty</div>
 
 <div class="container mt-2" *ngIf="cartItems.length>0">
+    <div class="row">
+        <div class="col text-center">Twoje zakupy!</div>
+
+    </div>
+    <mat-divider></mat-divider>
     <div *ngFor="let item of cartItems">
         <div class="row">
             <app-cart-item class="col-8" [cartItem]="item"></app-cart-item>
-            <div class="col-4 float-right">
+            <div class="col-4 m-auto">
                 <button mat-icon-button color="primary" (click)="quantityPlus(item)"><mat-icon aria-hidden="false" aria-label="plus one icon" >exposure_plus_1</mat-icon></button>
                 <button mat-icon-button color="primary" (click)="quantityMinus(item)"><mat-icon aria-hidden="false" aria-label="neg one icon" >exposure_neg_1</mat-icon></button>
                 <button mat-icon-button color="primary" (click)="removeItem(item)"><mat-icon aria-hidden="false" aria-label="remove icon" >clear</mat-icon></button>
@@ -14,7 +19,8 @@
     </div>
 
     <div class="active total">
-        <strong>Wszystko:</strong> {{cartTotal|currencyPln}}
+        <strong>Wszystko:</strong>
+        <div class="total-price">{{cartTotal|currencyPln}}</div>
         <button mat-button class="pay-button">Zapłać</button>
     </div>
 </div>

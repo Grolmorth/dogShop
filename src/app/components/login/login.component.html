@@ -14,7 +14,10 @@
         </mat-form-field>
     </div>
     <div class="formGroup">
-        <button type="button" class="btn btn-primary m-1" (click)="authService.SignIn(userName.value, userPassword.value)">Zaloguj</button>
-
+        <button type="button" class="btn btn-primary m-1" (click)="authService.signIn(userName.value, userPassword.value)">Zaloguj</button>
     </div>
+</div>
+<div class="" *ngIf="authService.isLoggedIn">
+    <button type="button" class="btn btn-primary m-1" (click)="authService.signOut()">Wyloguj</button>
+
 </div>

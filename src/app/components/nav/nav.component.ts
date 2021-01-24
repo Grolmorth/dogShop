@@ -11,11 +11,9 @@ export class NavComponent implements OnInit {
   constructor(private navServ: NavServiceService) { }
   navLinks: any;
   ngOnInit(): void {
-
     this.navLinks = this.navServ.navlink;
   }
   collapse() {
-
     if (window.innerWidth < 767) {
       window.document.getElementById('mainmenu').setAttribute('data-toggle', 'collapse')
       window.document.getElementById('mainmenu').setAttribute('data-target', '#mainmenu')

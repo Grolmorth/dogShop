@@ -3,18 +3,27 @@
 
     <div class="mt-2" *ngFor="let item of cartItems">
         <div class="row">
-            <app-cart-item class="col-8" [cartItem]="item"></app-cart-item>
-            <div class="col-4 float-right">
+            <app-cart-item class="col-8 " [cartItem]="item"></app-cart-item>
+            <div class="col-4 m-auto">
+
                 <button mat-icon-button (click)="quantityPlus(item)"><mat-icon aria-hidden="false" aria-label="plus one icon" >exposure_plus_1</mat-icon></button>
                 <button mat-icon-button (click)="quantityMinus(item)"><mat-icon aria-hidden="false" aria-label="neg one icon" >exposure_neg_1</mat-icon></button>
                 <button mat-icon-button (click)="removeItem(item)"><mat-icon aria-hidden="false" aria-label="remove icon" >clear</mat-icon></button>
+
             </div>
         </div>
         <mat-divider></mat-divider>
     </div>
     <div class="float-right">
-        <strong>Wszystko:</strong> {{cartTotal|currencyPln}}
-        <ng-container *ngIf="showButton"><button class="m-2" [routerLink]="['/cart']" mat-button>Do kasy <mat-icon aria-hidden="false" aria-label="east icon" >east</mat-icon></button></ng-container>
+        <strong>Wszystko:</strong>
+        <div class="total-price">{{cartTotal|currencyPln}}</div>
+
+        <ng-container *ngIf="showButton">
+            <button class="m-2" [routerLink]="['/cart']" mat-button>Do kasy
+            <mat-icon aria-hidden="false" aria-label="east icon" >east
+
+            </mat-icon></button>
+        </ng-container>
 
     </div>
 

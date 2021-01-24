@@ -33,18 +33,18 @@ export class AuthService {
       }
     });
   }
-  SignIn(email, password) {
+  signIn(email, password) {
     return this.afAuth.signInWithEmailAndPassword(email, password)
       .then((result) => {
         this.ngZone.run(() => {
           this.router.navigate(['admin']);
         });
-        this.SetUserData(result.user);
+        this.setUserData(result.user);
       }).catch((error) => {
         window.alert(error.message);
       });
   }
-  SetUserData(user) {
+  setUserData(user) {
     const userRef: AngularFirestoreDocument<any> = this.afs.doc(`users/${user.uid}`);
     const userData: User = {
       uid: user.uid,
@@ -54,7 +54,7 @@ export class AuthService {
       merge: true
     });
   }
-  SignOut() {
+  signOut() {
     return this.afAuth.signOut().then(() => {
       localStorage.removeItem('user');
       this.refresh();
@@ -67,7 +67,7 @@ export class AuthService {
   }
   get isLoggedIn(): boolean {
     const user = JSON.parse(localStorage.getItem('user'));
-    return (user !== null ) ? true : false;
+    return (user !== null) ? true : false;
   }
 
 }

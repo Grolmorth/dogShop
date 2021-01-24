@@ -11,6 +11,39 @@
     z-index: 1;
 }
 
+.sub-menu-item:hover {
+    transition: 0.4s;
+    box-shadow: inset 0 0 1em grey;
+}
+
+.sub-menu {
+    margin-top: 12px;
+    position: absolute;
+    padding: 0;
+}
+
+li {
+    list-style-type: none;
+    cursor: pointer;
+}
+
+.menu-link {
+    width: $size-of-nav-item;
+    position: relative;
+    height: 40px;
+    padding: 0px;
+}
+
+a {
+    text-decoration: none;
+    color: #343a40
+}
+
+.menu-item {
+    font-size: 20px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
 @media screen and (min-width: 767px) {
     .sub-menu-item {
         display: none;
@@ -27,24 +60,6 @@
     }
 }
 
-li {
-    list-style-type: none;
-    cursor: pointer;
-}
-
-.sub-menu {
-    margin-top: 12px;
-    position: absolute;
-    padding: 0;
-}
-
-.menu-link {
-    width: $size-of-nav-item;
-    position: relative;
-    height: 40px;
-    padding: 0px;
-}
-
 @media screen and (min-width: 767px) {
     .menu-link:hover {
         .sub-menu-item {
@@ -56,21 +71,6 @@ li {
             color: #6c757d;
         }
     }
-}
-
-.sub-menu-item:hover {
-    transition: 0.4s;
-    box-shadow: inset 0 0 1em grey;
-}
-
-a {
-    text-decoration: none;
-    color: #343a40
-}
-
-.menu-item {
-    font-size: 20px;
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 
 @keyframes sub-menu-animation {

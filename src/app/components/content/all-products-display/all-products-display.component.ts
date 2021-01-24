@@ -22,6 +22,8 @@ export class AllProductsDisplayComponent implements OnDestroy, OnChanges, OnInit
   dataSource: MatTableDataSource<Product>;
   sortByPrice = true;
   obs: Observable<any>;
+  filters: boolean = false;
+  sorts: boolean = false;
 
   // brand checkbox
   brandControl = new FormControl();
@@ -49,7 +51,6 @@ export class AllProductsDisplayComponent implements OnDestroy, OnChanges, OnInit
       }
     })
   }
-
   sortData(order: string): void {
     if (order === 'price' && !this.sortByPrice) {
       this.sortByPrice = !this.sortByPrice;
@@ -134,5 +135,11 @@ export class AllProductsDisplayComponent implements OnDestroy, OnChanges, OnInit
     const filterValue = value.toLowerCase();
 
     return this.brands.filter(brands => brands.toLowerCase().includes(filterValue));
+  }
+  toggleFilters() {
+    this.filters = !this.filters;
+  }
+  toggleSorts() {
+    this.sorts = !this.sorts;
   }
 }
