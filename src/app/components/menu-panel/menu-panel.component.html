@@ -4,11 +4,16 @@
             <button mat-button routerLink="/a/add">Dodaj</button>
             <button mat-button routerLink="/a/show">Filtry</button>
             <button mat-button routerLink="/login">Login</button>
+
+        </div>
+        <div class="col-sm">Witaj użytkowniku
+
         </div>
         <div class="col-sm">
 
             <button mat-button *ngIf="shopItems===0"><mat-icon (click)="toggleCart()" >shopping_cart</mat-icon></button>
             <button mat-button class="cart-button" (click)="toggleCart()" *ngIf="shopItems>0"><mat-icon  [matBadge]="shopItems" matBadgeColor="warn">shopping_cart</mat-icon></button>
+
             <ng-container *ngIf="showContent">
                 <app-cart-display class="cart" [ngClass]="{'cart-show':cartVisible, 'cart-hide':!cartVisible }">
                 </app-cart-display>

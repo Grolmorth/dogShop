@@ -22,15 +22,14 @@
             <div class="formGroup">
                 <input type="button" class="btn btn-primary m-1" value="Stwórz konto" (click)="authService.signUp(userEmail.value, userPwd.value)">
             </div>
-
-            <div class="formGroup">
-                <span class="or"><span class="orInner">Lub</span></span>
+            <div>
+                <p class="m-1 p-1">Lub</p>
             </div>
 
             <!-- Continue with Google -->
             <div class="formGroup">
                 <button type="button" class="btn btn-danger m-1" (click)="authService.googleAuth()">
-          <i class="fab fa-google-plus-g"></i>
+
           Zaloguj z Google
         </button>
             </div>

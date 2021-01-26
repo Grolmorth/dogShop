@@ -1,17 +1,11 @@
+import { User } from './user';
 import { Injectable, NgZone } from '@angular/core';
 import { Router } from '@angular/router';
-import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/firestore';
 import { AngularFireAuth } from '@angular/fire/auth';
 import firebase from 'firebase/app';
 
 import { Location } from '@angular/common';
-
-
-
-export interface User {
-  uid: string;
-  email: string;
-}
+import { AngularFireDatabase, AngularFireObject } from '@angular/fire/database';
 
 @Injectable({
   providedIn: 'root'
@@ -19,11 +13,11 @@ export interface User {
 export class AuthService {
   userData: any; // Save logged in user data
   constructor(
-    public afs: AngularFirestore,   // Inject Firestore service
     public afAuth: AngularFireAuth, // Inject Firebase auth service
     public router: Router,
     public ngZone: NgZone, // NgZone service to remove outside scope warning
-    private location: Location
+    private location: Location,
+    private firebase: AngularFireDatabase
 
   ) {
     /* Saving user data in localstorage when
@@ -32,10 +26,8 @@ export class AuthService {
       if (user) {
         this.userData = user;
         localStorage.setItem('user', JSON.stringify(this.userData));
-        JSON.parse(localStorage.getItem('user'));
       } else {
         localStorage.setItem('user', null);
-        JSON.parse(localStorage.getItem('user'));
       }
     });
   }
@@ -51,25 +43,25 @@ export class AuthService {
       });
   }
   signUp(email, password) {
+    console.log(email, password)
     return this.afAuth.createUserWithEmailAndPassword(email, password)
       .then((result) => {
-        /* Call the SendVerificaitonMail() function when new user sign
-        up and returns promise */
-
         this.setUserData(result.user);
       }).catch((error) => {
         window.alert(error.message);
       });
   }
   setUserData(user) {
-    const userRef: AngularFirestoreDocument<any> = this.afs.doc(`users/${user.uid}`);
+    const userRef: AngularFireObject<any> = this.firebase.object(`users/${user.uid}`);
     const userData: User = {
       uid: user.uid,
       email: user.email,
+      displayName: user.displayName,
+      photoURL: user.photoURL,
+      emailVerified: user.emailVerified
     };
-    return userRef.set(userData, {
-      merge: true
-    });
+    userRef.update(userData);
+
   }
   signOut() {
     return this.afAuth.signOut().then(() => {

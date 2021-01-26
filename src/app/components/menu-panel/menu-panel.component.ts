@@ -1,5 +1,7 @@
+
 import { ActivatedRoute } from '@angular/router';
 import { Component, DoCheck, OnInit } from '@angular/core';
+import { User } from 'src/app/services/user';
 
 @Component({
   selector: 'app-menu-panel',
@@ -11,11 +13,15 @@ export class MenuPanelComponent implements DoCheck, OnInit {
   shopItems = 0;
   cartVisible = false;
   showContent = true;
+  user: User;
 
 
   constructor(private route: ActivatedRoute) { }
 
-  ngOnInit(): void {
+   ngOnInit(): void {
+    if (localStorage.getItem('user')) {
+
+    }
 
   }
 
@@ -23,7 +29,7 @@ export class MenuPanelComponent implements DoCheck, OnInit {
   ngDoCheck(): void {
     if (this.route.snapshot['_routerState'].url === "/cart") {
       this.showContent = false;
-      this.cartVisible =false;
+      this.cartVisible = false;
     }
     else {
       this.showContent = true;
