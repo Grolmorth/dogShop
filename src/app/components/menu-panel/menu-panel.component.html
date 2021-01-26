@@ -3,22 +3,25 @@
         <div class="col-sm">
             <button mat-button routerLink="/a/add">Dodaj</button>
             <button mat-button routerLink="/a/show">Filtry</button>
-            <button mat-button routerLink="/login">Login</button>
 
         </div>
-        <div class="col-sm">Witaj użytkowniku
-
+        <div class="col-sm m-auto" *ngIf="user.displayName">
+            <p class="m-auto">Witaj {{user.displayName}}</p>
         </div>
         <div class="col-sm">
-
+            <button *ngIf="!user.uid" mat-button routerLink="/login">Login</button>
+            <button *ngIf="user.uid" mat-button (click)="logout()">Wyloguj</button>
             <button mat-button *ngIf="shopItems===0"><mat-icon (click)="toggleCart()" >shopping_cart</mat-icon></button>
             <button mat-button class="cart-button" (click)="toggleCart()" *ngIf="shopItems>0"><mat-icon  [matBadge]="shopItems" matBadgeColor="warn">shopping_cart</mat-icon></button>
-
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-0 col-md-4 col-lg-6"></div>
+        <div class="col-sm-12 col-md-8 col-lg-6">
             <ng-container *ngIf="showContent">
                 <app-cart-display class="cart" [ngClass]="{'cart-show':cartVisible, 'cart-hide':!cartVisible }">
                 </app-cart-display>
             </ng-container>
-
         </div>
     </div>
 </div>

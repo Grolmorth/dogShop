@@ -1,7 +1,9 @@
+import { AuthService } from 'src/app/services/auth.service';
 
 import { ActivatedRoute } from '@angular/router';
 import { Component, DoCheck, OnInit } from '@angular/core';
 import { User } from 'src/app/services/user';
+
 
 @Component({
   selector: 'app-menu-panel',
@@ -13,18 +15,18 @@ export class MenuPanelComponent implements DoCheck, OnInit {
   shopItems = 0;
   cartVisible = false;
   showContent = true;
-  user: User;
-
-
-  constructor(private route: ActivatedRoute) { }
-
-   ngOnInit(): void {
-    if (localStorage.getItem('user')) {
-
-    }
-
+  user: User = {
+    uid: '',
+    email: '',
+    emailVerified: false,
+    displayName: '',
+    photoURL: ''
   }
 
+  constructor(private route: ActivatedRoute, private authService: AuthService) { }
+
+  ngOnInit(): void {
+  }
 
   ngDoCheck(): void {
     if (this.route.snapshot['_routerState'].url === "/cart") {
@@ -44,9 +46,24 @@ export class MenuPanelComponent implements DoCheck, OnInit {
       }, 1000
       );
     }
+
+    if (localStorage.getItem('user') !== "null") {
+      this.getUserData();
+    }
   }
   toggleCart() {
     this.cartVisible = !this.cartVisible;
   }
-
+  getUserData() {
+    const localStorageUser = JSON.parse(localStorage.getItem('user'))
+    this.user.uid = localStorageUser.uid;
+    this.user.email = localStorageUser.email;
+    this.user.emailVerified = localStorageUser.emailVerified;
+    this.user.displayName = localStorageUser.displayName;
+    this.user.photoURL = localStorageUser.photoURL;
+  }
+  logout() {
+    this.authService.signOut();
+    this.user=null;
+  }
 }
