@@ -6,7 +6,7 @@
         </div>
         <div class="col-9 my-auto">
             <div class="row ml-1">
-                <a active [routerLink]="['/p', cartItem.categoryLink,cartItem.subCategoryLink,cartItem.nameLink, cartItem.id]">{{cartItem.nameDisplay}} </a>
+                <a active (click)="closeCart()" [routerLink]="['/p', cartItem.categoryLink,cartItem.subCategoryLink,cartItem.nameLink, cartItem.id]">{{cartItem.nameDisplay}} </a>
             </div>
             <div class="row ml-1">
                 <p id="price">{{cartItem.price|currencyPln}}</p>

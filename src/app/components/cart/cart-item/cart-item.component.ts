@@ -1,5 +1,5 @@
 import { Product } from './../../../services/product';
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
 @Component({
   selector: 'app-cart-item',
@@ -9,9 +9,13 @@ import { Component, Input, OnInit } from '@angular/core';
 export class CartItemComponent implements OnInit {
 
   @Input() cartItem: Product;
+  @Output() closeCartEvent = new EventEmitter<boolean>();
   constructor() { }
 
   ngOnInit(): void {
+  }
+  closeCart(value: boolean = true) {
+    this.closeCartEvent.emit(value);
   }
 
 }

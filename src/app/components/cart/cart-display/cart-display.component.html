@@ -3,7 +3,7 @@
 
     <div class="mt-2" *ngFor="let item of cartItems">
         <div class="row">
-            <app-cart-item class="col-8 " [cartItem]="item"></app-cart-item>
+            <app-cart-item class="col-8" [cartItem]="item" (closeCartEvent)=closeCart()></app-cart-item>
             <div class="col-4 m-auto">
 
                 <button mat-icon-button (click)="quantityPlus(item)"><mat-icon aria-hidden="false" aria-label="plus one icon" >exposure_plus_1</mat-icon></button>

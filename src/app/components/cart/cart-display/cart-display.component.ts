@@ -1,7 +1,7 @@
 import { Product } from 'src/app/services/product';
 import { MessengerService } from './../../../services/messenger.service';
 
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
 
@@ -12,8 +12,9 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class CartDisplayComponent implements OnInit {
 
+  // close cart
+  @Output() closeCartEvent = new EventEmitter<boolean>();
   showButton = true;
-
   cartItems: Product[] = [];
   cartTotal = 0;
   constructor(private msg: MessengerService, private route: ActivatedRoute) { }
@@ -99,6 +100,9 @@ export class CartDisplayComponent implements OnInit {
       }
     }
     this.getTotalCost()
+  }
+  closeCart(value: boolean = true) {
+    this.closeCartEvent.emit(value);
   }
 
 
