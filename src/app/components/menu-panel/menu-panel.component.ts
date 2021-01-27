@@ -64,6 +64,6 @@ export class MenuPanelComponent implements DoCheck, OnInit {
   }
   logout() {
     this.authService.signOut();
-    this.user=null;
+    this.user = null;
   }
 }
