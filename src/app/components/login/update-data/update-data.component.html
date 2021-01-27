@@ -1,0 +1,84 @@
+<div class="container">
+    <div class="row">
+        <div class="col-sm">
+            Zaktualizuj dane adresowe:
+            <div class="container">
+                <form [formGroup]="formTemplate" (ngSubmit)="onSubmit(formTemplate)">
+                    <div class="row">
+                        <mat-form-field>
+                            <mat-label>Imię</mat-label>
+                            <input matInput required formControlName="name" placeholder="Imię">
+                            <mat-error *ngIf="formTemplate.get('name').invalid">
+                                Pole <strong>wymagane</strong>
+                            </mat-error>
+                        </mat-form-field>
+                    </div>
+                    <div class="row">
+                        <mat-form-field>
+                            <mat-label>Nazwisko</mat-label>
+                            <input matInput required formControlName="surname" placeholder="Nazwisko">
+                            <mat-error *ngIf="formTemplate.get('surname').invalid">
+                                Pole <strong>wymagane</strong>
+                            </mat-error>
+                        </mat-form-field>
+                    </div>
+                    <div class="row">
+                        <mat-form-field>
+                            <mat-label>Państwo</mat-label>
+                            <input matInput required formControlName="country" placeholder="Państwo">
+                            <mat-error *ngIf="formTemplate.get('country').invalid">
+                                Pole <strong>wymagane</strong>
+                            </mat-error>
+                        </mat-form-field>
+                    </div>
+                    <div class="row">
+                        <mat-form-field>
+                            <mat-label>Miasto</mat-label>
+                            <input matInput required formControlName="city" placeholder="Miasto">
+                            <mat-error *ngIf="formTemplate.get('city').invalid">
+                                Pole <strong>wymagane</strong>
+                            </mat-error>
+                        </mat-form-field>
+                    </div>
+                    <div class="row">
+                        <mat-form-field>
+                            <mat-label>Kod pocztowy</mat-label>
+                            <input matInput required formControlName="zipCode" placeholder="Kod pocztowy">
+                            <mat-error *ngIf="formTemplate.get('zipCode').invalid">
+                                Pole <strong>wymagane</strong>
+                            </mat-error>
+                        </mat-form-field>
+                    </div>
+                    <div class="row">
+                        <mat-form-field>
+                            <mat-label>Ulica</mat-label>
+                            <input matInput required formControlName="street" placeholder="Ulica">
+                            <mat-error *ngIf="formTemplate.get('street').invalid">
+                                Pole <strong>wymagane</strong>
+                            </mat-error>
+                        </mat-form-field>
+                    </div>
+                    <div class="row">
+                        <mat-form-field>
+                            <mat-label>Numer domu/mieszkania</mat-label>
+                            <input matInput required formControlName="streetNumber" placeholder="Numer domu/mieszkania">
+                            <mat-error *ngIf="formTemplate.get('streetNumber').invalid">
+                                Pole <strong>wymagane</strong>
+                            </mat-error>
+                        </mat-form-field>
+                    </div>
+                    <div class="row">
+                        <mat-form-field>
+                            <mat-label>Telefon kontaktowy</mat-label>
+                            <input matInput required formControlName="phone" placeholder="Telefon kontaktowy">
+                            <mat-error *ngIf="formTemplate.get('phone').invalid">
+                                Pole <strong>wymagane</strong>
+                            </mat-error>
+                        </mat-form-field>
+                    </div>
+                    <button class="m-3 " mat-stroked-button type="submit()" [disabled]="formTemplate.invalid">Zaktualizuj</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

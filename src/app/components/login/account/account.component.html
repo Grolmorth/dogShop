@@ -1,8 +1,47 @@
 <div class="container">
     <div class="row">
         <div class="col-sm">
-            <button mat-button>Zaktualizuj dane adresowe</button>
+            <button mat-button routerLink="/update-data">Zaktualizuj dane adresowe</button>
             <button mat-button>Historia zakupów</button>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm">
+            Twoje dane adresowe:
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm">Imię:</div>
+                    <div class="col-sm">{{user.address.name}}</div>
+                </div>
+                <div class="row">
+                    <div class="col-sm">Nazwisko:</div>
+                    <div class="col-sm">{{user.address.surname}}</div>
+                </div>
+                <div class="row">
+                    <div class="col-sm">Państwo:</div>
+                    <div class="col-sm">{{user.address.country}}</div>
+                </div>
+                <div class="row">
+                    <div class="col-sm">Miasto:</div>
+                    <div class="col-sm">{{user.address.city}}</div>
+                </div>
+                <div class="row">
+                    <div class="col-sm">Kod pocztowy:</div>
+                    <div class="col-sm">{{user.address.zipCode}}</div>
+                </div>
+                <div class="row">
+                    <div class="col-sm">Ulica:</div>
+                    <div class="col-sm">{{user.address.street}}</div>
+                </div>
+                <div class="row">
+                    <div class="col-sm">Numer domu/mieszkania:</div>
+                    <div class="col-sm">{{user.address.streetNumber}}</div>
+                </div>
+                <div class="row">
+                    <div class="col-sm">Telefon kontaktowy:</div>
+                    <div class="col-sm">{{user.address.phone}}</div>
+                </div>
+            </div>
         </div>
     </div>
 </div>

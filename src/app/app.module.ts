@@ -55,6 +55,7 @@ import { CartCenterComponent } from './components/content/cart-center/cart-cente
 import { AccountComponent } from './components/login/account/account.component';
 import { CreateAccountComponent } from './components/login/create-account/create-account.component';
 import { ForgotPasswordComponent } from './components/login/forgot-password/forgot-password.component';
+import { UpdateDataComponent } from './components/login/update-data/update-data.component';
 
 
 
@@ -89,6 +90,7 @@ import { ForgotPasswordComponent } from './components/login/forgot-password/forg
     AccountComponent,
     CreateAccountComponent,
     ForgotPasswordComponent,
+    UpdateDataComponent,
 
 
 

@@ -26,28 +26,25 @@ export class DisplayDetailItemComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     //subscribe route params to get right items
     this.paramSub = this.route.params.subscribe(params => {
-      if (this.id && this.id !== params.id) {
-        location.reload()
-      }
-
       this.categoryLink = params.categoryLink;
       this.subCategoryLink = params.subCategoryLink;
       this.nameLink = params.nameLink;
       this.id = params.id;
-
-    })
-    this.productServ.getProduct(this.categoryLink, this.subCategoryLink)
-    this.productSub = this.productServ.file.valueChanges().subscribe(v => {
-      v.map(n => {
-        // == becouse params convert number to string
-        if (n.id == this.id && n.nameLink === this.nameLink) {
-          this.product = n;
-        }
+      this.productServ.getProduct(this.categoryLink, this.subCategoryLink)
+      this.productSub = this.productServ.file.valueChanges().subscribe(v => {
+        v.map(n => {
+          // == becouse params convert number to string
+          if (n.id == this.id && n.nameLink === this.nameLink) {
+            this.product = n;
+          }
+        });
       });
-    });
+    })
+
   }
 
   ngOnDestroy(): void {
+
     this.paramSub.unsubscribe();
     this.productSub.unsubscribe();
   }

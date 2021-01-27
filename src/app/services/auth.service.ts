@@ -61,7 +61,6 @@ export class AuthService {
       emailVerified: user.emailVerified
     };
     userRef.update(userData);
-
   }
   signOut() {
     return this.afAuth.signOut().then(() => {

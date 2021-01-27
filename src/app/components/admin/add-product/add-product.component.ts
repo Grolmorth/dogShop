@@ -27,8 +27,6 @@ export class AddProductComponent implements OnInit, DoCheck {
     id: new FormControl('', [Validators.required, Validators.pattern('^[0-9]*$')]),
     price: new FormControl('', Validators.required),
     company: new FormControl('', Validators.required),
-
-
   });
   ngOnInit(): void {
     // get category list

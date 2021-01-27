@@ -1,3 +1,4 @@
+import { UpdateDataComponent } from './components/login/update-data/update-data.component';
 import { AccountComponent } from './components/login/account/account.component';
 import { CreateAccountComponent } from './components/login/create-account/create-account.component';
 import { CartCenterComponent } from './components/content/cart-center/cart-center.component';
@@ -48,6 +49,10 @@ const routes: Routes = [
   {
     path: 'create-user',
     component: CreateAccountComponent,
+  },
+  {
+    path: 'update-data',
+    component: UpdateDataComponent,
   },
   {
     path: 'a/add',

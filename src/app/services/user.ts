@@ -7,7 +7,7 @@ export interface User {
   emailVerified: boolean;
   displayName?: string;
   photoURL?: string;
-  adress?: Address;
+  address?: Address;
   cart?: [Product];
   shoppingHistory?: [Purchase];
 }
