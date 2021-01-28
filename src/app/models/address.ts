@@ -1,6 +1,6 @@
 export interface Address {
-  name?:string;
-  surname?:string;
+  name?: string;
+  surname?: string;
   country?: string;
   city?: string;
   zipCode?: string;

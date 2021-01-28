@@ -2,6 +2,7 @@ import { UserDataService } from './../../../services/user-data.service';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { User } from 'src/app/models/user';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-update-data',
@@ -10,7 +11,7 @@ import { User } from 'src/app/models/user';
 })
 export class UpdateDataComponent implements OnInit {
 
-  constructor(private userData: UserDataService) { }
+  constructor(private userData: UserDataService, private location: Location) { }
   formTemplate = new FormGroup({
     name: new FormControl('', Validators.required),
     surname: new FormControl('', Validators.required),
@@ -39,10 +40,11 @@ export class UpdateDataComponent implements OnInit {
     }
   }
   ngOnInit(): void {
+
     this.userData.getUserData().valueChanges().subscribe(val => {
 
       this.user = val;
-      if (this.user.displayName) {
+      if (this.user.uid) {
         this.formTemplate.setValue({
           name: this.user.address.name,
           surname: this.user.address.surname,
@@ -60,6 +62,7 @@ export class UpdateDataComponent implements OnInit {
   onSubmit(form) {
 
     this.userData.setUserData(form.value);
+    this.location.back();
   }
 
 }

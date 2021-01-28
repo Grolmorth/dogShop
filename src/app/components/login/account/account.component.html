@@ -5,7 +5,7 @@
             <button mat-button routerLink="/purchase-history">Historia zakupów</button>
         </div>
     </div>
-    <div class="row">
+    <div class="row" *ngIf="user.address">
         <div class="col-sm">
             Twoje dane adresowe:
             <div class="container">

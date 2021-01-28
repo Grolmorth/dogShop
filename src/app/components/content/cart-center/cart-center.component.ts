@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 
 import { MessengerService } from 'src/app/services/messenger.service';
 import { Product } from 'src/app/models/product';
+import { User } from 'src/app/models/user';
+import { UserDataService } from 'src/app/services/user-data.service';
 
 @Component({
   selector: 'app-cart-center',
@@ -10,18 +12,37 @@ import { Product } from 'src/app/models/product';
 })
 export class CartCenterComponent implements OnInit {
 
-
-
   cartItems: Product[] = [];
   cartTotal = 0;
-  constructor(private msg: MessengerService) { }
-
+  constructor(private msg: MessengerService, private userData: UserDataService) { }
+  user: User = {
+    uid: '',
+    email: '',
+    emailVerified: false,
+    displayName: '',
+    photoURL: '',
+    address: {
+      name: '',
+      surname: '',
+      country: '',
+      city: '',
+      zipCode: '',
+      street: '',
+      streetNumber: '',
+      phone: ''
+    }
+  }
   ngOnInit(): void {
+
     this.getCartFromStorage()
     this.msg.getMessage().subscribe((product: Product) => {
       this.addProductToCart(product);
     });
     this.getTotalCost()
+    if (localStorage.getItem('user')) {
+      this.getUserData();
+
+    } else { this.resetUser() }
   }
   addProductToCart(product: Product) {
 
@@ -94,5 +115,24 @@ export class CartCenterComponent implements OnInit {
       }
     }
     this.getTotalCost()
+  }
+  payForItems() {
+
+  }
+  getUserData() {
+    this.userData.getUserData().valueChanges().subscribe(val => {
+      if (val.uid) {
+        this.user = val;
+      }
+    })
+  }
+  resetUser() {
+    this.user = {
+      uid: '',
+      email: '',
+      emailVerified: false,
+      displayName: '',
+      photoURL: ''
+    }
   }
 }

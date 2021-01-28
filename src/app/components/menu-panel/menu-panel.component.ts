@@ -26,6 +26,7 @@ export class MenuPanelComponent implements DoCheck, OnInit {
   constructor(private route: ActivatedRoute, private authService: AuthService) { }
 
   ngOnInit(): void {
+
   }
 
   ngDoCheck(): void {
@@ -36,9 +37,11 @@ export class MenuPanelComponent implements DoCheck, OnInit {
     else {
       this.showContent = true;
     }
+    //het number of items
     if (localStorage.getItem('cart')) {
       this.shopItems = JSON.parse(localStorage.getItem('cart')).length;
     }
+    // hide cart if there is 0 items
     if (this.shopItems === 0 && this.cartVisible === true) {
       setTimeout(() => {
         this.cartVisible = false;
@@ -46,15 +49,15 @@ export class MenuPanelComponent implements DoCheck, OnInit {
       }, 1000
       );
     }
-
-    if (localStorage.getItem('user') !== "null") {
+    if (localStorage.getItem('user')) {
       this.getUserData();
-    }
+    } else { this.resetUser() }
   }
   toggleCart() {
     this.cartVisible = !this.cartVisible;
   }
   getUserData() {
+
     const localStorageUser = JSON.parse(localStorage.getItem('user'))
     this.user.uid = localStorageUser.uid;
     this.user.email = localStorageUser.email;
@@ -62,8 +65,17 @@ export class MenuPanelComponent implements DoCheck, OnInit {
     this.user.displayName = localStorageUser.displayName;
     this.user.photoURL = localStorageUser.photoURL;
   }
+  resetUser() {
+    this.user = {
+      uid: '',
+      email: '',
+      emailVerified: false,
+      displayName: '',
+      photoURL: ''
+    }
+  }
   logout() {
     this.authService.signOut();
-    this.user = null;
+    this.resetUser();
   }
 }

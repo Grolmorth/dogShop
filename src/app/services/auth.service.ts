@@ -27,7 +27,8 @@ export class AuthService {
         this.userData = user;
         localStorage.setItem('user', JSON.stringify(this.userData));
       } else {
-        localStorage.setItem('user', null);
+        localStorage.removeItem('user');
+        this.userData = null;
       }
     });
   }
@@ -65,7 +66,7 @@ export class AuthService {
   signOut() {
     return this.afAuth.signOut().then(() => {
       localStorage.removeItem('user');
-      this.refresh();
+      this.location.back();
     });
   }
   refresh(): void {
