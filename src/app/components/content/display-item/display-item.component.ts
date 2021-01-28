@@ -1,5 +1,5 @@
 import { MessengerService } from './../../../services/messenger.service';
-import { Product } from './../../../services/product';
+import { Product } from './../../../models/product';
 import { Component, Input, OnInit } from '@angular/core';
 
 

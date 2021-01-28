@@ -3,7 +3,7 @@ import { NavServiceService } from './../../../services/nav-service.service';
 import { Component, OnInit } from '@angular/core';
 
 import { ActivatedRoute, Router } from '@angular/router';
-import { Product } from 'src/app/services/product';
+import { Product } from 'src/app/models/product';
 import { AngularFireList } from '@angular/fire/database';
 
 

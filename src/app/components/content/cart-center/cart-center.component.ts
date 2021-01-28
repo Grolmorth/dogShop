@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 import { MessengerService } from 'src/app/services/messenger.service';
-import { Product } from 'src/app/services/product';
+import { Product } from 'src/app/models/product';
 
 @Component({
   selector: 'app-cart-center',

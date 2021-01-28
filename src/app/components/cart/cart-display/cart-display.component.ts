@@ -1,4 +1,4 @@
-import { Product } from 'src/app/services/product';
+import { Product } from 'src/app/models/product';
 import { MessengerService } from './../../../services/messenger.service';
 
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';

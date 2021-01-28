@@ -56,6 +56,7 @@ import { AccountComponent } from './components/login/account/account.component';
 import { CreateAccountComponent } from './components/login/create-account/create-account.component';
 import { ForgotPasswordComponent } from './components/login/forgot-password/forgot-password.component';
 import { UpdateDataComponent } from './components/login/update-data/update-data.component';
+import { PurchaseHistoryComponent } from './components/login/purchase-history/purchase-history.component';
 
 
 
@@ -91,6 +92,7 @@ import { UpdateDataComponent } from './components/login/update-data/update-data.
     CreateAccountComponent,
     ForgotPasswordComponent,
     UpdateDataComponent,
+    PurchaseHistoryComponent,
 
 
 

@@ -2,7 +2,7 @@ import { ProductService } from './../../../services/product.service';
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { NavServiceService } from 'src/app/services/nav-service.service';
-import { Product } from 'src/app/services/product';
+import { Product } from 'src/app/models/product';
 import { AngularFireList } from '@angular/fire/database';
 
 

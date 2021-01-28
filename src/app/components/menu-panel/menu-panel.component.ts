@@ -2,7 +2,7 @@ import { AuthService } from 'src/app/services/auth.service';
 
 import { ActivatedRoute } from '@angular/router';
 import { Component, DoCheck, OnInit } from '@angular/core';
-import { User } from 'src/app/services/user';
+import { User } from 'src/app/models/user';
 
 
 @Component({

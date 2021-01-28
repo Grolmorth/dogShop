@@ -1,5 +1,5 @@
-import { Address } from './address';
-import { User } from 'src/app/services/user';
+import { Address } from '../models/address';
+import { User } from 'src/app/models/user';
 import { Injectable } from '@angular/core';
 import { AngularFireDatabase, AngularFireObject } from '@angular/fire/database';
 

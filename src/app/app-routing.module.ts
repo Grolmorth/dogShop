@@ -15,6 +15,7 @@ import { PageNotFoundComponent } from './components/page-not-found/page-not-foun
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { ProductListComponent } from './components/admin/product-list/product-list.component';
+import { PurchaseHistoryComponent } from './components/login/purchase-history/purchase-history.component';
 
 
 
@@ -53,6 +54,10 @@ const routes: Routes = [
   {
     path: 'update-data',
     component: UpdateDataComponent,
+  },
+  {
+    path: 'purchase-history',
+    component: PurchaseHistoryComponent,
   },
   {
     path: 'a/add',

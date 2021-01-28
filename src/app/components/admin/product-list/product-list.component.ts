@@ -1,7 +1,7 @@
 import { NavServiceService } from './../../../services/nav-service.service';
 import { ProductService } from './../../../services/product.service';
 import { Component, OnInit, DoCheck } from '@angular/core';
-import { Product } from 'src/app/services/product';
+import { Product } from 'src/app/models/product';
 import { AngularFireList } from '@angular/fire/database';
 import { FormControl } from '@angular/forms';
 import { Observable } from 'rxjs';

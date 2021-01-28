@@ -2,7 +2,7 @@ import { MessengerService } from './../../../services/messenger.service';
 import { ActivatedRoute } from '@angular/router';
 import { ProductService } from './../../../services/product.service';
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { Product } from 'src/app/services/product';
+import { Product } from 'src/app/models/product';
 
 @Component({
   selector: 'app-display-detail-item',

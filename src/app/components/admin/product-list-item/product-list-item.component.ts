@@ -1,7 +1,7 @@
 import { ProductService } from './../../../services/product.service';
 import { Router } from '@angular/router';
 import {  Component, Input, OnChanges,  SimpleChanges, ViewChild } from '@angular/core';
-import { Product } from 'src/app/services/product';
+import { Product } from 'src/app/models/product';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatSort } from '@angular/material/sort';
 import { MatPaginator } from '@angular/material/paginator';

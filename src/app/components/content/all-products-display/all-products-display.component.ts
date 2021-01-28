@@ -1,4 +1,4 @@
-import { Product } from 'src/app/services/product';
+import { Product } from 'src/app/models/product';
 import { Component, Input, OnInit, ViewChild, OnDestroy, OnChanges } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { Observable } from 'rxjs';

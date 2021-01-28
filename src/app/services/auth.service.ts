@@ -1,4 +1,4 @@
-import { User } from './user';
+import { User } from '../models/user';
 import { Injectable, NgZone } from '@angular/core';
 import { Router } from '@angular/router';
 import { AngularFireAuth } from '@angular/fire/auth';

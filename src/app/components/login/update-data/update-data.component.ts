@@ -1,7 +1,7 @@
 import { UserDataService } from './../../../services/user-data.service';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { User } from 'src/app/services/user';
+import { User } from 'src/app/models/user';
 
 @Component({
   selector: 'app-update-data',
