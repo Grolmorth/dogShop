@@ -1,3 +1,4 @@
+import { FinalizePaymentComponent } from './components/content/finalize-payment/finalize-payment.component';
 import { UpdateDataComponent } from './components/login/update-data/update-data.component';
 import { AccountComponent } from './components/login/account/account.component';
 import { CreateAccountComponent } from './components/login/create-account/create-account.component';
@@ -46,6 +47,10 @@ const routes: Routes = [
   {
     path: 'account',
     component: AccountComponent,
+  },
+  {
+    path: 'finalize-payment',
+    component: FinalizePaymentComponent,
   },
   {
     path: 'create-user',

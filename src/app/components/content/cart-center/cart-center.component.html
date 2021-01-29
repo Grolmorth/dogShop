@@ -21,10 +21,7 @@
     <div class="active total">
         <strong>Wszystko:</strong>
         <div class="total-price">{{cartTotal|currencyPln}}</div>
-        <button mat-button class="pay-button" (click)="payForItems()" *ngIf="user.uid && user.address.name">Zapłać</button>
+        <button mat-button class="pay-button" *ngIf="user.uid && user.address.name" routerLink="/finalize-payment">Zapłać</button>
         <button mat-button class="pay-button" *ngIf="!user.uid" routerLink="/login">Zaloguj, aby kontynuować</button>
-        <span *ngIf="user.uid">
-            <button mat-button class="pay-button" *ngIf="user.address.name===''" routerLink="/update-data">Uzupełnij dane adresowe</button>
-        </span>
     </div>
 </div>

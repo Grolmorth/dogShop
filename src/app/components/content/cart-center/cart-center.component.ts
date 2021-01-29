@@ -116,9 +116,6 @@ export class CartCenterComponent implements OnInit {
     }
     this.getTotalCost()
   }
-  payForItems() {
-
-  }
   getUserData() {
     this.userData.getUserData().valueChanges().subscribe(val => {
       if (val.uid) {

@@ -40,9 +40,7 @@ export class UpdateDataComponent implements OnInit {
     }
   }
   ngOnInit(): void {
-
     this.userData.getUserData().valueChanges().subscribe(val => {
-
       this.user = val;
       if (this.user.uid) {
         this.formTemplate.setValue({
