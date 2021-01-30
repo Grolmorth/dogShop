@@ -58,6 +58,7 @@ import { ForgotPasswordComponent } from './components/login/forgot-password/forg
 import { UpdateDataComponent } from './components/login/update-data/update-data.component';
 import { PurchaseHistoryComponent } from './components/login/purchase-history/purchase-history.component';
 import { FinalizePaymentComponent } from './components/content/finalize-payment/finalize-payment.component';
+import { PaymentCompleteComponent } from './components/content/payment-complete/payment-complete.component';
 
 
 
@@ -95,6 +96,7 @@ import { FinalizePaymentComponent } from './components/content/finalize-payment/
     UpdateDataComponent,
     PurchaseHistoryComponent,
     FinalizePaymentComponent,
+    PaymentCompleteComponent,
 
 
 

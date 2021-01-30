@@ -1,9 +1,12 @@
+import { PurchaseService } from './../../../services/purchase.service';
+import { Purchase } from './../../../models/purchase';
 import { UserDataService } from 'src/app/services/user-data.service';
 import { Product } from 'src/app/models/product';
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { User } from 'src/app/models/user';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Location } from '@angular/common';
+import { MessengerService } from 'src/app/services/messenger.service';
 @Component({
   selector: 'app-finalize-payment',
   templateUrl: './finalize-payment.component.html',
@@ -20,6 +23,7 @@ export class FinalizePaymentComponent implements OnInit {
     streetNumber: new FormControl('', Validators.required),
     phone: new FormControl('', Validators.required),
   });
+  checkBox: boolean = true;
   user: User = {
     uid: '',
     email: '',
@@ -37,11 +41,13 @@ export class FinalizePaymentComponent implements OnInit {
       phone: ''
     }
   }
-  isCorrect: boolean = false;
-  constructor(private userData: UserDataService, private location: Location) { }
+
+  constructor(private userData: UserDataService, private location: Location, private purchaseService: PurchaseService, private msg: MessengerService) { }
   cartItems: [Product];
   cartTotal: number;
+  date: Date;
   ngOnInit(): void {
+    this.date = new Date()
     this.getCartFromStorage();
     this.getUserData();
   }
@@ -77,9 +83,20 @@ export class FinalizePaymentComponent implements OnInit {
     })
   }
   onSubmit(form) {
-    this.userData.setUserData(form.value);
-  }
-  correct() {
-    this.isCorrect = true;
+    if (this.checkBox) {
+      // save user address to db if user has agrees
+      this.userData.setUserData(form.value);
+    }
+    const purchase: Purchase = {
+      date: this.date,
+      paid: true,
+      sent: false,
+      totalValue: this.cartTotal,
+      userEmail: this.user.email,
+      userAddress: form.value,
+      purchaseList: this.cartItems
+    }
+    this.purchaseService.pushOrder(purchase);
+    localStorage.removeItem('cart');
   }
 }

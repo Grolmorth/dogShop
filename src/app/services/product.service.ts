@@ -20,7 +20,6 @@ export class ProductService {
     this.product.categoryLink = this.replaceChar(productDetails.categoryDisplay);
     this.product.subCategoryLink = this.replaceChar(productDetails.subCategoryDisplay);
     this.firebase.list('product/' + this.product.categoryLink + '/' + this.product.subCategoryLink).push(this.product);
-
   }
   getProductList(path: string): AngularFireList<any> {
     return this.firebase.list(path);

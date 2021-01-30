@@ -75,8 +75,9 @@
                             </mat-error>
                         </mat-form-field>
                     </div>
-                    <button class="m-3 " mat-stroked-button (click)="correct()">Adres zgodny</button>
-                    <button class="m-3 " mat-stroked-button type="submit()" [disabled]="formTemplate.invalid || !isCorrect">Zmień</button>
+                    <mat-checkbox [checked]="checkBox">Zapisz moje dane adresowe</mat-checkbox>
+
+                    <button class="m-3 " mat-stroked-button type="submit()" [disabled]="formTemplate.invalid" routerLink="payment-complete">Gotowe</button>
                 </form>
             </div>
         </div>

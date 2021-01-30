@@ -17,6 +17,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { ProductListComponent } from './components/admin/product-list/product-list.component';
 import { PurchaseHistoryComponent } from './components/login/purchase-history/purchase-history.component';
+import { PaymentCompleteComponent } from './components/content/payment-complete/payment-complete.component';
 
 
 
@@ -51,6 +52,10 @@ const routes: Routes = [
   {
     path: 'finalize-payment',
     component: FinalizePaymentComponent,
+  },
+  {
+    path: 'payment-complete',
+    component: PaymentCompleteComponent,
   },
   {
     path: 'create-user',
