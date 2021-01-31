@@ -2,7 +2,7 @@ import { Address } from './address';
 import { Product } from './product';
 import { User } from './user';
 export interface Purchase {
-  date: Date;
+  date: string;
   paid: boolean;
   sent: boolean;
   totalValue: number;

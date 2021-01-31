@@ -41,6 +41,9 @@ export class MenuPanelComponent implements DoCheck, OnInit {
     if (localStorage.getItem('cart')) {
       this.shopItems = JSON.parse(localStorage.getItem('cart')).length;
     }
+    if (!localStorage.getItem('cart')) {
+      this.shopItems = 0;
+    }
     // hide cart if there is 0 items
     if (this.shopItems === 0 && this.cartVisible === true) {
       setTimeout(() => {

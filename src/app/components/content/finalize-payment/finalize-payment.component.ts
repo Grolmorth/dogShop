@@ -23,7 +23,8 @@ export class FinalizePaymentComponent implements OnInit {
     streetNumber: new FormControl('', Validators.required),
     phone: new FormControl('', Validators.required),
   });
-  checkBox: boolean = true;
+  saveUserData: boolean = true;
+  paid: boolean = true;
   user: User = {
     uid: '',
     email: '',
@@ -45,9 +46,9 @@ export class FinalizePaymentComponent implements OnInit {
   constructor(private userData: UserDataService, private location: Location, private purchaseService: PurchaseService, private msg: MessengerService) { }
   cartItems: [Product];
   cartTotal: number;
-  date: Date;
+
   ngOnInit(): void {
-    this.date = new Date()
+
     this.getCartFromStorage();
     this.getUserData();
   }
@@ -67,7 +68,7 @@ export class FinalizePaymentComponent implements OnInit {
     this.userData.getUserData().valueChanges().subscribe(val => {
       if (val.uid) {
         this.user = val;
-        if (this.user.uid) {
+        if (this.user.address) {
           this.formTemplate.setValue({
             name: this.user.address.name,
             surname: this.user.address.surname,
@@ -83,13 +84,14 @@ export class FinalizePaymentComponent implements OnInit {
     })
   }
   onSubmit(form) {
-    if (this.checkBox) {
+
+    if (this.saveUserData) {
       // save user address to db if user has agrees
       this.userData.setUserData(form.value);
     }
     const purchase: Purchase = {
-      date: this.date,
-      paid: true,
+      date: new Date().toLocaleString(),
+      paid: this.paid,
       sent: false,
       totalValue: this.cartTotal,
       userEmail: this.user.email,
@@ -98,5 +100,7 @@ export class FinalizePaymentComponent implements OnInit {
     }
     this.purchaseService.pushOrder(purchase);
     localStorage.removeItem('cart');
+
+
   }
 }

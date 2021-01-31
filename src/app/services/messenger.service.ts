@@ -14,11 +14,10 @@ export class MessengerService {
   // triggering event
   sendMessage(product) {
     this.subject.next(product);
-
   }
 
-  getMessage() {
 
+  getMessage() {
     return this.subject.asObservable();
   }
 }

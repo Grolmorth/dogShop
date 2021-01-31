@@ -1,8 +1,9 @@
 import { Product } from 'src/app/models/product';
 import { MessengerService } from './../../../services/messenger.service';
 
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output, OnDestroy, DoCheck } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+
 
 
 @Component({
@@ -10,29 +11,35 @@ import { ActivatedRoute } from '@angular/router';
   templateUrl: './cart-display.component.html',
   styleUrls: ['./cart-display.component.scss']
 })
-export class CartDisplayComponent implements OnInit {
+export class CartDisplayComponent implements OnInit, OnDestroy, DoCheck {
 
   // close cart
   @Output() closeCartEvent = new EventEmitter<boolean>();
   showButton = true;
   cartItems: Product[] = [];
   cartTotal = 0;
+  messageSub: any;
   constructor(private msg: MessengerService, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
+
+
     if (this.route.snapshot['_routerState'].url === "/cart") {
       this.showButton = false;
     }
     this.getCartFromStorage()
-    this.msg.getMessage().subscribe((product: Product) => {
+    this.messageSub = this.msg.getMessage().subscribe((product: Product) => {
       this.addProductToCart(product);
+      console.log(this.cartItems)
     });
     this.getTotalCost()
   }
+  ngDoCheck(): void {
+    // reset cartItems if there are no items in localStorage cart
+    if (!localStorage.getItem('cart')) { this.cartItems.length = 0; }
+  }
   addProductToCart(product: Product) {
-
     let productExist = false;
-
     for (let i in this.cartItems) {
       if (this.cartItems[i].id === product.id) {
         if (!product.quantity) {
@@ -40,7 +47,6 @@ export class CartDisplayComponent implements OnInit {
         } else {
           this.cartItems[i].quantity += product.quantity;
         }
-
         productExist = true;
         localStorage.setItem('cart', JSON.stringify(this.cartItems))
         break;
@@ -105,6 +111,9 @@ export class CartDisplayComponent implements OnInit {
     this.closeCartEvent.emit(value);
   }
 
+  ngOnDestroy() {
+    this.messageSub.unsubscribe();
 
+  }
 
 }
