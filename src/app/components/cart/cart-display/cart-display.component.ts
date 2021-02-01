@@ -22,42 +22,41 @@ export class CartDisplayComponent implements OnInit, OnDestroy, DoCheck {
   constructor(private msg: MessengerService, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
-
-
+    console.log('asd')
     if (this.route.snapshot['_routerState'].url === "/cart") {
       this.showButton = false;
     }
     this.getCartFromStorage()
     this.messageSub = this.msg.getMessage().subscribe((product: Product) => {
       this.addProductToCart(product);
-      console.log(this.cartItems)
     });
     this.getTotalCost()
   }
   ngDoCheck(): void {
     // reset cartItems if there are no items in localStorage cart
-    if (!localStorage.getItem('cart')) { this.cartItems.length = 0; }
+    if (!localStorage.getItem('cart')) {
+      this.cartItems.length = 0;
+    }
   }
   addProductToCart(product: Product) {
+
     let productExist = false;
-    for (let i in this.cartItems) {
+    for (const i in this.cartItems) {
       if (this.cartItems[i].id === product.id) {
-        if (!product.quantity) {
-          this.cartItems[i].quantity++;
-        } else {
-          this.cartItems[i].quantity += product.quantity;
-        }
+        this.cartItems[i].quantity += product.quantity;
+
         productExist = true;
-        localStorage.setItem('cart', JSON.stringify(this.cartItems))
         break;
       }
     }
     if (!productExist) {
-      if (!product.quantity) { product.quantity = 1; }
       this.cartItems.push(product);
-      this.pushCartToStorage()
     }
-    this.getTotalCost()
+    this.pushCartToStorage();
+    this.getTotalCost();
+    // cant work around this :( vv
+    this.messageSub.unsubscribe()
+    this.ngOnInit()
   }
   getTotalCost() {
     this.cartTotal = 0;
@@ -67,10 +66,12 @@ export class CartDisplayComponent implements OnInit, OnDestroy, DoCheck {
   }
   getCartFromStorage() {
     if (localStorage.getItem('cart')) {
+
       this.cartItems = JSON.parse(localStorage.getItem('cart'))
     }
   }
   pushCartToStorage() {
+
     localStorage.setItem('cart', JSON.stringify(this.cartItems))
   }
   removeItem(item) {
@@ -113,7 +114,6 @@ export class CartDisplayComponent implements OnInit, OnDestroy, DoCheck {
 
   ngOnDestroy() {
     this.messageSub.unsubscribe();
-
   }
 
 }

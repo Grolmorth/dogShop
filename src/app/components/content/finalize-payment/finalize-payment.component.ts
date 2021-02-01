@@ -95,6 +95,7 @@ export class FinalizePaymentComponent implements OnInit {
       sent: false,
       totalValue: this.cartTotal,
       userEmail: this.user.email,
+      userUid: this.user.uid,
       userAddress: form.value,
       purchaseList: this.cartItems
     }

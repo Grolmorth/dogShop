@@ -21,9 +21,9 @@ export class DisplayItemComponent implements OnInit {
     this.subCategory = this.product.subCategoryLink;
     this.name = this.product.nameLink;
     this.id = this.product.id;
-
   }
   handlerAddToCart() {
+    this.product.quantity = 1;
     this.msg.sendMessage(this.product);
   }
 

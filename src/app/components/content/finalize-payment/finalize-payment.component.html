@@ -80,7 +80,7 @@
                 <mat-checkbox [(ngModel)]="saveUserData">Zapisz moje dane adresowe</mat-checkbox>
                 <mat-checkbox [(ngModel)]="paid">Zlecenie opłacone</mat-checkbox>
 
-                <button class="m-3 " mat-stroked-button (click)="onSubmit(formTemplate)" [disabled]="formTemplate.invalid" routerLink="payment-complete">Gotowe</button>
+                <button class="m-3 " mat-stroked-button (click)="onSubmit(formTemplate)" [disabled]="formTemplate.invalid" routerLink="/payment-complete">Gotowe</button>
             </div>
         </div>
     </div>
