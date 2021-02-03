@@ -1,3 +1,5 @@
+import { Purchase } from './../../../models/purchase';
+import { UserDataService } from './../../../services/user-data.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,9 +9,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PurchaseHistoryComponent implements OnInit {
 
-  constructor() { }
+  shoppingHistory: Purchase[] = [];
+  constructor(private userData: UserDataService) { }
 
   ngOnInit(): void {
-  }
+    this.userData.getUserData().valueChanges().subscribe(val => {
+      this.shoppingHistory = val.shoppingHistory;
 
+
+
+
+    })
+  }
 }

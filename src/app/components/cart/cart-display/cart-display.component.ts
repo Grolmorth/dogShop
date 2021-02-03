@@ -22,7 +22,6 @@ export class CartDisplayComponent implements OnInit, OnDestroy, DoCheck {
   constructor(private msg: MessengerService, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
-    console.log('asd')
     if (this.route.snapshot['_routerState'].url === "/cart") {
       this.showButton = false;
     }
@@ -43,6 +42,7 @@ export class CartDisplayComponent implements OnInit, OnDestroy, DoCheck {
     let productExist = false;
     for (const i in this.cartItems) {
       if (this.cartItems[i].id === product.id) {
+
         this.cartItems[i].quantity += product.quantity;
 
         productExist = true;
@@ -55,8 +55,8 @@ export class CartDisplayComponent implements OnInit, OnDestroy, DoCheck {
     this.pushCartToStorage();
     this.getTotalCost();
     // cant work around this :( vv
-    this.messageSub.unsubscribe()
-    this.ngOnInit()
+    this.ngOnDestroy();
+    this.ngOnInit();
   }
   getTotalCost() {
     this.cartTotal = 0;

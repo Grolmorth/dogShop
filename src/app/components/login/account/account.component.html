@@ -2,7 +2,7 @@
     <div class="row">
         <div class="col-sm">
             <button mat-button routerLink="/update-data">Zaktualizuj dane adresowe</button>
-            <button mat-button routerLink="/purchase-history">Historia zakupów</button>
+            <button *ngIf="user.shoppingHistory" mat-button routerLink="/purchase-history">Historia zakupów</button>
         </div>
     </div>
     <div class="row" *ngIf="user.address">

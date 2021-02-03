@@ -5,8 +5,7 @@ import { Product } from 'src/app/models/product';
 import { Component, OnInit } from '@angular/core';
 import { User } from 'src/app/models/user';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { Location } from '@angular/common';
-import { MessengerService } from 'src/app/services/messenger.service';
+
 @Component({
   selector: 'app-finalize-payment',
   templateUrl: './finalize-payment.component.html',
@@ -43,7 +42,7 @@ export class FinalizePaymentComponent implements OnInit {
     }
   }
 
-  constructor(private userData: UserDataService, private location: Location, private purchaseService: PurchaseService, private msg: MessengerService) { }
+  constructor(private userData: UserDataService, private purchaseService: PurchaseService) { }
   cartItems: [Product];
   cartTotal: number;
 
