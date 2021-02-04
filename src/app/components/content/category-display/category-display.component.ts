@@ -40,9 +40,7 @@ export class CategoryDisplayComponent implements OnInit {
     if (this.categoryName === undefined) {
       this.router.navigateByUrl('page-not-found');
     }
-
   }
-
   loadProducts(subCategory: string) {
     this.rawList = this.productService.getProductListWithFilter('product/' + this.categoryLink + '/' + subCategory, 100000, 0)
     this.fillProductList();
@@ -51,9 +49,7 @@ export class CategoryDisplayComponent implements OnInit {
     this.rawList.valueChanges().subscribe(val => {
       this.productList = val;
       this.productListAll = this.productListAll.concat(this.productList);
-
     })
-
   }
   loadAllFromCategory(): void {
     this.clearProductList();
@@ -67,7 +63,5 @@ export class CategoryDisplayComponent implements OnInit {
   }
   ngOnDestroy(): void {
     this.routeParamsSub.unsubscribe();
-
   }
-
 }

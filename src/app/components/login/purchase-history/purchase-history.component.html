@@ -1,9 +1,37 @@
 <div class="container">
-    <div class="row">
-        {{shoppingHistory[0].userUid}}
+    <table mat-table [dataSource]="shoppingHistory" class="mat-elevation-z8">
 
+        <!-- Date Column -->
+        <ng-container matColumnDef="date">
+            <th mat-header-cell *matHeaderCellDef> Data zakupu </th>
+            <td mat-cell *matCellDef="let element"> {{element.date}} </td>
+        </ng-container>
 
+        <!-- Purchase quantity Column -->
+        <ng-container matColumnDef="purchaseList">
+            <th mat-header-cell *matHeaderCellDef> Ilość zakupionych przedmiotów </th>
+            <td mat-cell *matCellDef="let element"> {{element.purchaseList.length}} </td>
+        </ng-container>
 
+        <!-- total Value Column -->
+        <ng-container matColumnDef="totalValue">
+            <th mat-header-cell *matHeaderCellDef> Wartość zakupów </th>
+            <td mat-cell *matCellDef="let element"> {{element.totalValue|currencyPln}} </td>
+        </ng-container>
 
-    </div>
+        <!-- paid status Column -->
+        <ng-container matColumnDef="paid">
+            <th mat-header-cell *matHeaderCellDef> Status płatności </th>
+            <td mat-cell *matCellDef="let element"> {{element.paid}} </td>
+        </ng-container>
+
+        <!-- shipping status Column -->
+        <ng-container matColumnDef="sent">
+            <th mat-header-cell *matHeaderCellDef> Status wysyłki </th>
+            <td mat-cell *matCellDef="let element"> {{element.sent}} </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;" (click)="passData(row)"></tr>
+    </table>
 </div>

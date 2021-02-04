@@ -1,6 +1,8 @@
+
 import { Purchase } from './../../../models/purchase';
 import { UserDataService } from './../../../services/user-data.service';
 import { Component, OnInit } from '@angular/core';
+
 
 @Component({
   selector: 'app-purchase-history',
@@ -10,15 +12,17 @@ import { Component, OnInit } from '@angular/core';
 export class PurchaseHistoryComponent implements OnInit {
 
   shoppingHistory: Purchase[] = [];
+  displayedColumns: string[] = ['date', 'purchaseList', 'totalValue', 'paid', 'sent'];
   constructor(private userData: UserDataService) { }
 
   ngOnInit(): void {
-    this.userData.getUserData().valueChanges().subscribe(val => {
-      this.shoppingHistory = val.shoppingHistory;
+    this.userData.getPurchaseHistory().valueChanges().subscribe(val => {
+      this.shoppingHistory = val;
+    });
+  }
 
-
-
-
-    })
+  passData(element) {
+    console.log(element)
   }
 }
+

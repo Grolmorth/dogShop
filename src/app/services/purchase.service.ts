@@ -16,7 +16,7 @@ export class PurchaseService {
   pushOrder(purchase: Purchase) {
     // getting user data, to push purchase in to user history
     const userUid: string = JSON.parse(localStorage.getItem('user')).uid;
-    this.firebase.object(`users/${userUid}/shoppingHistory/${new Date}`).set(purchase);
+    this.firebase.list(`users/${userUid}/shoppingHistory`).push(purchase);
 
     this.firebase.list('purchasees/').push(purchase);
   }

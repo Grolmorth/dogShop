@@ -1,7 +1,8 @@
+import { Purchase } from './../models/purchase';
 import { Address } from '../models/address';
 import { User } from 'src/app/models/user';
 import { Injectable } from '@angular/core';
-import { AngularFireDatabase, AngularFireObject } from '@angular/fire/database';
+import { AngularFireDatabase, AngularFireList, AngularFireObject } from '@angular/fire/database';
 
 
 @Injectable({
@@ -35,6 +36,10 @@ export class UserDataService {
   getUserData(): AngularFireObject<User> {
     const user: User = JSON.parse(localStorage.getItem('user'));
     return this.firebase.object(`users/${user.uid}`);
+  }
+  getPurchaseHistory(): AngularFireList<Purchase> {
+    const user: User = JSON.parse(localStorage.getItem('user'));
+    return this.firebase.list(`users/${user.uid}/shoppingHistory`);
   }
 
 }
