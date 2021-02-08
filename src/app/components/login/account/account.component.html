@@ -1,48 +1,37 @@
 <div class="container">
     <div class="row">
-        <div class="col-sm">
+        <div class="col-sm d-block">
             <button mat-button routerLink="/update-data">Zaktualizuj dane adresowe</button>
-            <button *ngIf="user.shoppingHistory" mat-button routerLink="/purchase-history">Historia zakupów</button>
         </div>
     </div>
     <div class="row" *ngIf="user.address">
-        <div class="col-sm">
+        <p class="col-sm p-1 m-1">
             Twoje dane adresowe:
-            <div class="container">
-                <div class="row">
-                    <div class="col-sm">Imię:</div>
-                    <div class="col-sm" *ngIf="user.address.name">{{user.address.name}}</div>
-                </div>
-                <div class="row">
-                    <div class="col-sm">Nazwisko:</div>
-                    <div class="col-sm" *ngIf="user.address.surname">{{user.address.surname}}</div>
-                </div>
-                <div class="row">
-                    <div class="col-sm">Państwo:</div>
-                    <div class="col-sm" *ngIf="user.address.country">{{user.address.country}}</div>
-                </div>
-                <div class="row">
-                    <div class="col-sm">Miasto:</div>
-                    <div class="col-sm" *ngIf="user.address.city">{{user.address.city}}</div>
-                </div>
-                <div class="row">
-                    <div class="col-sm">Kod pocztowy:</div>
-                    <div class="col-sm" *ngIf="user.address.zipCode">{{user.address.zipCode}}</div>
-                </div>
-                <div class="row">
-                    <div class="col-sm">Ulica:</div>
-                    <div class="col-sm" *ngIf="user.address.street">{{user.address.street}}</div>
-                </div>
-                <div class="row">
-                    <div class="col-sm">Numer domu/mieszkania:</div>
-                    <div class="col-sm" *ngIf="user.address.streetNumber">{{user.address.streetNumber}}</div>
-                </div>
-                <div class="row">
-                    <div class="col-sm">Telefon kontaktowy:</div>
-                    <div class="col-sm" *ngIf="user.address.phone">{{user.address.phone}}</div>
-                </div>
-            </div>
+        </p>
+    </div>
+    <div class="row">
+        <p class="col-sm mb-0" *ngIf="user.address.name && user.address.surname">{{user.address.name}}&nbsp;{{user.address.surname}}</p>
+    </div>
+    <div class="row">
+        <p class="col-sm mb-0" *ngIf="user.address.country">{{user.address.country}}</p>
+    </div>
+    <div class="row">
+        <p class="col-sm mb-0" *ngIf="user.address.city">{{user.address.zipCode}}&nbsp;{{user.address.city}}</p>
+    </div>
+    <div class="row">
+        <p class="col-sm mb-0" *ngIf="user.address.street">Ul.&nbsp;{{user.address.street}}&nbsp;{{user.address.streetNumber}}</p>
+    </div>
+    <div class="row">
+        <p class="col-sm" *ngIf="user.address.phone">Tel:&nbsp;{{user.address.phone}}</p>
+    </div>
+    <div class="row" *ngIf="user.shoppingHistory">
+        <p class="col-sm">
+            Historia zakupów:
+        </p>
+    </div>
+    <div class="row" *ngIf="user.shoppingHistory">
+        <div class="col-sm p-0">
+            <app-purchase-history></app-purchase-history>
         </div>
     </div>
-    <app-purchase-history *ngIf="user.shoppingHistory"></app-purchase-history>
 </div>

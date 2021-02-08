@@ -57,8 +57,13 @@ import { CreateAccountComponent } from './components/login/create-account/create
 import { ForgotPasswordComponent } from './components/login/forgot-password/forgot-password.component';
 import { UpdateDataComponent } from './components/login/update-data/update-data.component';
 import { PurchaseHistoryComponent } from './components/login/purchase-history/purchase-history.component';
+import { DialogContentComponent } from './components/login/purchase-history/purchase-history.component';
 import { FinalizePaymentComponent } from './components/content/finalize-payment/finalize-payment.component';
 import { PaymentCompleteComponent } from './components/content/payment-complete/payment-complete.component';
+import { PurchasesListComponent } from './components/admin/purchases-list/purchases-list.component';
+import { PurchaseItemComponent } from './components/admin/purchase-item/purchase-item.component';
+
+import { MatDialogModule } from '@angular/material/dialog';
 
 
 
@@ -97,6 +102,10 @@ import { PaymentCompleteComponent } from './components/content/payment-complete/
     PurchaseHistoryComponent,
     FinalizePaymentComponent,
     PaymentCompleteComponent,
+    PurchasesListComponent,
+    PurchaseItemComponent,
+    DialogContentComponent
+
 
 
 
@@ -128,7 +137,8 @@ import { PaymentCompleteComponent } from './components/content/payment-complete/
     MatTableModule,
     MatSortModule,
     MatAutocompleteModule,
-    MatPaginatorModule
+    MatPaginatorModule,
+    MatDialogModule
 
 
 

@@ -22,16 +22,22 @@
         <!-- paid status Column -->
         <ng-container matColumnDef="paid">
             <th mat-header-cell *matHeaderCellDef> Status płatności </th>
-            <td mat-cell *matCellDef="let element"> {{element.paid}} </td>
+            <td mat-cell *matCellDef="let element">
+                <p *ngIf="element.paid===true">Opłacone</p>
+                <p *ngIf="element.paid===false">Nieopłacone</p>
+            </td>
         </ng-container>
 
         <!-- shipping status Column -->
         <ng-container matColumnDef="sent">
             <th mat-header-cell *matHeaderCellDef> Status wysyłki </th>
-            <td mat-cell *matCellDef="let element"> {{element.sent}} </td>
+            <td mat-cell *matCellDef="let element">
+                <p *ngIf="element.sent===true">Wysłane</p>
+                <p *ngIf="element.sent===false">Niewysłane</p>
+            </td>
         </ng-container>
 
         <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-        <tr mat-row *matRowDef="let row; columns: displayedColumns;" (click)="passData(row)"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;" (click)="openDialog(row)"></tr>
     </table>
 </div>
