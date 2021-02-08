@@ -1,9 +1,23 @@
-<div class="container">
-    <div class="row">
-        <div class="col-sm-12 m-2">Zakupione przedmioty:</div>
-    </div>
-    <div class="row" *ngFor="let item of data.purchaseList; let i = index" [attr.data-index]="i">
-        <div class="col-sm-1">{{i+1}}</div>
-        <div class="col-sm-11">{{item.nameDisplay}}</div>
-    </div>
-</div>
+<table mat-dialog-content class="table table-borderless m-0 p-0">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Zakupione przedmioty</th>
+            <th scope="col">Ilość</th>
+            <th scope="col">Cena</th>
+        </tr>
+    </thead>
+
+    <tbody *ngFor="let item of data.purchaseList; let i = index" [attr.data-index]="i">
+        <td>{{i+1}}</td>
+        <td>{{item.nameDisplay}}</td>
+        <td>{{item.quantity}}</td>
+        <td>{{item.price|currencyPln}}</td>
+    </tbody>
+    <tfoot>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td>{{data.totalValue|currencyPln}}</td>
+    </tfoot>
+</table>

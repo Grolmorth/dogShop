@@ -46,6 +46,7 @@ export class PurchaseHistoryComponent implements OnInit {
 @Component({
   selector: 'dialog-content',
   templateUrl: 'dialog-content.component.html',
+  styleUrls: ['./purchase-history.component.scss']
 })
 export class DialogContentComponent {
   constructor(@Inject(MAT_DIALOG_DATA) public data: Purchase) { }
