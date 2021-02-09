@@ -1,3 +1,5 @@
+import { BeforeShipmentComponent } from './components/admin/before-shipment/before-shipment.component';
+import { PurchasesListComponent } from './components/admin/purchases-list/purchases-list.component';
 import { FinalizePaymentComponent } from './components/content/finalize-payment/finalize-payment.component';
 import { UpdateDataComponent } from './components/login/update-data/update-data.component';
 import { AccountComponent } from './components/login/account/account.component';
@@ -78,8 +80,12 @@ const routes: Routes = [
     component: EditProductComponent,
   },
   {
-    path: 'a/show',
+    path: 'a/menagment',
     component: ProductListComponent,
+  },
+  {
+    path: 'a/purchases',
+    component: BeforeShipmentComponent,
   },
   {
     path: 'cart',

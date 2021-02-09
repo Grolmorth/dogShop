@@ -1,8 +1,8 @@
 
 import { Purchase } from './../models/purchase';
 import { Injectable } from '@angular/core';
-import { AngularFireDatabase } from '@angular/fire/database';
-import { User } from '../models/user';
+import { AngularFireDatabase, AngularFireList } from '@angular/fire/database';
+
 
 
 @Injectable({
@@ -12,12 +12,16 @@ export class PurchaseService {
 
   constructor(private firebase: AngularFireDatabase) { }
 
+  getOrder(path: string): AngularFireList<Purchase> {
+    return this.firebase.list(path);
+  }
 
   pushOrder(purchase: Purchase) {
-    // getting user data, to push purchase in to user history
+    // getting user uid, to push purchase in to user history
     const userUid: string = JSON.parse(localStorage.getItem('user')).uid;
+    // save purchase for user
     this.firebase.list(`users/${userUid}/shoppingHistory`).push(purchase);
-
-    this.firebase.list('purchasees/').push(purchase);
+    // save purchase for admins
+    this.firebase.list('before-shipment/').push(purchase);
   }
 }
