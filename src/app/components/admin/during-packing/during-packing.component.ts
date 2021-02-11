@@ -1,3 +1,5 @@
+import { Router } from '@angular/router';
+import { PurchaseService } from './../../../services/purchase.service';
 import { Component, OnInit } from '@angular/core';
 import { Purchase } from 'src/app/models/purchase';
 
@@ -10,7 +12,7 @@ export class DuringPackingComponent implements OnInit {
 
   allComplate: boolean = false;
   checkList: boolean[] = [];
-  constructor() { }
+  constructor(private purchaseService: PurchaseService, private router: Router) { }
 
   purchase: Purchase;
   ngOnInit(): void {
@@ -31,5 +33,9 @@ export class DuringPackingComponent implements OnInit {
   updateAllComplete() {
     this.allComplate = this.checkList.every(v => v === true);
   }
-
+  orderComplete(purchase: Purchase) {
+    this.purchaseService.orderComplete(purchase);
+    localStorage.removeItem('purchase');
+    this.router.navigateByUrl('a/purchases');
+  }
 }

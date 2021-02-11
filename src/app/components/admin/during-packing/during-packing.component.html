@@ -2,7 +2,7 @@
     <div class="row m-1">Spakuj przedmioty:</div>
     <div class="row" *ngFor="let item of purchase.purchaseList; let i = index">
         <mat-checkbox (change)="checkElement(i)">
-            <div>{{item.nameDisplay}}</div>
+            <div>{{item.nameDisplay}}&nbsp;x&nbsp;{{item.quantity}}</div>
         </mat-checkbox>
 
     </div>
@@ -27,7 +27,7 @@
         <div class="row">
             <p class="col-sm">Tel:&nbsp;{{purchase.userAddress.phone}}</p>
         </div>
-        <button mat-button>Wysłane</button>
+        <button mat-button (click)="orderComplete(purchase)">Wysłane</button>
     </div>
 
 </div>

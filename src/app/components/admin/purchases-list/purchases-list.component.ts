@@ -1,5 +1,5 @@
 import { Router } from '@angular/router';
-import { Component, Input, OnInit, OnChanges } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { Purchase } from 'src/app/models/purchase';
 
 @Component({
