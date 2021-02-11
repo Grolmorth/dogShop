@@ -1,5 +1,5 @@
 <div class="m-1" *ngFor="let list of purchaseList">
     <div *ngIf="list.paid">Opłacone</div>
     <div *ngIf="!list.paid">Nieopłacone</div>
-    <button mat-button><div>{{list.date}}</div></button>
+    <button mat-button (click)="pushPurchaseToStorage(list)"><div>{{list.date}}</div></button>
 </div>

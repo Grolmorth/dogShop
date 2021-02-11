@@ -1,3 +1,4 @@
+import { DuringPackingComponent } from './components/admin/during-packing/during-packing.component';
 import { BeforeShipmentComponent } from './components/admin/before-shipment/before-shipment.component';
 import { PurchasesListComponent } from './components/admin/purchases-list/purchases-list.component';
 import { FinalizePaymentComponent } from './components/content/finalize-payment/finalize-payment.component';
@@ -82,6 +83,10 @@ const routes: Routes = [
   {
     path: 'a/menagment',
     component: ProductListComponent,
+  },
+  {
+    path: 'a/packing',
+    component: DuringPackingComponent,
   },
   {
     path: 'a/purchases',

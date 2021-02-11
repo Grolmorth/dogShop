@@ -1,0 +1,33 @@
+<div class="container">
+    <div class="row m-1">Spakuj przedmioty:</div>
+    <div class="row" *ngFor="let item of purchase.purchaseList; let i = index">
+        <mat-checkbox (change)="checkElement(i)">
+            <div>{{item.nameDisplay}}</div>
+        </mat-checkbox>
+
+    </div>
+    <div class="container" *ngIf="allComplate">
+        <div class="row">
+            <p class="col-sm mb-1">Zaadresuj na adres:</p>
+        </div>
+        <div class="row">
+            <p class="col-sm mb-0">{{purchase.userAddress.name}}&nbsp;{{purchase.userAddress.surname}}</p>
+        </div>
+        <div class="row">
+            <p class="col-sm mb-0">Ul.&nbsp;{{purchase.userAddress.street}}&nbsp;{{purchase.userAddress.streetNumber}}</p>
+        </div>
+
+        <div class="row">
+            <p class="col-sm mb-0">{{purchase.userAddress.zipCode}}&nbsp;{{purchase.userAddress.city}}</p>
+        </div>
+        <div class="row">
+            <p class="col-sm mb-0">{{purchase.userAddress.country}}</p>
+        </div>
+
+        <div class="row">
+            <p class="col-sm">Tel:&nbsp;{{purchase.userAddress.phone}}</p>
+        </div>
+        <button mat-button>Wysłane</button>
+    </div>
+
+</div>

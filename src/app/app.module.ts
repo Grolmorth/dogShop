@@ -66,6 +66,7 @@ import { PurchaseItemComponent } from './components/admin/purchase-item/purchase
 import { MatDialogModule } from '@angular/material/dialog';
 import { BeforeShipmentComponent } from './components/admin/before-shipment/before-shipment.component';
 import { AfterShipmentComponent } from './components/admin/after-shipment/after-shipment.component';
+import { DuringPackingComponent } from './components/admin/during-packing/during-packing.component';
 
 
 
@@ -109,7 +110,8 @@ import { AfterShipmentComponent } from './components/admin/after-shipment/after-
     PurchaseItemComponent,
     DialogContentComponent,
     BeforeShipmentComponent,
-    AfterShipmentComponent
+    AfterShipmentComponent,
+    DuringPackingComponent
 
 
 
