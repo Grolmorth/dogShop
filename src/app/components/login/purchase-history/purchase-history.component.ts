@@ -22,10 +22,6 @@ export class PurchaseHistoryComponent implements OnInit {
       this.shoppingHistory = val;
     });
   }
-
-  passData(element) {
-    console.log(element);
-  }
   openDialog(element) {
     this.dialog.open(DialogContentComponent, {
       data: {

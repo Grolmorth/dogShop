@@ -36,6 +36,6 @@ export class DuringPackingComponent implements OnInit {
   orderComplete(purchase: Purchase) {
     this.purchaseService.orderComplete(purchase);
     localStorage.removeItem('purchase');
-    this.router.navigateByUrl('a/purchases');
+    this.router.navigateByUrl('a/manage-shipment');
   }
 }

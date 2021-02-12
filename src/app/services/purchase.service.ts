@@ -2,7 +2,7 @@
 import { Purchase } from './../models/purchase';
 import { Injectable } from '@angular/core';
 import { AngularFireDatabase, AngularFireList } from '@angular/fire/database';
-import { stringify } from '@angular/compiler/src/util';
+
 
 
 
@@ -28,6 +28,10 @@ export class PurchaseService {
   orderComplete(purchase: Purchase): void {
     // change  sent status to true
     purchase.sent = true;
+    //save sent date
+    purchase.sentDate = new Date().toLocaleString();
+    // save email of admin who worked on it
+    purchase.sentBy = JSON.parse(localStorage.getItem('user')).email;
     // remove order from before-shipment
     // getting order key to remove it
 

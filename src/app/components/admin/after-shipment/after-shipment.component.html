@@ -1,1 +1,13 @@
-<p>after-shipment works!</p>
+<div class="container">
+    <div class="row" *ngFor="let list of list">
+
+        <div class="m-1"></div>
+        <div class="m-1"></div>
+        <div *ngIf="list.paid">Opłacone</div>
+        <div *ngIf="!list.paid">Nieopłacone</div>
+        <div>{{list.sentBy}}</div>
+
+
+
+    </div>
+</div>

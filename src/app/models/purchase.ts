@@ -10,4 +10,6 @@ export interface Purchase {
   userUid: string;
   userAddress: Address;
   purchaseList: [Product];
+  sentBy?: string;
+  sentDate?: string;
 }

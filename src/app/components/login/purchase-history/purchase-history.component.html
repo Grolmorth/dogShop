@@ -32,8 +32,10 @@
         <ng-container matColumnDef="sent">
             <th mat-header-cell *matHeaderCellDef class="text-center"> Status wysyłki </th>
             <td mat-cell *matCellDef="let element" class="text-center">
-                <p *ngIf="element.sent===true">Wysłane</p>
-                <p *ngIf="element.sent===false">Niewysłane</p>
+                <div *ngIf="element.sent===true">Wysłane
+                    <p>{{element.sentDate}}</p>
+                </div>
+                <div *ngIf="element.sent===false">Niewysłane</div>
             </td>
         </ng-container>
 
