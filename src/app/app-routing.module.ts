@@ -1,3 +1,5 @@
+import { ManageShipmentComponent } from './components/admin/manage-shipment/manage-shipment.component';
+import { AfterShipmentComponent } from './components/admin/after-shipment/after-shipment.component';
 import { DuringPackingComponent } from './components/admin/during-packing/during-packing.component';
 import { BeforeShipmentComponent } from './components/admin/before-shipment/before-shipment.component';
 import { PurchasesListComponent } from './components/admin/purchases-list/purchases-list.component';
@@ -73,24 +75,32 @@ const routes: Routes = [
     component: PurchaseHistoryComponent,
   },
   {
-    path: 'a/add',
+    path: 'a/add-product',
     component: AddProductComponent,
+  },
+  {
+    path: 'a/manage-product',
+    component: ProductListComponent,
   },
   {
     path: 'a/edit',
     component: EditProductComponent,
   },
   {
-    path: 'a/menagment',
-    component: ProductListComponent,
+    path: 'a/after-shipment',
+    component: AfterShipmentComponent,
+  },
+  {
+    path: 'a/manage-shipment',
+    component: ManageShipmentComponent,
+  },
+  {
+    path: 'a/before-shipment',
+    component: BeforeShipmentComponent,
   },
   {
     path: 'a/packing',
     component: DuringPackingComponent,
-  },
-  {
-    path: 'a/purchases',
-    component: BeforeShipmentComponent,
   },
   {
     path: 'cart',

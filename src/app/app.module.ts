@@ -61,12 +61,13 @@ import { DialogContentComponent } from './components/login/purchase-history/purc
 import { FinalizePaymentComponent } from './components/content/finalize-payment/finalize-payment.component';
 import { PaymentCompleteComponent } from './components/content/payment-complete/payment-complete.component';
 import { PurchasesListComponent } from './components/admin/purchases-list/purchases-list.component';
-import { PurchaseItemComponent } from './components/admin/purchase-item/purchase-item.component';
+
 
 import { MatDialogModule } from '@angular/material/dialog';
 import { BeforeShipmentComponent } from './components/admin/before-shipment/before-shipment.component';
 import { AfterShipmentComponent } from './components/admin/after-shipment/after-shipment.component';
 import { DuringPackingComponent } from './components/admin/during-packing/during-packing.component';
+import { ManageShipmentComponent } from './components/admin/manage-shipment/manage-shipment.component';
 
 
 
@@ -107,11 +108,12 @@ import { DuringPackingComponent } from './components/admin/during-packing/during
     FinalizePaymentComponent,
     PaymentCompleteComponent,
     PurchasesListComponent,
-    PurchaseItemComponent,
+
     DialogContentComponent,
     BeforeShipmentComponent,
     AfterShipmentComponent,
-    DuringPackingComponent
+    DuringPackingComponent,
+    ManageShipmentComponent
 
 
 
