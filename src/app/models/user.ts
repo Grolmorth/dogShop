@@ -10,4 +10,5 @@ export interface User {
   address?: Address;
   cart?: [Product];
   shoppingHistory?: [Purchase];
+  admin?: boolean;
 }

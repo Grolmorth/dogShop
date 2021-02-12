@@ -1,3 +1,5 @@
+import { AdminGuard } from './services/admin.guard';
+import { UserGuard } from './services/user.guard';
 import { ManageShipmentComponent } from './components/admin/manage-shipment/manage-shipment.component';
 import { AfterShipmentComponent } from './components/admin/after-shipment/after-shipment.component';
 import { DuringPackingComponent } from './components/admin/during-packing/during-packing.component';
@@ -52,15 +54,15 @@ const routes: Routes = [
   },
   {
     path: 'account',
-    component: AccountComponent,
+    component: AccountComponent, canActivate: [UserGuard]
   },
   {
     path: 'finalize-payment',
-    component: FinalizePaymentComponent,
+    component: FinalizePaymentComponent, canActivate: [UserGuard]
   },
   {
     path: 'payment-complete',
-    component: PaymentCompleteComponent,
+    component: PaymentCompleteComponent, canActivate: [UserGuard]
   },
   {
     path: 'create-user',
@@ -68,15 +70,15 @@ const routes: Routes = [
   },
   {
     path: 'update-data',
-    component: UpdateDataComponent,
+    component: UpdateDataComponent, canActivate: [UserGuard]
   },
   {
     path: 'purchase-history',
-    component: PurchaseHistoryComponent,
+    component: PurchaseHistoryComponent, canActivate: [UserGuard]
   },
   {
     path: 'a/add-product',
-    component: AddProductComponent,
+    component: AddProductComponent, canActivate: [AdminGuard]
   },
   {
     path: 'a/manage-product',

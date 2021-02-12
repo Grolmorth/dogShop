@@ -1,3 +1,4 @@
+import { UserDataService } from 'src/app/services/user-data.service';
 import { User } from '../models/user';
 import { Injectable, NgZone } from '@angular/core';
 import { Router } from '@angular/router';
@@ -17,7 +18,8 @@ export class AuthService {
     public router: Router,
     public ngZone: NgZone, // NgZone service to remove outside scope warning
     private location: Location,
-    private firebase: AngularFireDatabase
+    private firebase: AngularFireDatabase,
+    private data: UserDataService
 
   ) {
     /* Saving user data in localstorage when
@@ -26,8 +28,15 @@ export class AuthService {
       if (user) {
         this.userData = user;
         localStorage.setItem('user', JSON.stringify(this.userData));
+        this.data.getUserData().valueChanges().subscribe(val => {
+          if (val.admin) {
+            localStorage.setItem('admin', 'true');
+          } else { localStorage.removeItem('admin'); }
+        })
+
       } else {
         localStorage.removeItem('user');
+        localStorage.removeItem('admin');
         this.userData = null;
       }
     });
@@ -44,7 +53,6 @@ export class AuthService {
       });
   }
   signUp(email, password) {
-    console.log(email, password)
     return this.afAuth.createUserWithEmailAndPassword(email, password)
       .then((result) => {
         this.setUserData(result.user);
