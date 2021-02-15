@@ -104,6 +104,7 @@ const routes: Routes = [
     path: 'cart',
     component: CartCenterComponent,
   },
+  { path: 'shared', loadChildren: () => import('./modules/shared/shared.module').then(m => m.SharedModule) },
 
   {
     path: '**',
