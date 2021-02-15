@@ -1,13 +1,19 @@
 <div class="container">
-    <div class="row" *ngFor="let list of list">
-
-        <div class="m-1"></div>
-        <div class="m-1"></div>
-        <div *ngIf="list.paid">Opłacone</div>
-        <div *ngIf="!list.paid">Nieopłacone</div>
-        <div>{{list.sentBy}}</div>
-
-
-
+    <div class="row m-1 font-weight-bold">
+        <div class="col-sm">Płatność</div>
+        <div class="col-sm">Wysłane przez</div>
+        <div class="col-sm">Odbiorca</div>
+        <div class="col-sm">Data zamówienia</div>
+        <div class="col-sm">Data wysyłki</div>
+    </div>
+    <div class="row m-1" *ngFor="let list of list">
+        <div class="col-sm">
+            <p *ngIf="list.paid">Opłacone</p>
+            <p *ngIf="!list.paid">Nieopłacone</p>
+        </div>
+        <div class="col-sm"> {{list.sentBy}}</div>
+        <div class="col-sm"> {{list.userEmail}}</div>
+        <div class="col-sm"> {{list.date}}</div>
+        <div class="col-sm"> {{list.sentDate}}</div>
     </div>
 </div>
