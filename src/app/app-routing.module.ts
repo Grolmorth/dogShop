@@ -73,37 +73,10 @@ const routes: Routes = [
     component: PurchaseHistoryComponent, canActivate: [UserGuard]
   },
   {
-    path: 'a/add-product',
-    component: AddProductComponent, canActivate: [AdminGuard]
-  },
-  {
-    path: 'a/manage-product',
-    component: ProductListComponent, canActivate: [AdminGuard]
-  },
-  {
-    path: 'a/edit',
-    component: EditProductComponent, canActivate: [AdminGuard]
-  },
-  {
-    path: 'a/after-shipment',
-    component: AfterShipmentComponent, canActivate: [AdminGuard]
-  },
-  {
-    path: 'a/manage-shipment',
-    component: ManageShipmentComponent, canActivate: [AdminGuard]
-  },
-  {
-    path: 'a/before-shipment',
-    component: BeforeShipmentComponent, canActivate: [AdminGuard]
-  },
-  {
-    path: 'a/packing',
-    component: DuringPackingComponent, canActivate: [AdminGuard]
-  },
-  {
     path: 'cart',
     component: CartCenterComponent,
   },
+  { path: 'a', loadChildren: () => import('./components/admin/admin/admin.module').then(m => m.AdminModule) },
 
   {
     path: '**',

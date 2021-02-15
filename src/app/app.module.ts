@@ -1,6 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NavComponent } from './components/nav/nav.component';
@@ -21,7 +20,6 @@ import { AngularFireModule } from '@angular/fire';
 import { AngularFireDatabaseModule } from '@angular/fire/database';
 import { AngularFireStorageModule } from '@angular/fire/storage';
 import { AngularFireAuthModule } from '@angular/fire/auth';
-import { AddProductComponent } from './components/admin/add-product/add-product.component';
 import { MatCardModule } from '@angular/material/card';
 import { MatSelectModule } from '@angular/material/select';
 import { MatButtonModule } from '@angular/material/button';
@@ -36,17 +34,10 @@ import { MenuPanelComponent } from './components/menu-panel/menu-panel.component
 import { MatBadgeModule } from '@angular/material/badge';
 import { CurrencyPlnPipe } from './pipes/currency-pln.pipe';
 import { MatDividerModule } from '@angular/material/divider';
-import { ProductListComponent } from './components/admin/product-list/product-list.component';
-import { ProductListItemComponent } from './components/admin/product-list-item/product-list-item.component';
-import { MatTreeModule } from '@angular/material/tree';
-import { MatProgressBarModule } from '@angular/material/progress-bar';
-import { MatListModule } from '@angular/material/list';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatTableModule } from '@angular/material/table';
 import { MatSortModule } from '@angular/material/sort';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
-import { EditProductComponent } from './components/admin/edit-product/edit-product.component';
-import { FilterPipe } from './pipes/filter.pipe';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatPaginatorIntl } from '@angular/material/paginator';
 import { CustomPaginator } from './services/customPaginatorConfiguration';
@@ -61,20 +52,7 @@ import { DialogContentComponent } from './components/login/purchase-history/purc
 import { FinalizePaymentComponent } from './components/content/finalize-payment/finalize-payment.component';
 import { PaymentCompleteComponent } from './components/content/payment-complete/payment-complete.component';
 import { PurchasesListComponent } from './components/admin/purchases-list/purchases-list.component';
-
-
 import { MatDialogModule } from '@angular/material/dialog';
-import { BeforeShipmentComponent } from './components/admin/before-shipment/before-shipment.component';
-import { AfterShipmentComponent } from './components/admin/after-shipment/after-shipment.component';
-import { DuringPackingComponent } from './components/admin/during-packing/during-packing.component';
-import { ManageShipmentComponent } from './components/admin/manage-shipment/manage-shipment.component';
-
-
-
-
-
-
-
 
 @NgModule({
   declarations: [
@@ -87,7 +65,6 @@ import { ManageShipmentComponent } from './components/admin/manage-shipment/mana
     NavDisplayItemComponent,
     CategoryDisplayComponent,
     SubCategoryDisplayComponent,
-    AddProductComponent,
     ProductPathComponent,
     DisplayItemComponent,
     DisplayDetailItemComponent,
@@ -95,10 +72,6 @@ import { ManageShipmentComponent } from './components/admin/manage-shipment/mana
     CartDisplayComponent,
     MenuPanelComponent,
     CurrencyPlnPipe,
-    ProductListComponent,
-    ProductListItemComponent,
-    EditProductComponent,
-    FilterPipe,
     AllProductsDisplayComponent,
     CartCenterComponent,
     AccountComponent,
@@ -109,16 +82,7 @@ import { ManageShipmentComponent } from './components/admin/manage-shipment/mana
     FinalizePaymentComponent,
     PaymentCompleteComponent,
     PurchasesListComponent,
-
     DialogContentComponent,
-    BeforeShipmentComponent,
-    AfterShipmentComponent,
-    DuringPackingComponent,
-    ManageShipmentComponent,
-
-
-
-
 
   ],
   imports: [
@@ -141,20 +105,17 @@ import { ManageShipmentComponent } from './components/admin/manage-shipment/mana
     MatTooltipModule,
     MatBadgeModule,
     MatDividerModule,
-    MatTreeModule,
-    MatProgressBarModule,
-    MatListModule,
     MatCheckboxModule,
     MatTableModule,
     MatSortModule,
     MatAutocompleteModule,
     MatPaginatorModule,
     MatDialogModule
-
-
-
   ],
   providers: [{ provide: MatPaginatorIntl, useValue: CustomPaginator() }
+  ],
+  exports: [
+    CurrencyPlnPipe
   ],
   bootstrap: [AppComponent]
 })
