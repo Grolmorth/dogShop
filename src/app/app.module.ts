@@ -75,6 +75,7 @@ import { ManageShipmentComponent } from './components/admin/manage-shipment/mana
 
 
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -113,7 +114,8 @@ import { ManageShipmentComponent } from './components/admin/manage-shipment/mana
     BeforeShipmentComponent,
     AfterShipmentComponent,
     DuringPackingComponent,
-    ManageShipmentComponent
+    ManageShipmentComponent,
+
 
 
 

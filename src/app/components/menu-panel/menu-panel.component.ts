@@ -29,6 +29,11 @@ export class MenuPanelComponent implements DoCheck, OnInit {
 
   }
 
+  isAdmin() {
+    if (localStorage.getItem('admin') === 'true') {
+      return true
+    } else return false
+  }
   ngDoCheck(): void {
     if (this.route.snapshot['_routerState'].url === "/cart") {
       this.showContent = false;
