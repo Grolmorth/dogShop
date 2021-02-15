@@ -82,27 +82,27 @@ const routes: Routes = [
   },
   {
     path: 'a/manage-product',
-    component: ProductListComponent,
+    component: ProductListComponent, canActivate: [AdminGuard]
   },
   {
     path: 'a/edit',
-    component: EditProductComponent,
+    component: EditProductComponent, canActivate: [AdminGuard]
   },
   {
     path: 'a/after-shipment',
-    component: AfterShipmentComponent,
+    component: AfterShipmentComponent, canActivate: [AdminGuard]
   },
   {
     path: 'a/manage-shipment',
-    component: ManageShipmentComponent,
+    component: ManageShipmentComponent, canActivate: [AdminGuard]
   },
   {
     path: 'a/before-shipment',
-    component: BeforeShipmentComponent,
+    component: BeforeShipmentComponent, canActivate: [AdminGuard]
   },
   {
     path: 'a/packing',
-    component: DuringPackingComponent,
+    component: DuringPackingComponent, canActivate: [AdminGuard]
   },
   {
     path: 'cart',
