@@ -1,5 +1,5 @@
+import { RouterModule } from '@angular/router';
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
 import { MatPaginatorIntl, MatPaginatorModule } from '@angular/material/paginator';
 import { CustomPaginator } from 'src/app/services/customPaginatorConfiguration';
 import { CartDisplayComponent } from 'src/app/components/cart/cart-display/cart-display.component';
@@ -31,20 +31,19 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { MatSortModule } from '@angular/material/sort';
 import { MatTooltipModule } from '@angular/material/tooltip';
-import { BrowserModule } from '@angular/platform-browser';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { AppRoutingModule } from 'src/app/app-routing.module';
+
+import { CartCenterComponent } from 'src/app/components/content/cart-center/cart-center.component';
+import { CommonModule } from '@angular/common';
+
 
 
 
 @NgModule({
   imports: [
-
-    BrowserModule,
+    CommonModule,
     FormsModule,
     ReactiveFormsModule,
-    AppRoutingModule,
-    BrowserAnimationsModule,
+    RouterModule,
     MatInputModule,
     MatCardModule,
     MatButtonModule,
@@ -56,7 +55,6 @@ import { AppRoutingModule } from 'src/app/app-routing.module';
     MatSortModule,
     MatAutocompleteModule,
     MatPaginatorModule,
-
   ],
   declarations: [
     NavComponent,
@@ -77,11 +75,13 @@ import { AppRoutingModule } from 'src/app/app-routing.module';
     AllProductsDisplayComponent,
     CreateAccountComponent,
     ForgotPasswordComponent,
+    CartCenterComponent,
 
   ],
 
   exports: [
     NavComponent,
+    CartCenterComponent,
     PageNotFoundComponent,
     HeaderComponent,
     LoginComponent,
@@ -99,12 +99,6 @@ import { AppRoutingModule } from 'src/app/app-routing.module';
     AllProductsDisplayComponent,
     CreateAccountComponent,
     ForgotPasswordComponent,
-
-    BrowserModule,
-    FormsModule,
-    ReactiveFormsModule,
-    AppRoutingModule,
-    BrowserAnimationsModule,
     MatInputModule,
     MatCardModule,
     MatButtonModule,
@@ -116,6 +110,11 @@ import { AppRoutingModule } from 'src/app/app-routing.module';
     MatSortModule,
     MatAutocompleteModule,
     MatPaginatorModule,
+    CommonModule,
+    FormsModule,
+    ReactiveFormsModule,
+
+
   ],
   providers: [{ provide: MatPaginatorIntl, useValue: CustomPaginator() }]
 })
