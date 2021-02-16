@@ -9,10 +9,7 @@ import { ManageShipmentComponent } from 'src/app/components/admin/manage-shipmen
 import { ProductListComponent } from 'src/app/components/admin/product-list/product-list.component';
 import { AdminGuard } from 'src/app/services/admin.guard';
 
-
-
 const adminRoutes: Routes = [{
-
   path: 'add-product',
   component: AddProductComponent, canActivate: [AdminGuard]
 },

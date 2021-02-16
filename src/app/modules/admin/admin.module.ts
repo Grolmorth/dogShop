@@ -1,6 +1,5 @@
+import { PurchasesListComponent } from './../../components/admin/purchases-list/purchases-list.component';
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-
 import { AdminRoutingModule } from './admin-routing.module';
 import { AddProductComponent } from 'src/app/components/admin/add-product/add-product.component';
 import { AfterShipmentComponent } from 'src/app/components/admin/after-shipment/after-shipment.component';
@@ -13,11 +12,6 @@ import { ProductListComponent } from 'src/app/components/admin/product-list/prod
 import { MatSelectModule } from '@angular/material/select';
 import { MatTableModule } from '@angular/material/table';
 import { SharedModule } from '../shared/shared.module';
-import { RouterModule } from '@angular/router';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { BrowserModule } from '@angular/platform-browser';
-
-
 
 @NgModule({
   declarations: [
@@ -29,6 +23,7 @@ import { BrowserModule } from '@angular/platform-browser';
     AfterShipmentComponent,
     DuringPackingComponent,
     ManageShipmentComponent,
+    PurchasesListComponent
   ],
   imports: [
     AdminRoutingModule,

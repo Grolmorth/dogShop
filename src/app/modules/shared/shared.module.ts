@@ -31,12 +31,8 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { MatSortModule } from '@angular/material/sort';
 import { MatTooltipModule } from '@angular/material/tooltip';
-
 import { CartCenterComponent } from 'src/app/components/content/cart-center/cart-center.component';
 import { CommonModule } from '@angular/common';
-
-
-
 
 @NgModule({
   imports: [
@@ -76,9 +72,7 @@ import { CommonModule } from '@angular/common';
     CreateAccountComponent,
     ForgotPasswordComponent,
     CartCenterComponent,
-
   ],
-
   exports: [
     NavComponent,
     CartCenterComponent,
@@ -113,8 +107,6 @@ import { CommonModule } from '@angular/common';
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
-
-
   ],
   providers: [{ provide: MatPaginatorIntl, useValue: CustomPaginator() }]
 })

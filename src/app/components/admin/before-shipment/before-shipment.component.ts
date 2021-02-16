@@ -16,6 +16,7 @@ export class BeforeShipmentComponent implements OnInit {
   ngOnInit(): void {
     this.purchaseService.getOrder('before-shipment').valueChanges().subscribe(val => {
       this.ordersList = val;
+
     });
   }
 
