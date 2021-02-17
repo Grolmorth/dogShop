@@ -4,6 +4,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { NavServiceService } from 'src/app/services/nav-service.service';
 import { Product } from 'src/app/models/product';
 import { AngularFireList } from '@angular/fire/database';
+import { Subscription } from 'rxjs';
 
 
 
@@ -15,7 +16,7 @@ import { AngularFireList } from '@angular/fire/database';
 export class SubCategoryDisplayComponent implements OnInit, OnDestroy {
 
 
-  sub: any;
+  sub: Subscription;
   categoryName: any;
   subCategoryName: string;
   categoryLink: string;

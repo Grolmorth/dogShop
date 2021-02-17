@@ -3,6 +3,7 @@ import { MessengerService } from './../../../services/messenger.service';
 
 import { Component, EventEmitter, OnInit, Output, OnDestroy, DoCheck } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { Subscription } from 'rxjs';
 
 
 
@@ -18,7 +19,7 @@ export class CartDisplayComponent implements OnInit, OnDestroy, DoCheck {
   showButton = true;
   cartItems: Product[] = [];
   cartTotal = 0;
-  messageSub: any;
+  messageSub: Subscription;
   constructor(private msg: MessengerService, private route: ActivatedRoute) { }
 
   ngOnInit(): void {

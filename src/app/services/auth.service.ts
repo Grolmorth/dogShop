@@ -7,12 +7,15 @@ import firebase from 'firebase/app';
 
 import { Location } from '@angular/common';
 import { AngularFireDatabase, AngularFireObject } from '@angular/fire/database';
+import { analyzeAndValidateNgModules } from '@angular/compiler';
+import { Subscription } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
   userData: any; // Save logged in user data
+
   constructor(
     public afAuth: AngularFireAuth, // Inject Firebase auth service
     public router: Router,
@@ -20,20 +23,22 @@ export class AuthService {
     private location: Location,
     private firebase: AngularFireDatabase,
     private data: UserDataService
-
   ) {
     /* Saving user data in localstorage when
     logged in and setting up null when logged out */
+
     this.afAuth.authState.subscribe(user => {
+
       if (user) {
         this.userData = user;
         localStorage.setItem('user', JSON.stringify(this.userData));
         this.data.getUserData().valueChanges().subscribe(val => {
           if (val.admin) {
             localStorage.setItem('admin', 'true');
-          } else { localStorage.removeItem('admin'); }
+          } else {
+            localStorage.removeItem('admin');
+          }
         })
-
       } else {
         localStorage.removeItem('user');
         localStorage.removeItem('admin');
