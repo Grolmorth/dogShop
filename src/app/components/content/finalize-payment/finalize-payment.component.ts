@@ -1,8 +1,9 @@
+import { Subscription } from 'rxjs';
 import { PurchaseService } from './../../../services/purchase.service';
 import { Purchase } from './../../../models/purchase';
 import { UserDataService } from 'src/app/services/user-data.service';
 import { Product } from 'src/app/models/product';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { User } from 'src/app/models/user';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 
@@ -11,7 +12,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
   templateUrl: './finalize-payment.component.html',
   styleUrls: ['./finalize-payment.component.scss']
 })
-export class FinalizePaymentComponent implements OnInit {
+export class FinalizePaymentComponent implements OnInit, OnDestroy {
   formTemplate = new FormGroup({
     name: new FormControl('', Validators.required),
     surname: new FormControl('', Validators.required),
@@ -22,6 +23,7 @@ export class FinalizePaymentComponent implements OnInit {
     streetNumber: new FormControl('', Validators.required),
     phone: new FormControl('', Validators.required),
   });
+  sub: Subscription;
   saveUserData: boolean = true;
   paid: boolean = true;
   user: User = {
@@ -47,7 +49,6 @@ export class FinalizePaymentComponent implements OnInit {
   cartTotal: number;
 
   ngOnInit(): void {
-
     this.getCartFromStorage();
     this.getUserData();
   }
@@ -64,7 +65,7 @@ export class FinalizePaymentComponent implements OnInit {
     });
   }
   getUserData() {
-    this.userData.getUserData().valueChanges().subscribe(val => {
+    this.sub = this.userData.getUserData().valueChanges().subscribe(val => {
       if (val.uid) {
         this.user = val;
         if (this.user.address) {
@@ -102,5 +103,8 @@ export class FinalizePaymentComponent implements OnInit {
     localStorage.removeItem('cart');
 
 
+  }
+  ngOnDestroy() {
+    this.sub.unsubscribe();
   }
 }

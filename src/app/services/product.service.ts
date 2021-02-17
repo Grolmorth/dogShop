@@ -10,8 +10,6 @@ export class ProductService {
   product: Product;
   file: AngularFireList<any>;
 
-
-
   constructor(private firebase: AngularFireDatabase, private storage: AngularFireStorage) { }
 
   insertProductDetails(productDetails: Product) {

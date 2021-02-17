@@ -49,10 +49,8 @@ export class AuthService {
   signIn(email, password) {
     return this.afAuth.signInWithEmailAndPassword(email, password)
       .then((result) => {
-        this.ngZone.run(() => {
-          this.router.navigate(['login']);
-        });
         this.setUserData(result.user);
+        this.location.back();
       }).catch((error) => {
         window.alert(error.message);
       });
@@ -91,7 +89,6 @@ export class AuthService {
   }
   googleAuth() {
     return this.authLogin(new firebase.auth.GoogleAuthProvider()).then(() => {
-      this.location.back();
     });
   }
   authLogin(provider) {
