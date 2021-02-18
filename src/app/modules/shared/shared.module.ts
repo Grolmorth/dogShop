@@ -33,6 +33,7 @@ import { MatSortModule } from '@angular/material/sort';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { CartCenterComponent } from 'src/app/components/content/cart-center/cart-center.component';
 import { CommonModule } from '@angular/common';
+import { GoTopComponent } from 'src/app/components/nav/go-top/go-top.component';
 
 @NgModule({
   imports: [
@@ -72,6 +73,7 @@ import { CommonModule } from '@angular/common';
     CreateAccountComponent,
     ForgotPasswordComponent,
     CartCenterComponent,
+    GoTopComponent
   ],
   exports: [
     NavComponent,
@@ -93,6 +95,7 @@ import { CommonModule } from '@angular/common';
     AllProductsDisplayComponent,
     CreateAccountComponent,
     ForgotPasswordComponent,
+    GoTopComponent,
     MatInputModule,
     MatCardModule,
     MatButtonModule,

@@ -1,7 +1,6 @@
 <div id="page-container">
     <div id="content-wrap">
-        <app-header>
-        </app-header>
+        <app-header></app-header>
         <mat-divider></mat-divider>
         <app-menu-panel></app-menu-panel>
         <mat-divider></mat-divider>
@@ -9,9 +8,6 @@
         <mat-divider></mat-divider>
         <router-outlet></router-outlet>
     </div>
-    <a (click)="goToTop()" id="goTop" class="m-0 p-0">
-        <mat-icon class="icon" aria-hidden="false" aria-label="go top">keyboard_arrow_up</mat-icon>
-        <mat-icon class="icon onTop" aria-hidden="false" aria-label="go top">keyboard_arrow_up</mat-icon>
-    </a>
+    <app-go-top></app-go-top>
     <app-footer id="footer"></app-footer>
 </div>
