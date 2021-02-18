@@ -50,7 +50,7 @@ export class AuthService {
     return this.afAuth.signInWithEmailAndPassword(email, password)
       .then((result) => {
         this.setUserData(result.user);
-        this.location.back();
+
       }).catch((error) => {
         window.alert(error.message);
       });
@@ -59,6 +59,7 @@ export class AuthService {
     return this.afAuth.createUserWithEmailAndPassword(email, password)
       .then((result) => {
         this.setUserData(result.user);
+        this.location.back();
       }).catch((error) => {
         window.alert(error.message);
       });
@@ -73,6 +74,7 @@ export class AuthService {
       emailVerified: user.emailVerified
     };
     userRef.update(userData);
+    this.location.back();
   }
   signOut() {
     return this.afAuth.signOut().then(() => {

@@ -1,4 +1,5 @@
-<div class="container">
+<div *ngIf="list.length===0">Brak produktów</div>
+<div class="container" *ngIf="list.length>0">
     <div class="row m-1 font-weight-bold">
         <div class="col-sm">Płatność</div>
         <div class="col-sm">Wysłane przez</div>

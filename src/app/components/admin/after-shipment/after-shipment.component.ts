@@ -10,7 +10,7 @@ import { Subscription } from 'rxjs';
 })
 export class AfterShipmentComponent implements OnInit, OnDestroy {
 
-  list: Purchase[];
+  list: Purchase[] = [];
   constructor(private purchaseService: PurchaseService) { }
   sub: Subscription;
   ngOnInit(): void {
