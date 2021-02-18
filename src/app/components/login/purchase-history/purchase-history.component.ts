@@ -1,9 +1,8 @@
-import { element } from 'protractor';
-
 import { Purchase } from './../../../models/purchase';
 import { UserDataService } from './../../../services/user-data.service';
-import { Component, Inject, OnInit } from '@angular/core';
+import { Component, Inject, OnInit, OnDestroy } from '@angular/core';
 import { MatDialog, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { Subscription } from 'rxjs';
 
 
 @Component({
@@ -11,14 +10,15 @@ import { MatDialog, MAT_DIALOG_DATA } from '@angular/material/dialog';
   templateUrl: './purchase-history.component.html',
   styleUrls: ['./purchase-history.component.scss']
 })
-export class PurchaseHistoryComponent implements OnInit {
+export class PurchaseHistoryComponent implements OnInit, OnDestroy {
 
   shoppingHistory: Purchase[] = [];
   displayedColumns: string[] = ['date', 'purchaseList', 'totalValue', 'paid', 'sent'];
+  sub: Subscription;
   constructor(private userData: UserDataService, public dialog: MatDialog) { }
 
   ngOnInit(): void {
-    this.userData.getPurchaseHistory().valueChanges().subscribe(val => {
+    this.sub = this.userData.getPurchaseHistory().valueChanges().subscribe(val => {
       this.shoppingHistory = val;
     });
   }
@@ -37,7 +37,11 @@ export class PurchaseHistoryComponent implements OnInit {
       }
     });
   }
+  ngOnDestroy() {
+    this.sub.unsubscribe();
+  }
 }
+
 
 @Component({
   selector: 'dialog-content',

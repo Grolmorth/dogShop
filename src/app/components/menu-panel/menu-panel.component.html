@@ -9,7 +9,7 @@
             <p class="m-auto">Witaj {{user.displayName}}</p>
         </div>
         <div class="col-sm" *ngIf="user.uid">
-            <button mat-button routerLink="/account">Twoje konto</button>
+            <button mat-button routerLink="u/account">Twoje konto</button>
         </div>
         <div class="col-sm">
             <button *ngIf="!user.uid" mat-button routerLink="/login">Login</button>

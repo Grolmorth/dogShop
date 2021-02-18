@@ -1,41 +1,39 @@
 <mat-card class="container text-center">
     <div>
 
-        <div>
+        <form>
             <h3>Stwórz konto</h3>
 
-            <div class="formGroup">
+            <div>
                 <mat-form-field>
                     <mat-label>Email</mat-label>
                     <input matInput type="email" class="formControl m-1" placeholder="Adres e-mail" #userEmail required>
                 </mat-form-field>
             </div>
 
-            <div class="formGroup">
+            <div>
                 <mat-form-field>
                     <mat-label>Hasło</mat-label>
-                    <input matInput type="password" class="formControl m-1" placeholder="Hasło" #userPwd required>
+                    <input matInput type="password" autocomplete="on" class="formControl m-1" placeholder="Hasło" #userPwd required>
                 </mat-form-field>
             </div>
 
 
-            <div class="formGroup">
+            <div>
                 <input type="button" class="btn btn-primary m-1" value="Stwórz konto" (click)="authService.signUp(userEmail.value, userPwd.value)">
             </div>
-            <div>
-                <p class="m-1 p-1">Lub</p>
-            </div>
-
-            <!-- Continue with Google -->
-            <div class="formGroup">
-                <button type="button" class="btn btn-danger m-1" (click)="authService.googleAuth()">
-
-          Zaloguj z Google
-        </button>
-            </div>
-
-
+        </form>
+        <div>
+            <p class="m-1 p-1">Lub</p>
         </div>
+
+        <!-- Continue with Google -->
+        <div>
+            <button type="button" class="btn btn-danger m-1" (click)="authService.googleAuth()">Zaloguj z Google</button>
+        </div>
+
+
+
 
         <div class="redirectToLogin">
             <span>Masz konto? <span class="btn btn-primary m-1" routerLink="/login">Zaloguj</span></span>

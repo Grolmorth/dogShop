@@ -1,5 +1,6 @@
+import { Subscription } from 'rxjs';
 import { UserDataService } from './../../../services/user-data.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { User } from 'src/app/models/user';
 import { Location } from '@angular/common';
@@ -9,8 +10,8 @@ import { Location } from '@angular/common';
   templateUrl: './update-data.component.html',
   styleUrls: ['./update-data.component.scss']
 })
-export class UpdateDataComponent implements OnInit {
-
+export class UpdateDataComponent implements OnInit, OnDestroy {
+  sub: Subscription;
   constructor(private userData: UserDataService, private location: Location) { }
   formTemplate = new FormGroup({
     name: new FormControl('', Validators.required),
@@ -40,9 +41,9 @@ export class UpdateDataComponent implements OnInit {
     }
   }
   ngOnInit(): void {
-    this.userData.getUserData().valueChanges().subscribe(val => {
+    this.sub = this.userData.getUserData().valueChanges().subscribe(val => {
       this.user = val;
-      if (this.user.uid) {
+      if (this.user.address) {
         this.formTemplate.setValue({
           name: this.user.address.name,
           surname: this.user.address.surname,
@@ -58,9 +59,10 @@ export class UpdateDataComponent implements OnInit {
     })
   }
   onSubmit(form) {
-
     this.userData.setUserData(form.value);
     this.location.back();
   }
-
+  ngOnDestroy() {
+    this.sub.unsubscribe();
+  }
 }

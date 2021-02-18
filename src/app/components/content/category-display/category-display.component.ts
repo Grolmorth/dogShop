@@ -5,6 +5,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Product } from 'src/app/models/product';
 import { AngularFireList } from '@angular/fire/database';
+import { Subscription } from 'rxjs';
 
 
 @Component({
@@ -19,7 +20,7 @@ export class CategoryDisplayComponent implements OnInit {
   productListAll: Product[] = [];
   categoryLink: string;
   categoryName: any;
-  routeParamsSub: any;
+  routeParamsSub: Subscription;
   constructor(private navServ: NavServiceService, private route: ActivatedRoute, private productService: ProductService, private router: Router) { }
   navigation: any;
   ngOnInit(): void {

@@ -1,3 +1,4 @@
+
 import { Purchase } from './../models/purchase';
 import { Address } from '../models/address';
 import { User } from 'src/app/models/user';
@@ -37,6 +38,7 @@ export class UserDataService {
   getUserData(): AngularFireObject<User> {
     const user: User = JSON.parse(localStorage.getItem('user'));
     return this.firebase.object(`users/${user.uid}`);
+
   }
   getPurchaseHistory(): AngularFireList<Purchase> {
     const user: User = JSON.parse(localStorage.getItem('user'));

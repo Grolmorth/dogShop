@@ -3,6 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { ProductService } from './../../../services/product.service';
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Product } from 'src/app/models/product';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-display-detail-item',
@@ -14,8 +15,8 @@ export class DisplayDetailItemComponent implements OnInit, OnDestroy {
   quantity = 1;
   buttonDisabled = false;
   constructor(private productServ: ProductService, private route: ActivatedRoute, private msg: MessengerService) { }
-  paramSub: any;
-  productSub: any;
+  paramSub: Subscription;
+  productSub: Subscription;
   categoryLink: string;
   subCategoryLink: string;
   nameLink: string;

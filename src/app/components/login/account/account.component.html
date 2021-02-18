@@ -1,29 +1,32 @@
 <div class="container">
     <div class="row">
         <div class="col-sm d-block">
-            <button mat-button routerLink="/update-data">Zaktualizuj dane adresowe</button>
+            <button mat-button routerLink="/u/update-data">Zaktualizuj dane adresowe</button>
         </div>
     </div>
-    <div class="row" *ngIf="user.address">
-        <p class="col-sm p-1 m-1">
-            Twoje dane adresowe:
-        </p>
-    </div>
-    <div class="row">
-        <p class="col-sm mb-0" *ngIf="user.address.name && user.address.surname">{{user.address.name}}&nbsp;{{user.address.surname}}</p>
-    </div>
-    <div class="row">
-        <p class="col-sm mb-0" *ngIf="user.address.country">{{user.address.country}}</p>
-    </div>
-    <div class="row">
-        <p class="col-sm mb-0" *ngIf="user.address.city">{{user.address.zipCode}}&nbsp;{{user.address.city}}</p>
-    </div>
-    <div class="row">
-        <p class="col-sm mb-0" *ngIf="user.address.street">Ul.&nbsp;{{user.address.street}}&nbsp;{{user.address.streetNumber}}</p>
-    </div>
-    <div class="row">
-        <p class="col-sm" *ngIf="user.address.phone">Tel:&nbsp;{{user.address.phone}}</p>
-    </div>
+    <ng-container *ngIf="user.address">
+
+        <div class="row">
+            <p class="col-sm p-1 m-1">
+                Twoje dane adresowe:
+            </p>
+        </div>
+        <div class="row">
+            <p class="col-sm mb-0" *ngIf="user.address.name && user.address.surname">{{user.address.name}}&nbsp;{{user.address.surname}}</p>
+        </div>
+        <div class="row">
+            <p class="col-sm mb-0" *ngIf="user.address.country">{{user.address.country}}</p>
+        </div>
+        <div class="row">
+            <p class="col-sm mb-0" *ngIf="user.address.city">{{user.address.zipCode}}&nbsp;{{user.address.city}}</p>
+        </div>
+        <div class="row">
+            <p class="col-sm mb-0" *ngIf="user.address.street">Ul.&nbsp;{{user.address.street}}&nbsp;{{user.address.streetNumber}}</p>
+        </div>
+        <div class="row">
+            <p class="col-sm" *ngIf="user.address.phone">Tel:&nbsp;{{user.address.phone}}</p>
+        </div>
+    </ng-container>
     <div class="row" *ngIf="user.shoppingHistory">
         <p class="col-sm">
             Historia zakupów:

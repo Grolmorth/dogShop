@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Subscription } from 'rxjs';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 
 import { MessengerService } from 'src/app/services/messenger.service';
 import { Product } from 'src/app/models/product';
@@ -12,6 +13,7 @@ import { UserDataService } from 'src/app/services/user-data.service';
 })
 export class CartCenterComponent implements OnInit {
 
+  userSub: Subscription;
   cartItems: Product[] = [];
   cartTotal = 0;
   constructor(private msg: MessengerService, private userData: UserDataService) { }
@@ -55,7 +57,6 @@ export class CartCenterComponent implements OnInit {
         } else {
           this.cartItems[i].quantity += product.quantity;
         }
-
         productExist = true;
         localStorage.setItem('cart', JSON.stringify(this.cartItems))
         break;
@@ -83,7 +84,7 @@ export class CartCenterComponent implements OnInit {
     localStorage.setItem('cart', JSON.stringify(this.cartItems))
   }
   removeItem(item) {
-    for (let i in this.cartItems) {
+    for (const i in this.cartItems) {
       if (this.cartItems[i].id === item.id) {
         this.cartItems.splice(Number(i), 1);
         this.pushCartToStorage();
@@ -93,7 +94,7 @@ export class CartCenterComponent implements OnInit {
     this.getTotalCost();
   }
   quantityMinus(item) {
-    for (let i in this.cartItems) {
+    for (const i in this.cartItems) {
       if (this.cartItems[i].id === item.id) {
         this.cartItems[i].quantity--;
         if (this.cartItems[i].quantity === 0) {
@@ -107,7 +108,7 @@ export class CartCenterComponent implements OnInit {
 
   }
   quantityPlus(item) {
-    for (let i in this.cartItems) {
+    for (const i in this.cartItems) {
       if (this.cartItems[i].id === item.id) {
         this.cartItems[i].quantity++
         this.pushCartToStorage();
@@ -116,8 +117,9 @@ export class CartCenterComponent implements OnInit {
     }
     this.getTotalCost()
   }
+  // sub
   getUserData() {
-    this.userData.getUserData().valueChanges().subscribe(val => {
+    this.userSub = this.userData.getUserData().valueChanges().subscribe(val => {
       if (val.uid) {
         this.user = val;
       }
@@ -131,5 +133,6 @@ export class CartCenterComponent implements OnInit {
       displayName: '',
       photoURL: ''
     }
+
   }
 }

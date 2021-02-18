@@ -1,5 +1,5 @@
 <mat-card class="container text-center">
-    <div class="" *ngIf="!authService.userData as user">
+    <form class="" *ngIf="!authService.userData as user" class="form-group">
         <h3>Zaloguj</h3>
         <div>
             <mat-form-field>
@@ -11,13 +11,17 @@
         <div>
             <mat-form-field>
                 <mat-label>Hasło</mat-label>
-                <input matInput type="password" class="formControl" placeholder="Hasło" #userPassword required>
+                <input matInput type="password" autocomplete="on" class="formControl" placeholder="Hasło" #userPassword required>
             </mat-form-field>
         </div>
         <div>
             <button type="button" class="btn btn-primary m-1" (click)="authService.signIn(userName.value, userPassword.value)">Zaloguj</button>
         </div>
+    </form>
+    <div>
+        <button type="button" class="btn btn-danger m-1" (click)="authService.googleAuth()">Zaloguj z Google</button>
     </div>
+
     <div class="" *ngIf="authService.isLoggedIn">
         <button type="button" class="btn btn-primary m-1" (click)="authService.signOut()">Wyloguj</button>
 
