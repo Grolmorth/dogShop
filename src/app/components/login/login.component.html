@@ -18,7 +18,7 @@
             <button type="button" class="btn btn-primary m-1" (click)="authService.signIn(userName.value, userPassword.value)">Zaloguj</button>
         </div>
     </form>
-    <div>
+    <div *ngIf="!authService.userData as user">
         <button type="button" class="btn btn-danger m-1" (click)="authService.googleAuth()">Zaloguj z Google</button>
     </div>
 
@@ -26,7 +26,7 @@
         <button type="button" class="btn btn-primary m-1" (click)="authService.signOut()">Wyloguj</button>
 
     </div>
-    <div class="">
+    <div *ngIf="!authService.userData as user">
         <span>Nie masz konta?<span class="btn btn-primary m-1" routerLink="/create-user"> Stwórz konto</span></span>
     </div>
 </mat-card>

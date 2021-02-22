@@ -50,7 +50,7 @@ export class AllProductsDisplayComponent implements OnDestroy, OnChanges, OnInit
         this.applyFilters();
       }
     })
-  }
+   }
   sortData(order: string): void {
     if (order === 'price' && !this.sortByPrice) {
       this.sortByPrice = !this.sortByPrice;
