@@ -11,11 +11,13 @@ import { AppRoutingModule } from './app-routing.module';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { HomeComponent } from './components/content/home/home.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
+    HomeComponent,
 
   ],
   imports: [

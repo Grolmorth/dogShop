@@ -1,5 +1,5 @@
 import { Subscription } from 'rxjs';
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import {  Component,  OnInit} from '@angular/core';
 
 import { MessengerService } from 'src/app/services/messenger.service';
 import { Product } from 'src/app/models/product';

@@ -1,7 +1,186 @@
 {
-
     "rules": {
-        ".read": false,
-        ".write": false
+        "product": {
+            ".read": true,
+            ".write": "auth !=null",
+            "karma": {
+                "barf-karma-mrozona": {
+                    ".indexOn": [
+                        "price",
+                        "company"
+                    ]
+                },
+                "karma-mokra": {
+                    ".indexOn": [
+                        "price",
+                        "company"
+                    ]
+                },
+                "karma-sucha": {
+                    ".indexOn": [
+                        "price",
+                        "company"
+                    ]
+                },
+                "przekaski-i-napoje": {
+                    ".indexOn": [
+                        "price",
+                        "company"
+                    ]
+                },
+                "suplementy-i-hodowla": {
+                    ".indexOn": [
+                        "price",
+                        "company"
+                    ]
+                }
+            },
+            "miejsca-do-spania": {
+                "budy": {
+                    ".indexOn": [
+                        "price",
+                        "company"
+                    ]
+                },
+                "koce": {
+                    ".indexOn": [
+                        "price",
+                        "company"
+                    ]
+                },
+                "kosze": {
+                    ".indexOn": [
+                        "price",
+                        "company"
+                    ]
+                },
+                "legowiska": {
+                    ".indexOn": [
+                        "price",
+                        "company"
+                    ]
+                },
+                "materace": {
+                    ".indexOn": [
+                        "price",
+                        "company"
+                    ]
+                },
+                "poduszki": {
+                    ".indexOn": [
+                        "price",
+                        "company"
+                    ]
+                }
+            },
+            "pielegnacja-i-higiena": {
+                "maszynki-do-strzyzenia": {
+                    ".indexOn": [
+                        "price",
+                        "company"
+                    ]
+                },
+                "pielegnacja-oczu-i-uszu": {
+                    ".indexOn": [
+                        "price",
+                        "company"
+                    ]
+                },
+                "bandaze-i-kolnierze-ochronne": {
+                    ".indexOn": [
+                        "price",
+                        "company"
+                    ]
+                },
+                "srodki-odstraszajace-pchly-i-kleszcze": {
+                    ".indexOn": [
+                        "price",
+                        "company"
+                    ]
+                },
+                "pielegnacja-siersci": {
+                    ".indexOn": [
+                        "price",
+                        "company"
+                    ]
+                },
+                "pielegnacja-zebow": {
+                    ".indexOn": [
+                        "price",
+                        "company"
+                    ]
+                },
+                "pieluchy-i-higiena": {
+                    ".indexOn": [
+                        "price",
+                        "company"
+                    ]
+                },
+                "srodki-uspokajajace": {
+                    ".indexOn": [
+                        "price",
+                        "company"
+                    ]
+                }
+            },
+            "zabawki": {
+                "basen": {
+                    ".indexOn": [
+                        "price",
+                        "company"
+                    ]
+                },
+                "inteligentne-zabawki": {
+                    ".indexOn": [
+                        "price",
+                        "company"
+                    ]
+                },
+                "pilki": {
+                    ".indexOn": [
+                        "price",
+                        "company"
+                    ]
+                },
+                "frisbee-i-zabawki-do-rzucania": {
+                    ".indexOn": [
+                        "price",
+                        "company"
+                    ]
+                },
+                "pluszowe-zabawki": {
+                    ".indexOn": [
+                        "price",
+                        "company"
+                    ]
+                },
+                "zabawki-dla-szczeniat": {
+                    ".indexOn": [
+                        "price",
+                        "company"
+                    ]
+                },
+                "zabawki-wodne": {
+                    ".indexOn": [
+                        "price",
+                        "company"
+                    ]
+                }
+            }
+        },
+        "users": {
+            "$uid": {
+                ".read": "$uid === auth.uid",
+                ".write": "auth != null"
+            }
+        },
+        "before-shipment": {
+            ".read": "auth != null",
+            ".write": "auth != null"
+        },
+        "after-shipment": {
+            ".read": "auth != null",
+            ".write": "auth != null"
+        }
     }
 }

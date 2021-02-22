@@ -1,3 +1,4 @@
+import { HomeComponent } from './components/content/home/home.component';
 import { CreateAccountComponent } from './components/login/create-account/create-account.component';
 import { CartCenterComponent } from './components/content/cart-center/cart-center.component';
 import { DisplayDetailItemComponent } from './components/content/display-detail-item/display-detail-item.component';
@@ -11,7 +12,7 @@ import { Routes, RouterModule } from '@angular/router';
 const routes: Routes = [
   {
     path: '',
-    component: CategoryDisplayComponent,
+    component: HomeComponent,
     pathMatch: 'full',
   },
   {

@@ -18,10 +18,13 @@
         <mat-divider></mat-divider>
     </div>
 
-    <div class="active total">
-        <strong>Wszystko:</strong>
-        <div class="total-price">{{cartTotal|currencyPln}}</div>
-        <button mat-button class="pay-button" *ngIf="user.uid" routerLink="/u/finalize-payment">Zapłać</button>
-        <button mat-button class="pay-button" *ngIf="!user.uid" routerLink="/login">Zaloguj, aby kontynuować</button>
+    <div class=" row active total">
+        <div class="col-sm"> <strong>Wszystko:</strong>
+            <div class="total-price">{{cartTotal|currencyPln}}</div>
+        </div>
+        <div class="col-sm"> <button mat-button class="pay-button" *ngIf="user.uid" routerLink="/u/finalize-payment">Zapłać</button>
+            <button mat-button class="pay-button" *ngIf="!user.uid" routerLink="/login">Zaloguj, aby kontynuować</button></div>
+
+
     </div>
 </div>
