@@ -1,7 +1,7 @@
 import { Product } from 'src/app/models/product';
-import { Component, Input, OnInit, ViewChild, OnDestroy, OnChanges } from '@angular/core';
+import { Component, Input, OnInit, ViewChild, OnDestroy, OnChanges, AfterContentInit } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
-import { Observable } from 'rxjs';
+import { Observable, Subscription } from 'rxjs';
 import { MatTableDataSource } from '@angular/material/table';
 import { FormControl } from '@angular/forms';
 import { map, startWith } from 'rxjs/operators';
@@ -14,7 +14,7 @@ import { map, startWith } from 'rxjs/operators';
 export class AllProductsDisplayComponent implements OnDestroy, OnChanges, OnInit {
   @Input() productListAll: Product[];
   constructor() { }
-  @ViewChild(MatPaginator) paginator: MatPaginator;
+  @ViewChild(MatPaginator, { static: false }) paginator: MatPaginator;
   maxPrice: number = null;
   minPrice: number = null;
   priceChecked = false;
@@ -22,35 +22,54 @@ export class AllProductsDisplayComponent implements OnDestroy, OnChanges, OnInit
   dataSource: MatTableDataSource<Product>;
   sortByPrice = true;
   obs: Observable<any>;
-  filters: boolean = false;
-  sorts: boolean = false;
+  filters = false;
+  sorts = false;
+  paginatorSub: Subscription;
 
   // brand checkbox
+  brandSub: Subscription;
   brandControl = new FormControl();
   brands: string[] = ['SELECT GOLD', 'PREMIERE', 'MultiFit', 'REAL NATURE', 'Hunter', 'Canina', '	Happy Dog', 'Trixie', 'AniOne', 'CooCoo Design', 'FIT+FUN', 'MORE FOR', 'Earth Rated', 'Europet Bernina', 'Moser', 'Quiko', 'TAKE CARE', 'Dogs Creek', 'Kong'];
   filteredOptions: Observable<string[]>;
   sortByBrand = true;
   brandChecked = false;
-  ngOnChanges() {
-    this.dataSource = new MatTableDataSource<Product>(this.productListAll);
-    this.dataSource.paginator = this.paginator;
-    this.obs = this.dataSource.connect();
-    this.filterReset();
 
+  ngOnChanges() {
+    this.filterReset();
+    this.dataSource = new MatTableDataSource<Product>(this.productListAll);
+    this.obs = this.dataSource.connect();
+    // getting right pagination
+    this.paginatorIsNotReady((this.paginator === undefined || this.paginator.length !== this.productListAll.length)
+      && this.productListAll.length > 3)
   }
-  ngOnInit() {
+  getPaginator() {
+    this.dataSource.paginator = this.paginator;
+  }
+  async paginatorIsNotReady(condition) {
+    return await new Promise(resolve => {
+      const interval = setInterval(() => {
+        if (condition) {
+          resolve(this.getPaginator());
+          clearInterval(interval);
+        };
+      }, 60);
+    });
+  }
+
+  ngOnInit(): void {
     this.filteredOptions = this.brandControl.valueChanges
       .pipe(
         startWith(''),
         map(value => this._filter(value))
       );
-    //listen to changes in brand input, every change trigger event
-    this.brandControl.valueChanges.subscribe(val => {
+    // listen to changes in brand input, every change trigger event
+    this.brandSub = this.brandControl.valueChanges.subscribe(val => {
       if (val) {
         this.applyFilters();
       }
-    })
-   }
+    });
+  }
+
   sortData(order: string): void {
     if (order === 'price' && !this.sortByPrice) {
       this.sortByPrice = !this.sortByPrice;
@@ -116,13 +135,13 @@ export class AllProductsDisplayComponent implements OnDestroy, OnChanges, OnInit
     this.dataSource = new MatTableDataSource<Product>(filtredList);
     this.dataSource.paginator = this.paginator;
     this.obs = this.dataSource.connect();
-
   }
 
   ngOnDestroy(): void {
     if (this.dataSource) {
       this.dataSource.disconnect();
     }
+    this.brandSub.unsubscribe();
   }
   filterReset(): void {
     this.maxPrice = this.minPrice = null;

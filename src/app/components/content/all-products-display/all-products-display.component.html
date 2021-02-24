@@ -47,9 +47,11 @@
         </div>
         <div class="row">
             <mat-divider class="m-2"></mat-divider>
+            <!--display items-->
             <div class="container">
                 <div class="row">
                     <div class="col-sm-12 col-md-6 col-lg-4" *ngFor="let product of obs|async">
+
                         <app-display-item [product]="product"></app-display-item>
                     </div>
                     <div *ngIf="dataSource.data.length===0"> Brak przedmiotów spełniających podane kryteria</div>
@@ -62,8 +64,8 @@
         </div>
     </div>
 </div>
-<div class="container">
+<div *ngIf="productListAll.length===0" class="container">
     <div class="row">
-        <div *ngIf="productListAll.length===0"> Brak przedmiotów w danej kategorii</div>
+        <div> Brak przedmiotów w danej kategorii</div>
     </div>
 </div>
