@@ -1,7 +1,7 @@
 import { RouterModule } from '@angular/router';
 import { NgModule } from '@angular/core';
 import { MatPaginatorIntl, MatPaginatorModule } from '@angular/material/paginator';
-import { CustomPaginator } from 'src/app/services/customPaginatorConfiguration';
+import { CustomPaginator } from 'src/app/services/custom-paginator-configuration';
 import { CartDisplayComponent } from 'src/app/components/cart/cart-display/cart-display.component';
 import { CartItemComponent } from 'src/app/components/cart/cart-item/cart-item.component';
 import { AllProductsDisplayComponent } from 'src/app/components/content/all-products-display/all-products-display.component';
